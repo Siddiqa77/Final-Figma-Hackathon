@@ -7,7 +7,7 @@ import Midbanner from '@/components/Homepage/Midbanner'
 import Support from '@/components/Homepage/Support'
 import Latestblog from '@/components/Homepage/Latestblog'
 import Newsletter from '@/components/Homepage/Newsletter'
-import Trendingproduct from '@/components/Homepage/Trendingproduct'
+
 import DiscountItem from '@/components/Homepage/DiscountItem'
 import Topcategories from '@/components/Homepage/Topcategories'
 import Tags from '@/components/Homepage/Tags'
