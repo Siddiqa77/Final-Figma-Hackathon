@@ -1,4 +1,4 @@
-import Image from 'next/image';
+
 
 export default function MyAccount() {
     return (
@@ -58,15 +58,7 @@ export default function MyAccount() {
             </p>
           </div>
   
-          {/* Footer Logos */}
-          {/* <div className=" justify-center  mt-12">
-            <Image 
-            src={image}
-            alt='logo'
-            width={900}
-            height={1114}
-            />
-          </div> */}
+          
         </main>
       </div>
     );
