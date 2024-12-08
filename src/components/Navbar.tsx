@@ -10,7 +10,7 @@ const Navbar: React.FC = () => {
       <div className="container mx-auto flex justify-between items-center px-4 md:px-8 h-10">
         {/* Logo */}
         <Link href="/about">
-        <div className="primary text-2xl font-bold family">Hekto</div></Link>
+        <div className="text-[#0D0E43] text-3xl font-bold family">Hekto</div></Link>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-6  text-base font-normal font-['Lato']">
