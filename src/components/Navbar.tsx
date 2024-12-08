@@ -13,7 +13,7 @@ const Navbar: React.FC = () => {
         <div className="primary text-2xl font-bold family">Hekto</div></Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-6 primary text-base font-normal font-['Lato']">
+        <div className="hidden md:flex space-x-6  text-base font-normal font-['Lato']">
           <Link href="/" className="text-[#fb2e86]">
             Home
           </Link>

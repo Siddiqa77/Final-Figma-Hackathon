@@ -44,7 +44,7 @@ const LatestProduct: React.FC = () => {
   return (
     <div className="container mx-auto px-4 py-10 max-w-[1177px]">
       {/* Heading */}
-      <h2 className="text-3xl font-bold text-center text-[#151875] mb-6">
+      <h2 className="text-3xl family font-bold text-center text-[#1A0B5B] mb-4">
         Latest Products
       </h2>
 

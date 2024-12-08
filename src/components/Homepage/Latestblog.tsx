@@ -4,7 +4,7 @@ const Latestblog = () => {
   return (
      <div>
       {/* Heading */}
-      <h2 className="text-3xl font-bold text-center text-[#151875] mb-4">
+      <h2 className="text-3xl family font-bold text-center text-[#1A0B5B] mb-10">
         Latest Blog
       </h2>
     <div className="wrapper flex flex-wrap gap-12 justify-center">

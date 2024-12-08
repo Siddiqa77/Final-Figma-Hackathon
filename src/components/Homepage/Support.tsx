@@ -4,7 +4,7 @@ const Support = () => {
   return (
     <div className="container mx-auto px-4 py-10 max-w-[1177px]">
       {/* Heading */}
-      <h2 className="text-[28px] md:text-[36px] lg:text-3xl font-bold text-center text-[#1A0B5B] mb-10">
+      <h2 className="text-3xl family font-bold text-center text-[#1A0B5B] mb-10">
         What Shopex Offer!
       </h2>
       {/* Product Grid */}

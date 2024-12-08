@@ -4,7 +4,7 @@ const DiscountItem: React.FC = () => {
   return (
     <div>
       {/* Heading */}
-      <h2 className="text-3xl font-bold text-center text-[#151875] mb-4">
+      <h2 className="text-3xl family font-bold text-center text-[#1A0B5B] mt-10">
         Discount Item
       </h2>
    {/* Navigation Tabs */}
@@ -26,7 +26,7 @@ const DiscountItem: React.FC = () => {
         <h1 className="text-3xl lg:text-4xl font-bold text-indigo-900 mb-2">
           20% Discount Of All Products
         </h1>
-        <p className="text-pink-500 font-semibold mb-4">Eams Sofa Compact</p>
+        <p className="text-[#FB2E86] font-semibold mb-4">Eams Sofa Compact</p>
         <p className="text-gray-500 mb-6">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu eget
           feugiat habitasse nec, bibendum condimentum.

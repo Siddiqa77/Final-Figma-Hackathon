@@ -1,23 +1,50 @@
 
+"use client"
+
+import Tags from "@/components/Homepage/Tags";
+
+
+const grids = [
+  {
+    title: "Shop Grid Default",
+  
+  },
+];
 
 export default function MyAccount() {
+  const current = grids[0]; 
+
     return (
       <div className="bg-gray-50 min-h-screen">
-        {/* Header */}
-        <header className="bg-gray-100 py-6">
-          <div className="container mx-auto px-4">
-            <h1 className="text-2xl font-bold text-blue-900">My Account</h1>
-            <p className="text-sm text-gray-500">
-              Home / Pages / <span className="text-pink-500">My Account</span>
-            </p>
+       
+
+         {/* Hero Section */}
+      <section className="relative bg-[#F6F5FF] py-10 md:py-20 px-5 md:px-20 flex flex-col md:flex-row items-center justify-between overflow-hidden">
+        {/* Center Column: Content (Title, Description, Button) */}
+        <div className="md:w-1/3 max-w-lg text-center md:text-left flex flex-col justify-center">
+          <h1 className="text-3xl md:text-4xl family font-bold text-[#101750] leading-tight mt-2 ml-20">
+            {current.title}
+          </h1>
+          <div className="flex flex-wrap justify-center gap-6 mb-10">
+            <div className="text-[#000] text-[16px] font-normal font-['Lato'] cursor-pointer hover:text-[#fb2448] transition">
+              Wood Chair
+            </div>
+            <div className="text-[#000] text-[16px] font-normal font-['Lato'] cursor-pointer hover:text-[#fb2448] transition">
+              Plastic Chair
+            </div>
+            <div className="text-[#FB2E86] text-[16px] font-normal font-['Lato'] cursor-pointer hover:text-[#fb2448] transition">
+              Sofa Collection
+            </div>
           </div>
-        </header>
+        </div>
+      </section>
+
   
         {/* Main Section */}
         <main className="container mx-auto px-4 flex flex-col items-center">
-          <div className="bg-white shadow-md rounded-lg p-8 mt-12 max-w-md w-full">
-            <h2 className="text-xl font-semibold text-center text-gray-800">Login</h2>
-            <p className="text-center text-gray-600 text-sm mb-6">
+          <div className="bg-[#fff] shadow-md rounded-lg p-8 mt-12 max-w-md w-full">
+            <h2 className="text-[32px] family font-bold text-center text-[#000]">Login</h2>
+            <p className="text-center text-[#9096B2] font-['Lato'] text-[17px] mb-6">
               Please login using account details below.
             </p>
   
@@ -44,15 +71,15 @@ export default function MyAccount() {
               </div>
               <button
                 type="submit"
-                className="bg-pink-500 text-white w-full py-3 rounded-lg font-semibold hover:bg-pink-600"
+                className="bg-[#FB2E86] text-[#fff] w-full py-3 rounded-lg font-semibold hover:bg-pink-600"
               >
                 Sign In
               </button>
             </form>
   
-            <p className="text-center text-gray-600 text-sm mt-6">
+            <p className="text-centertext-center text-[#9096B2] font-['Lato'] text-[17px] mt-6">
               Don&apos;t have an account?{" "}
-              <a href="#" className="text-pink-500 hover:underline">
+              <a href="#" className="text-[#FB2E86] hover:underline">
                 Create account
               </a>
             </p>
@@ -60,6 +87,8 @@ export default function MyAccount() {
   
           
         </main>
+        <Tags/>
       </div>
+
     );
   }

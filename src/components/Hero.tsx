@@ -46,7 +46,7 @@ function HeroSection() {
   const current = slides[currentSlide];
 
   return (
-    <section className="relative bg-gray-100 py-10 md:py-20 px-5 md:px-20 flex flex-col md:flex-row items-center justify-between overflow-hidden">
+    <section className="relative bg-[#F2F0FF] py-10 md:py-20 px-5 md:px-20 flex flex-col md:flex-row items-center justify-between overflow-hidden">
       {/* Left Column: Lamp */}
       <div className="md:w-1/4 flex justify-center items-start relative">
         <div className="absolute top-[-350px] left-[-40px] z-10">
@@ -62,18 +62,18 @@ function HeroSection() {
 
       {/* Center Column: Content (Title, Description, Button) */}
       <div className="md:w-1/3 max-w-lg text-center md:text-left flex flex-col justify-center">
-        <p className="text-sm text-pink-500 font-medium">
+        <p className="text-sm text-[#FB2E86] font-medium">
           Best Furniture For Your Castle...
         </p>
-        <h1 className="text-3xl md:text-4xl font-bold text-[#000] leading-tight mt-2">
+        <h1 className="text-3xl md:text-4xl font-bold text-[#000] leading-tight mt-2 family tracking-[0.795] ">
           {current.title}
         </h1>
-        <p className="text-gray-600 text-sm mt-4 leading-relaxed">
+        <p className="text-[#8A8FB9] text-[16px] mt-4 leading-relaxed font-['Lato'] ">
           {current.description}
         </p>
         <Link
           href="/griddefault"
-          className="inline-block bg-pink-500 text-white text-sm font-medium py-3 px-6 rounded-md mt-6 hover:bg-pink-600 transition-all duration-300 w-1/3 text-center"
+          className="inline-block bg-[#FB2E86] text-[#fff] text-[17px] font-medium py-3 px-6 rounded-md mt-6  transition-all duration-300 w-1/3 text-center"
         >
           {current.buttonText}
         </Link>
@@ -81,7 +81,7 @@ function HeroSection() {
 
       {/* Right Side: Chair Image */}
       <div className="md:w-1/3 flex justify-center items-center relative">
-        <div className="relative bg-gradient-to-r from-pink-100 to-purple-200 rounded-full p-10 shadow-xl mt-10 mx-auto">
+        <div className="relative bg-[#ECD2FA59] rounded-full p-10 shadow-xl mt-10 mx-auto">
           <Image
             src={current.chairImage}
             alt="Banner Chair"
@@ -91,8 +91,8 @@ function HeroSection() {
           />
         </div>
          {/* Discount tag */}
-         <div className="absolute top-8 right-5 w-[130px] h-[138px] bg-[#00C1FE] text-white text-[30px] family font-semibold py-5 px-7 text-center rounded-full">
-        -20% Off
+         <div className="absolute top-8 right-5 w-[125px] h-[130px] bg-[#00C1FE] text-[#fff] text-[30px] family font-semibold py-5 px-7 text-center rounded-full">
+        50% Off
         </div> 
         </div> 
 
@@ -105,7 +105,7 @@ function HeroSection() {
             onClick={() => setCurrentSlide(index)}
             className={`w-3 h-3 rounded-full ${
               currentSlide === index
-                ? "bg-pink-500"
+                ? "bg-[#FB2E86]"
                 : "bg-gray-300 hover:bg-gray-400"
             }`}
           ></button>
