@@ -8,9 +8,9 @@ const Support = () => {
         What Shopex Offer!
       </h2>
       {/* Product Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center ">
         {/* First Card */}
-        <div className="relative bg-[#fff] flex flex-col items-center justify-center p-6  rounded-lg">
+        <div className="relative bg-[#fff] flex flex-col items-center justify-center p-6  rounded-lg ">
           {/* Top Image */}
           <img
             src="/supportpic1.png"

@@ -11,22 +11,23 @@ import Newsletter from '@/components/Homepage/Newsletter'
 import DiscountItem from '@/components/Homepage/DiscountItem'
 import Topcategories from '@/components/Homepage/Topcategories'
 import Tags from '@/components/Homepage/Tags'
+import Trendingproducts from '@/components/Homepage/Trendingproducts'
 
 
 const Home = () => {
   return (
     <div>
       <Hero/>
-     <Featuredproduct/> 
-       <LatestProduct/> 
-       <Support/>
-       <Midbanner/> 
-        
-        <DiscountItem/>
-         <Topcategories/>  
-       <Newsletter/>
-       <Tags/> 
-      <Latestblog/> 
+       <Featuredproduct/>  
+         <LatestProduct/>   
+        <Support/> 
+        <Midbanner/>  
+         <Trendingproducts/>
+        <DiscountItem/> 
+           <Topcategories/>    
+        <Newsletter/> 
+        <Tags/>  
+       <Latestblog/>   
       
       
     </div>

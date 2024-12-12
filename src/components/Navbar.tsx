@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import React, { useState } from "react";
+import { IoSearch } from "react-icons/io5";
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,16 +28,18 @@ const Navbar: React.FC = () => {
 
         {/* Search & Cart */}
         <div className="hidden md:flex items-center space-x-4 h-10">
-          <div className="relative">
-            <input
-              type="text"
-              className=" pr-20 h-10 text-sm text-gray-700 border-2 border-[#e7e6ef]"
-            />
-            <div className="w-[51px] h-10 left-[200px] top-0 absolute bg-[#fb2e86]" />
-
-            {/* <div className="w-[317px] h-10 left-0 top-0 absolute border-2 border-[#e7e6ef]" /> */}
-          </div>
-        </div>
+  <div className="relative">
+    <input
+      type="text"
+      className="pr-20 h-10 text-sm text-gray-700 border-2 border-[#e7e6ef]"
+    />
+    <div className="w-[51px] h-10 left-[200px] top-0 absolute bg-[#fb2e86] flex items-center justify-center">
+      <i className="text-white text-lg">
+      <IoSearch />
+      </i>
+    </div>
+  </div>
+</div>
 
         {/* Hamburger Menu Button */}
         <button
@@ -51,11 +54,6 @@ const Navbar: React.FC = () => {
       {isMenuOpen && (
         <div className="md:hidden bg-white shadow-md">
           <ul className="flex flex-col items-start space-y-2 px-4 py-2 text-[#0d0e43] font-['Lato'] text-base">
-            {/* <li>
-              <a href="#home" className="text-[#fb2e86]">
-                Home
-              </a>
-            </li> */}
             <Link href="/" className="text-[#fb2e86]">Home</Link>
            <Link href="/myaccount">Pages</Link>
            <Link href="/products">Products</Link>

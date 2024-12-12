@@ -37,10 +37,10 @@ function Footer() {
             Sign-Up
           </button>
         </div>
-        <p className="text-gray-500 text-sm mt-2 md:text-left text-center text-[16px] family">
+        <p className="text-[#8A8FB9] text-sm mt-2 md:text-left text-center text-[16px] font-['Lato']">
         Contact Info
-          <br className="lg:block hidden font-['Lato'] text--[16px]" />
-          17 Princess Road, London, Greater London NW1 8JR, UK
+          <br className="lg:block hidden font-['Lato'] text-[16px]" />
+          17 Princess Road, London, Greater London NW1 8JR,UK
         </p>
       </div>
 
@@ -50,19 +50,19 @@ function Footer() {
         </h2>
         <nav className="list-none mb-10">
           <li>
-            <a className="text-gray-600 hover:text-gray-800  ml-6">Laptops & Computers</a>
+            <a className="text-[#8A8FB9] font-normal text-[16px] font-['Lato'] hover:text-gray-800  ml-6">Laptops & Computers</a>
           </li>
           <li>
-            <a className="text-gray-600 hover:text-gray-800 ml-6">Cameras & Photography</a>
+            <a className="text-[#8A8FB9] font-normal text-[16px] font-['Lato'] hover:text-gray-800  ml-6">Cameras & Photography</a>
           </li>
           <li>
-            <a className="text-gray-600 hover:text-gray-800 ml-6">Smart Phones & Tablets</a>
+            <a className="text-[#8A8FB9] font-normal text-[16px] font-['Lato'] hover:text-gray-800  ml-6">Smart Phones & Tablets</a>
           </li>
           <li>
-            <a className="text-gray-600 hover:text-gray-800 ml-6">Video Games & Consoles</a>
+            <a className="text-[#8A8FB9] font-normal text-[16px] font-['Lato'] hover:text-gray-800  ml-6">Video Games & Consoles</a>
           </li>
           <li>
-            <a className="text-gray-600 hover:text-gray-800 ml-6">Waterproof Headphones</a>
+            <a className="text-[#8A8FB9] font-normal text-[16px] font-['Lato'] hover:text-gray-800  ml-6">Waterproof Headphones</a>
           </li>
         </nav>
       </div>
@@ -72,19 +72,19 @@ function Footer() {
         </h2>
         <nav className="list-none mb-10">
           <li>
-            <a className="text-gray-600 hover:text-gray-800">My Account</a>
+            <a className="text-[#8A8FB9] font-normal text-[16px] font-['Lato'] hover:text-gray-800 ml-6">My Account</a>
           </li>
           <li>
-            <a className="text-gray-600 hover:text-gray-800">Discount</a>
+            <a className="text-[#8A8FB9] font-normal text-[16px] font-['Lato'] hover:text-gray-800  ml-6">Discount</a>
           </li>
           <li>
-            <a className="text-gray-600 hover:text-gray-800">Returns</a>
+            <a className="text-[#8A8FB9] font-normal text-[16px] font-['Lato'] hover:text-gray-800  ml-6">Returns</a>
           </li>
           <li>
-            <a className="text-gray-600 hover:text-gray-800">Orders History</a>
+            <a className="text-[#8A8FB9] font-normal text-[16px] font-['Lato'] hover:text-gray-800  ml-6">Orders History</a>
           </li>
           <li>
-            <a className="text-gray-600 hover:text-gray-800">Order Tracking</a>
+            <a className="text-[#8A8FB9] font-normal text-[16px] font-['Lato'] hover:text-gray-800  ml-6">Order Tracking</a>
           </li>
         </nav>
       </div>
@@ -94,22 +94,22 @@ function Footer() {
         </h2>
         <nav className="list-none mb-10">
           <li>
-            <a className="text-gray-600 hover:text-gray-800">Blog</a>
+            <a className="text-[#8A8FB9] font-normal text-[16px] font-['Lato'] hover:text-gray-800  ml-6 ">Blog</a>
           </li>
           <li>
-            <a className="text-gray-600 hover:text-gray-800">Browse the Shop</a>
+            <a className="text-[#8A8FB9] font-normal text-[16px] font-['Lato'] hover:text-gray-800  ml-6 ">Browse the Shop</a>
           </li>
           <li>
-            <a className="text-gray-600 hover:text-gray-800">Category</a>
+            <a className="text-[#8A8FB9] font-normal text-[16px] font-['Lato'] hover:text-gray-800  ml-6 ">Category</a>
           </li>
           <li>
-            <a className="text-gray-600 hover:text-gray-800">Pre-Built Pages</a>
+            <a className="text-[#8A8FB9] font-normal text-[16px] font-['Lato'] hover:text-gray-800  ml-6 ">Pre-Built Pages</a>
           </li>
           <li>
-            <a className="text-gray-600 hover:text-gray-800">Visual Composer Elements</a>
+            <a className="text-[#8A8FB9] font-normal text-[16px] font-['Lato'] hover:text-gray-800  ml-6 ">Visual Composer Elements</a>
           </li>
           <li>
-            <a className="text-gray-600 hover:text-gray-800">WooCommerce Pages</a>
+            <a className="text-[#8A8FB9] font-normal text-[16px] font-['Lato'] hover:text-gray-800  ml-6 ">WooCommerce Pages</a>
           </li>
         </nav>
       </div>

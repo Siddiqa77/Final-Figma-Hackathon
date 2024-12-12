@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const FeaturedProduct: React.FC = () => {
@@ -46,10 +47,38 @@ const FeaturedProduct: React.FC = () => {
         {products.map((product, index) => (
           <div
             key={index}
-            className="relative bg-[#ffffff] shadow-md rounded-md overflow-hidden"
+            className="relative bg-[#ffffff] shadow-md rounded-md overflow-hidden transform transition-transform duration-300 hover:scale-105"
           >
             {/* Upper Section: Image and Background */}
             <div className="bg-[#F6F7FB] w-[270] h-[236px] flex justify-center items-center relative">
+              
+              {/* 2nd card icons */}
+              {index === 1 && (
+                <div className="w-[19px] h-[19px] bottom-[90px] right-7 relative ">
+                  <div className="flex gap-4">
+                    <Image
+                      src="/featuredcart.png"
+                      alt="cart"
+                      width={19}
+                      height={19}
+                    />
+                    <Image
+                      src="/featuredheart.png"
+                      alt="cart"
+                      width={19}
+                      height={19}
+                    />
+                    <Image
+                      src="/featuredsearch.png"
+                      alt="cart"
+                      width={19}
+                      height={19}
+                    />
+                  </div>
+                  <div className="w-[13.85px] h-[13.85px] left-[1.98px] top-[2.77px] absolute"></div>
+                </div>
+              )}
+              
               {/* Product Image */}
               <img
                 src={product.image}
