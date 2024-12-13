@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import {
   FaEnvelope,
@@ -6,8 +6,8 @@ import {
   FaUser,
   FaHeart,
   FaShoppingCart,
-} from 'react-icons/fa';
-import { useState } from 'react';
+} from "react-icons/fa";
+import { useState } from "react";
 
 const TopBar = () => {
   const [languageDropdown, setLanguageDropdown] = useState(false);
@@ -49,7 +49,7 @@ const TopBar = () => {
             <span className="text-xs">▼</span>
             {languageDropdown && (
               <div className="absolute top-8 bg-[#F1F1F1] text-black rounded shadow-md p-2 z-10">
-                {['English', 'Spanish', 'French', 'German'].map((lang) => (
+                {["English", "Spanish", "French", "German"].map((lang) => (
                   <div
                     key={lang}
                     className="hover:bg-gray-200 px-4 py-1 cursor-pointer"
@@ -71,7 +71,7 @@ const TopBar = () => {
             <span className="text-xs">▼</span>
             {currencyDropdown && (
               <div className="absolute top-8 text-xs bg-[#F1F1F1] text-black rounded shadow-md p-2 z-10">
-                {['USD', 'EUR', 'GBP'].map((currency) => (
+                {["USD", "EUR", "GBP"].map((currency) => (
                   <div
                     key={currency}
                     className="hover:bg-gray-200 px-4 py-1 cursor-pointer"

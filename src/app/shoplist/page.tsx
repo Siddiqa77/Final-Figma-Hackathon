@@ -36,11 +36,9 @@ function Shoplist() {
         </div>
       </section>
 
-      
-
       {/* Other Components */}
       <div className="mt-6">
-        <Shoplistcontrol/>
+        <Shoplistcontrol />
         <Shoplistproduct />
         <Tags />
       </div>

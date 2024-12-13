@@ -1,5 +1,5 @@
 import React from "react";
-import { TiSocialFacebook } from "react-icons/ti";
+
 
 const Armchair: React.FC = () => {
   return (

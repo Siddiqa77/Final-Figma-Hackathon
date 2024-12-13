@@ -92,8 +92,10 @@ function HeroSection() {
         </div>
         {/* Discount Tag */}
         <div className="absolute family top-8 right-5 w-[100px] h-[100px] bg-[#00C1FE] text-[#fff] text-[20px] font-semibold flex items-center justify-center rounded-full shadow-md transform transition-transform duration-300 hover:scale-105">
-          <span>50% <br/>off</span>
-          
+          <span>
+            50% <br />
+            off
+          </span>
         </div>
       </div>
 
