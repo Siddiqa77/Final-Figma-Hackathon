@@ -22,7 +22,7 @@ const Navbar: React.FC = () => {
           <Link href="/myaccount">Pages</Link>
           <Link href="/products">Products</Link>
           <Link href="/blog">Blog</Link>
-          <Link href="/shop">Shop</Link>
+          <Link href="/shoplist">Shop</Link>
           <Link href="/contact">Contact</Link>
         </div>
 
@@ -58,7 +58,7 @@ const Navbar: React.FC = () => {
            <Link href="/myaccount">Pages</Link>
            <Link href="/products">Products</Link>
            <Link href="/blog">Blog</Link>
-           <Link href="/shop">Shop</Link>
+           <Link href="/shoplist">Shop</Link>
            <Link href="/contact">Contact</Link>
            
           </ul>

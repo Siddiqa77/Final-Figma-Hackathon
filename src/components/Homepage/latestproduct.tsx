@@ -69,7 +69,7 @@ const LatestProduct: React.FC = () => {
         {products.map((product, index) => (
           <div
             key={index}
-            className="relative bg-[#fff] rounded-md overflow-hidden hover:scale-105 transition-transform duration-300"
+            className="relative bg-[#fff] shadow-lg rounded-md overflow-hidden hover:scale-105 transition-transform duration-300"
           >
             {/* Product Image */}
             <div className="w-full flex justify-center items-center p-4 bg-[#fff]">

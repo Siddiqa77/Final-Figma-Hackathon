@@ -1,16 +1,16 @@
 "use client";
 
-import ShopgridProduct from "@/components/griddefaultpages/shopgridProduct";
 import Tags from "@/components/Homepage/Tags";
 import Shoplistcontrol from "@/components/shoplisfolder/Shoplistcontrol";
+import Shoplistproduct from "@/components/shoplisfolder/Shoplistproduct";
 
 const grids = [
   {
-    title: "Shop Grid Default",
+    title: "Shop List",
   },
 ];
 
-function GridDefault() {
+function Shoplist() {
   const current = grids[0];
 
   return (
@@ -30,19 +30,22 @@ function GridDefault() {
               Pages
             </div>
             <div className="text-[#FB2E86] text-[16px] font-normal font-['Lato'] cursor-pointer hover:text-[#fb2448] transition">
-              Shop Grid Default
+              Shop List
             </div>
           </div>
         </div>
       </section>
 
-      {/* Other Components */}
+      
 
-      <Shoplistcontrol />
-      <ShopgridProduct />
-      <Tags />
+      {/* Other Components */}
+      <div className="mt-6">
+        <Shoplistcontrol/>
+        <Shoplistproduct />
+        <Tags />
+      </div>
     </div>
   );
 }
 
-export default GridDefault;
+export default Shoplist;
