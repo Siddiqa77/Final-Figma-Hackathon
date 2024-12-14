@@ -20,7 +20,7 @@ const Navbar: React.FC = () => {
             Home
           </Link>
 
-          <Link href="/myaccount">Pages</Link>
+          <Link href="/shopleftsidebar">Pages</Link>
           <Link href="/products">Products</Link>
           <Link href="/blog">Blog</Link>
           <Link href="/shoplist">Shop</Link>
@@ -58,7 +58,7 @@ const Navbar: React.FC = () => {
             <Link href="/" className="text-[#fb2e86]">
               Home
             </Link>
-            <Link href="/myaccount">Pages</Link>
+            <Link href="/shopleftsidebar">Pages</Link>
             <Link href="/products">Products</Link>
             <Link href="/blog">Blog</Link>
             <Link href="/shoplist">Shop</Link>

@@ -2,12 +2,12 @@ import React from "react";
 
 const Shoplistproduct = () => {
   return (
-    <section className="max-w-[1140px] mx-auto mt-14 mb-20 space-y-8 px-4">
+    <section className="max-w-[1141px] mx-auto mt-14 mb-20 space-y-8 px-4">
       {/* Product Card1 */}
       <div className="flex flex-col md:flex-row bg-[#fff] shadow-sm rounded-lg hover:scale-105 transition-transform duration-300">
         {/* Product Image */}
         <img
-          className="w-full md:w-[314px] h-[218px] object-cover rounded-t-lg md:rounded-l-lg md:rounded-t-none"
+          className="w-full md:w-[313px] h-[217px] object-cover rounded-t-lg md:rounded-l-lg md:rounded-t-none"
           src="/shoplist1.png"
           alt="Sofa"
         />
@@ -101,7 +101,7 @@ const Shoplistproduct = () => {
       <div className="flex flex-col md:flex-row bg-[#fff] shadow-sm rounded-lg hover:scale-105 transition-transform duration-300">
         {/* Product Image */}
         <img
-          className="w-full md:w-[314px] h-[218px] object-cover rounded-t-lg md:rounded-l-lg md:rounded-t-none"
+          className="w-full md:w-[313px] h-[217px] object-cover rounded-t-lg md:rounded-l-lg md:rounded-t-none"
           src="/shoplist2.png"
           alt="Sofa"
         />
@@ -195,7 +195,7 @@ const Shoplistproduct = () => {
       <div className="flex flex-col md:flex-row bg-[#fff] shadow-sm rounded-lg hover:scale-105 transition-transform duration-300">
         {/* Product Image */}
         <img
-          className="w-full md:w-[314px] h-[218px] object-cover rounded-t-lg md:rounded-l-lg md:rounded-t-none"
+          className="w-full md:w-[313px] h-[217px] object-cover rounded-t-lg md:rounded-l-lg md:rounded-t-none"
           src="/shoplist3.png"
           alt="Sofa"
         />
@@ -289,7 +289,7 @@ const Shoplistproduct = () => {
       <div className="flex flex-col md:flex-row bg-[#fff] shadow-sm rounded-lg hover:scale-105 transition-transform duration-300">
         {/* Product Image */}
         <img
-          className="w-full md:w-[314px] h-[218px] object-cover rounded-t-lg md:rounded-l-lg md:rounded-t-none"
+          className="w-full md:w-[313px] h-[217px] object-cover rounded-t-lg md:rounded-l-lg md:rounded-t-none"
           src="/shoplist4.png"
           alt="Sofa"
         />
@@ -383,7 +383,7 @@ const Shoplistproduct = () => {
       <div className="flex flex-col md:flex-row bg-[#fff] shadow-sm rounded-lg hover:scale-105 transition-transform duration-300">
         {/* Product Image */}
         <img
-          className="w-full md:w-[314px] h-[218px] object-cover rounded-t-lg md:rounded-l-lg md:rounded-t-none"
+          className="w-full md:w-[313px] h-[217px] object-cover rounded-t-lg md:rounded-l-lg md:rounded-t-none"
           src="/shoplist5.png"
           alt="Sofa"
         />
@@ -477,7 +477,7 @@ const Shoplistproduct = () => {
       <div className="flex flex-col md:flex-row bg-[#fff] shadow-sm rounded-lg hover:scale-105 transition-transform duration-300">
         {/* Product Image */}
         <img
-          className="w-full md:w-[314px] h-[218px] object-cover rounded-t-lg md:rounded-l-lg md:rounded-t-none"
+          className="w-full md:w-[313px] h-[217px] object-cover rounded-t-lg md:rounded-l-lg md:rounded-t-none"
           src="/shoplist6.png"
           alt="Sofa"
         />
@@ -571,7 +571,7 @@ const Shoplistproduct = () => {
       <div className="flex flex-col md:flex-row bg-[#fff] shadow-sm rounded-lg hover:scale-105 transition-transform duration-300">
         {/* Product Image */}
         <img
-          className="w-full md:w-[314px] h-[218px] object-cover rounded-t-lg md:rounded-l-lg md:rounded-t-none"
+          className="w-full md:w-[313px] h-[217px] object-cover rounded-t-lg md:rounded-l-lg md:rounded-t-none"
           src="/shoplist7.png"
           alt="Sofa"
         />

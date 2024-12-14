@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const DiscountItem: React.FC = () => {
@@ -39,9 +40,11 @@ const DiscountItem: React.FC = () => {
             <li>✔ Clear lines and geometric figures</li>
             <li>✔ Material expose like metals</li>
           </ul>
-          <button className="mt-6 bg-pink-500 text-white py-2 px-6 rounded-lg hover:bg-pink-600 transition duration-300 ease-in-out transform hover:scale-105">
+         <Link href="/shopleftsidebar">
+         <button className="mt-6 bg-pink-500 text-white py-2 px-6 rounded-lg hover:bg-pink-600 transition duration-300 ease-in-out transform hover:scale-105">
             Shop Now
           </button>
+         </Link>
         </div>
 
         {/* Right Side Image */}

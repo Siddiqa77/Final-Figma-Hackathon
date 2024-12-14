@@ -1,6 +1,5 @@
 import React from "react";
 
-
 const Armchair: React.FC = () => {
   return (
     <div className="flex flex-col justify-between lg:flex-row gap-6 p-4">
