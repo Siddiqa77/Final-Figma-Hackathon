@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 function Footer() {
@@ -7,9 +8,11 @@ function Footer() {
         <div className="container px-5 py-24 mx-auto mt-[40px]">
           <div className="flex flex-wrap md:text-left text-center order-first">
             <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-              <h2 className="title-[38px] font-bold text-black tracking-widest family text-lg mb-3">
+             <Link href="/about" >
+             <h2 className="title-[38px] font-bold text-black tracking-widest family text-lg mb-3">
                 Hekto
               </h2>
+             </Link>
               <div className="flex xl:flex-nowrap md:flex-nowrap lg:flex-wrap flex-wrap justify-center items-end md:justify-start">
                 <div className="relative w-40 sm:w-auto xl:mr-4 lg:mr-0 sm:mr-4 mr-2">
                   <label

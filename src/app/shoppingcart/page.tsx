@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const ShoppingCart = () => {
@@ -208,9 +209,11 @@ const ShoppingCart = () => {
               <p className="text-[12px] text-[#8A91AB] font-medium">
                 ✅ Shipping & taxes calculated at checkout
               </p>
-              <button className="rounded-[3px] text-[#ffffff] bg-[#19D16F] w-full h-[40px] font-medium">
+            <Link href="/completeorder">
+            <button className="rounded-[3px] text-[#ffffff] bg-[#19D16F] w-full h-[40px] font-medium">
                 Proceed to checkout
               </button>
+            </Link>
             </div>
           </div>
           <div className="w-full flex flex-col items-center text-[#1D3178] mt-[35px]">
@@ -228,9 +231,11 @@ const ShoppingCart = () => {
                 className="text-[#C5CBE3] border-2 border-b-[#C5CBE3] ring-0 focus:outline-none p-2 bg-[#E8E6F1]"
                 placeholder="Postal Code"
               />
-              <button className="rounded-[3px] text-[#ffffff] bg-[#FB2E86] w-[179px] h-[41px] font-medium ">
+             <Link href="/completeorder">
+             <button className="rounded-[3px] text-[#ffffff] bg-[#FB2E86] w-[179px] h-[41px] font-medium ">
                 Calculate Shipping
               </button>
+             </Link>
             </div>
           </div>
         </div>
