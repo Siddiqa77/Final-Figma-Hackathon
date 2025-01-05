@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const LatestProduct: React.FC = () => {
@@ -65,7 +66,8 @@ const LatestProduct: React.FC = () => {
       </div>
 
       {/* Product Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <Link href="/products">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {products.map((product, index) => (
           <div
             key={index}
@@ -103,6 +105,8 @@ const LatestProduct: React.FC = () => {
           </div>
         ))}
       </div>
+    
+    </Link>
     </div>
   );
 };

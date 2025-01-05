@@ -231,7 +231,7 @@ const ShoppingCart = () => {
                 className="text-[#C5CBE3] border-2 border-b-[#C5CBE3] ring-0 focus:outline-none p-2 bg-[#E8E6F1]"
                 placeholder="Postal Code"
               />
-             <Link href="/completeorder">
+             <Link href="/hecktodemo">
              <button className="rounded-[3px] text-[#ffffff] bg-[#FB2E86] w-[179px] h-[41px] font-medium ">
                 Calculate Shipping
               </button>
