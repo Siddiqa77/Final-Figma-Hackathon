@@ -14,12 +14,7 @@ export const shopgridproduct = {
     { name: "originalprice", 
       title: "Original Price", 
       type: "string" },
-    {
-      name: "colors",
-      title: "Colors",
-      type: "array",
-      of: [{ type: "string" }],
-    },
+   
     { name: "image", 
       title: "Image", 
       type: "image" },

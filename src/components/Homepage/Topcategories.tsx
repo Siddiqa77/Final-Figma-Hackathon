@@ -51,7 +51,7 @@ const Topcategories: React.FC = () => {
             </div>
             <div className="mt-4 text-center">
               <h3 className="text-[#151875] text-xl font-semibold">
-                {product.title}
+                {product.name}
               </h3>
               <p className="text-[#151875] text-base font-normal">
                 {product.price}

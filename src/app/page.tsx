@@ -17,6 +17,7 @@ import Trendingproducts from '@/components/Homepage/Trendingproducts'
 const Home = () => {
   return (
     <div>
+      
       <Hero/>
        <Featuredproduct/>  
          <LatestProduct/>   

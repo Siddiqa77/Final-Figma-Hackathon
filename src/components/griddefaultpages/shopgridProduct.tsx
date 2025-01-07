@@ -15,7 +15,6 @@ const ShopgridProduct: React.FC = () => {
         name,
         price,
         originalprice,
-        colors,
         "image": image.asset->url
       }`;
       const result = await sanityClient.fetch(query);
@@ -30,7 +29,7 @@ const ShopgridProduct: React.FC = () => {
   return (
     <div className="container mx-auto px-4 py-10 max-w-[1177px]">
       {/* Product Grid */}
-    <Link href={`product/${products.current}`}>
+    <Link href={"product"}>
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center ">
         {/* Product Card */}
         {products.map((product: any, index: any) => (
@@ -52,15 +51,15 @@ const ShopgridProduct: React.FC = () => {
               )}
             </div>
 
-            {/* Product Details */}
+          
             <div className="p-4">
-              {/* Product Name */}
+             
               <h3 className="text-lg font-bold text-[#151875] mb-2 family  text-[18px]">
                 {product.name}
               </h3>
               {/* Color Options */}
               <div className="flex items-center  justify-center mb-3 space-x-2">
-                {product.colors.map((color: any, idx: any) => (
+              {["#DE9034", "#EC42A2", "#8568FF"].map((color, idx) => (
                   <div
                     key={idx}
                     className="w-2 h-2 rounded-full"
@@ -68,8 +67,7 @@ const ShopgridProduct: React.FC = () => {
                   ></div>
                 ))}
               </div>
-              {/* Product Code */}
-
+             
               {/* Product Price */}
               <div className="flex justify-evenly items-center">
                 <p className="text-sm font-semibold text-[#151875]">

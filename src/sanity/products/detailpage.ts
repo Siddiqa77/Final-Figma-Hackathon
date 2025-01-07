@@ -9,14 +9,13 @@ export default {
       type: "string",
     },
     {
-      name: "id",
-      title: "Product ID",
-      type: "string",
-      description: "A unique identifier for the product.",
-      validation: (Rule: any) =>
-        Rule.required()
-          .min(1)
-          .error("Product ID is required and must be unique."),
+      name: "slug",
+      type: "slug",
+      title: "Slug",
+      options: {
+        source: "name", // Generates slug based on the product name
+        maxLength: 96,
+      },
     },
     {
       name: "price",
