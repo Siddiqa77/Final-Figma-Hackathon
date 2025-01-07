@@ -1,4 +1,5 @@
-import { data } from "";
+import { data } from "../../data";
+
 
 const Demosidebar = () => {
   return (
