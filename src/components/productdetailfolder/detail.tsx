@@ -160,7 +160,7 @@ const DetailProduct = ({ params: { slug }}:{ params: { slug:string } }) => {
           </div>
         </div>
       </div>
-      {/* <section className="wrapper mt-28 px-4">
+       <section className="wrapper mt-28 px-4">
   <div className="grid sm:grid-cols-2 md:flex md:justify-between gap-6">
     <div className="text-[#151875] text-xl sm:text-2xl font-semibold underline">Description</div>
     <div className="text-[#151875] text-xl sm:text-2xl font-semibold">Additional Info</div>
@@ -199,7 +199,7 @@ const DetailProduct = ({ params: { slug }}:{ params: { slug:string } }) => {
     ))}
   </div>
 </section>
-  */}
+  
     </div>
   );
 };
