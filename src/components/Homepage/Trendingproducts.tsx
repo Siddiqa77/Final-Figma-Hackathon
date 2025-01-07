@@ -1,34 +1,29 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { sanityClient } from "@/sanity/sanity";
+import Link from "next/link";
 
 const Trendingproducts: React.FC = () => {
-  // Product data
-  const products = [
-    {
-      name: "Cantilever Chair",
-      price: "$26.00",
-      originalPrice: "$42.00",
-      image: "/trendingpropic1.png",
-    },
-    {
-      name: "Cantilever Chair",
-      price: "$26.00",
-      originalPrice: "$42.00",
-      image: "/trendingpropic2.png",
-    },
-    {
-      name: "Cantilever Chair",
-      price: "$26.00",
-      originalPrice: "$42.00",
-      image: "/trendingpropic3.png",
-    },
-    {
-      name: "Cantilever Chair",
-      price: "$26.00",
-      originalPrice: "$42.00",
-      image: "/trendingpropic4.png",
-    },
-  ];
+  const [products, setProducts] = useState<any>([]);
+
+  useEffect(() => {
+    // Fetch data from Sanity
+    const fetchProducts = async () => {
+      const query = `*[_type == "trendingproducts"]{
+         name,
+         price,
+         originalPrice,
+         "image": image.asset->url
+       }`;
+      const result = await sanityClient.fetch(query);
+      setProducts(result);
+    };
+    fetchProducts();
+  }, []);
+
+  if (!products.length) return <p>Loading...</p>;
+
 
   return (
     <div className="container mx-auto px-4 py-10 max-w-[1177px]">
@@ -38,8 +33,9 @@ const Trendingproducts: React.FC = () => {
       </h2>
 
       {/* Product Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {products.map((product, index) => (
+    <Link href="/products">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {products.map((product: any, index: any) => (
           <div
             key={index}
             className="relative bg-[#ffffff] shadow-md rounded-md overflow-hidden transform transition-transform duration-300 hover:scale-105"
@@ -71,6 +67,7 @@ const Trendingproducts: React.FC = () => {
         ))}
       </div>
 
+    </Link>
       {/* Below Section */}
       <div className="flex flex-col lg:flex-row gap-5 mt-10">
         {/* Clock Div */}

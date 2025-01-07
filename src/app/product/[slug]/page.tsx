@@ -1,5 +1,6 @@
 import Tags from "@/components/Homepage/Tags";
-import Armchair from "@/components/productspagefolder/armchair";
+
+
 import React from "react";
 
 const data = [
@@ -32,7 +33,7 @@ const Products = () => {
         </div>
       </section>
 
-      <Armchair />
+      
       <Tags />
     </div>
   );

@@ -1,102 +1,39 @@
-import React from "react";
+
+
+"use client"
+import React, { useEffect, useState } from 'react';
+import { sanityClient } from "@/sanity/sanity"
+import Link from 'next/link';
 
 const ShopgridProduct: React.FC = () => {
-  // Product data
-  const products = [
-    {
-      name: "Vel elit euismod",
-      price: "$26.00",
-      originalPrice: "$42.00",
-      colors: ["#de9034", "#ec42a2", "#8568ff"],
-      image: "/shopgrid1.png",
-    },
-    {
-      name: "Ultricies condimentum ",
-      price: "$26.00",
-      originalPrice: "$42.00",
-      colors: ["#de9034", "#ec42a2", "#8568ff"],
-      image: "/shopgrid2.png",
-    },
-    {
-      name: "Vitae suspendisse sed",
-      price: "$26.00",
-      originalPrice: "$42.00",
-      colors: ["#de9034", "#ec42a2", "#8568ff"],
-      image: "/shopgrid3.png",
-    },
-    {
-      name: "Sed at fermentum",
-      price: "$26.00",
-      originalPrice: "$42.00",
-      colors: ["#de9034", "#ec42a2", "#8568ff"],
-      image: "/shopgrid4.png",
-    },
+  const [products, setProducts] = useState<any>([]);
 
-    {
-      name: "Fusce pellentesque at",
-      price: "$26.00",
-      originalPrice: "$42.00",
-      colors: ["#de9034", "#ec42a2", "#8568ff"],
-      image: "/shopgrid5.png",
-    },
-    {
-      name: "Vestibulum magna laoreet",
-      price: "$26.00",
-      originalPrice: "$42.00",
-      colors: ["#de9034", "#ec42a2", "#8568ff"],
-      image: "/shopgrid6.png",
-    },
-    {
-      name: "Sollicitudin amet orci",
-      price: "$26.00",
-      originalPrice: "$42.00",
-      colors: ["#de9034", "#ec42a2", "#8568ff"],
-      image: "/shopgrid7.png",
-    },
-    {
-      name: "Ultrices mauris sit",
-      price: "$26.00",
-      originalPrice: "$42.00",
-      colors: ["#de9034", "#ec42a2", "#8568ff"],
-      image: "/shopgrid8.png",
-    },
+  useEffect(() => {
+    // Fetch data from Sanity
+    const fetchProducts = async () => {
+      const query = `*[_type == "shopgridproduct"]{
+        name,
+        price,
+        originalprice,
+        colors,
+        "image": image.asset->url
+      }`;
+      const result = await sanityClient.fetch(query);
+      setProducts(result);
+    };
+    fetchProducts();
+  }, []);
 
-    {
-      name: "Pellentesque condimentum ",
-      price: "$26.00",
-      originalPrice: "$42.00",
-      colors: ["#de9034", "#ec42a2", "#8568ff"],
-      image: "/shopgrid9.png",
-    },
-    {
-      name: "Cras scelerisque velit",
-      price: "$26.00",
-      originalPrice: "$42.00",
-      colors: ["#de9034", "#ec42a2", "#8568ff"],
-      image: "/shopgrid10.png",
-    },
-    {
-      name: "Lectus vulputate faucibus",
-      price: "$26.00",
-      originalPrice: "$42.00",
-      colors: ["#de9034", "#ec42a2", "#8568ff"],
-      image: "/shopgrid11.png",
-    },
-    {
-      name: "Purus risus, ut",
-      price: "$26.00",
-      originalPrice: "$42.00",
-      colors: ["#de9034", "#ec42a2", "#8568ff"],
-      image: "/shopgrid12.png",
-    },
-  ];
+  if (!products.length) return <p>Loading...</p>;
 
+ 
   return (
     <div className="container mx-auto px-4 py-10 max-w-[1177px]">
       {/* Product Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center ">
+    <Link href={`product/${products.current}`}>
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center ">
         {/* Product Card */}
-        {products.map((product, index) => (
+        {products.map((product: any, index: any) => (
           <div
             key={index}
             className="relative bg-[#ffffff] shadow-md rounded-md overflow-hidden hover:scale-105 transition-transform duration-300"
@@ -123,7 +60,7 @@ const ShopgridProduct: React.FC = () => {
               </h3>
               {/* Color Options */}
               <div className="flex items-center  justify-center mb-3 space-x-2">
-                {product.colors.map((color, idx) => (
+                {product.colors.map((color: any, idx: any) => (
                   <div
                     key={idx}
                     className="w-2 h-2 rounded-full"
@@ -139,13 +76,14 @@ const ShopgridProduct: React.FC = () => {
                   {product.price}
                 </p>
                 <p className="text-sm font-normal text-[#fb2448] line-through">
-                  {product.originalPrice}
+                  {product.originalprice}
                 </p>
               </div>
             </div>
           </div>
         ))}
       </div>
+    </Link>
     </div>
   );
 };

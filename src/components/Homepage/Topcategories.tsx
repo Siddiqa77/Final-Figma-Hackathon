@@ -1,6 +1,30 @@
-import React from "react";
+"use client";
 
-const Topcategories = () => {
+import React, { useEffect, useState } from "react";
+import { sanityClient } from "@/sanity/sanity";
+import Link from "next/link";
+import Image from "next/image";
+
+const Topcategories: React.FC = () => {
+  const [products, setProducts] = useState<any>([]);
+
+  useEffect(() => {
+    // Fetch data from Sanity
+    const fetchProducts = async () => {
+      const query = `*[_type == "topcategories"]{
+         name,
+         price,
+         "image": image.asset->url
+       }`;
+      const result = await sanityClient.fetch(query);
+      setProducts(result);
+    };
+    fetchProducts();
+  }, []);
+
+  if (!products.length) return <p>Loading...</p>;
+
+
   return (
     <div className="container mx-auto px-4 py-10 mb-20">
       {/* Heading */}
@@ -9,52 +33,34 @@ const Topcategories = () => {
       </h2>
 
       {/* Wrapper for Cards */}
-      <div className="flex flex-wrap justify-center gap-6">
-        {/* Card Component - First */}
-        {[
-          {
-            imgSrc: "/topcategoriespic1.png",
-            title: "Mini LCW Chair",
-            price: "$56.00",
-          },
-          {
-            imgSrc: "/topcategoriespic2.png",
-            title: "Modern Chair",
-            price: "$72.00",
-          },
-          {
-            imgSrc: "/topcategoriespic3.png",
-            title: "Luxury Armchair",
-            price: "$89.00",
-          },
-          {
-            imgSrc: "/topcategoriespic4.png",
-            title: "Comfy Sofa",
-            price: "$102.00",
-          },
-        ].map((item, index) => (
+     <Link href="/products">
+     <div className="flex flex-wrap justify-center gap-6">
+      {products.map((product: any, index: any) => (
           <div
             key={index}
             className="w-full sm:w-[45%] md:w-[30%] lg:w-[22%] h-auto flex flex-col items-center transform transition-transform duration-300 hover:scale-105"
           >
             <div className="w-[269px] h-[269px] bg-[#f6f7fb] rounded-full shadow-md flex items-center justify-center transition-shadow duration-300 hover:shadow-lg">
-              <img
-                src={item.imgSrc}
-                alt={`Category ${index + 1}`}
-                className="w-[60%] h-[60%] object-contain transition-transform duration-300 hover:scale-110"
+              <Image
+                src={product.image}
+                alt={product.name}
+                width={100}
+                height={100}
+                className="object-contain transition-transform duration-300 hover:scale-110"
               />
             </div>
             <div className="mt-4 text-center">
               <h3 className="text-[#151875] text-xl font-semibold">
-                {item.title}
+                {product.title}
               </h3>
               <p className="text-[#151875] text-base font-normal">
-                {item.price}
+                {product.price}
               </p>
             </div>
           </div>
         ))}
       </div>
+     </Link>
 
       {/* SVG Section */}
       <div className="flex justify-center mt-8">
@@ -95,5 +101,6 @@ const Topcategories = () => {
     </div>
   );
 };
+
 
 export default Topcategories;
