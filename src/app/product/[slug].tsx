@@ -1,4 +1,4 @@
-"use client";
+
 
 import React, { useEffect, useState } from "react";
 import { sanityClient } from "@/sanity/sanity";
@@ -14,17 +14,19 @@ const DetailProduct = ({ params: { slug } }: { params: { slug: string } }) => {
     // Fetch data from Sanity
     const fetchProduct = async () => {
       try {
-        const query = `*[_type == "product" && slug.current == $slug][0]{
+        const query = `*[_type == "detailproduct"]{
           name,
           "image": image.asset->url,
           price,
           originalprice,
           rating,
+          
           description,
           "slug": slug.current
         }`;
         const result = await sanityClient.fetch(query, { slug });
         setProduct(result);
+       console.log(result);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching product details:", error);

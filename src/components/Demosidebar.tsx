@@ -4,7 +4,7 @@ import { data } from "../../data";
 const Demosidebar = () => {
   return (
     <div className="mt-16 md:mt-[200px] md:w-1/3 md:ml-8">
-      {data.map((data:any) => (
+      {data.map((data) => (
         <div
           key={data.id}
           className="flex w-full items-center gap-4 p-4 border rounded-md mb-4"

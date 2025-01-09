@@ -49,7 +49,7 @@ const LatestProduct: React.FC = () => {
       </div>
 
       {/* Product Grid */}
-      <Link href={`product/${products.current}`}>
+      <Link href={`product/${products.slug}`}>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {products.map((product: any, index: any) => (
             <div
