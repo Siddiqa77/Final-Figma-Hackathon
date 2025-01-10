@@ -15,9 +15,9 @@ const FeaturedProduct: React.FC = () => {
        name,
         price,
         description,
-      
         originalPrice,
-         "image": image.asset->url,
+          "image": image.asset->url,
+     
 
 
       }`;

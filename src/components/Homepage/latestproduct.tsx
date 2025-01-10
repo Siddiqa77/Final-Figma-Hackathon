@@ -52,50 +52,49 @@ const LatestProduct: React.FC = () => {
       </div>
 
       {/* Product Grid */}
-      
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map((product: any, index: any) => (
-            <div
-              key={index}
-              className="relative bg-[#fff] shadow-lg rounded-md overflow-hidden hover:scale-105 transition-transform duration-300"
-            >
-              {/* Product Image */}
-              <div className="w-full flex justify-center items-center p-4 bg-[#fff]">
-                <Image
-                  src={product.image}
-                  width={223}
-                  height={200}
-                  alt={product.name}
-                  className="w-[223px] h-[200px] sm:h-[260px] object-cover"
-                />
-              </div>
 
-              {/* Product Details */}
-             
-              <div className="p-4">
-              <Link href={`/product/${product.id}`}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {products.map((product: any, index: any) => (
+          <div
+            key={index}
+            className="relative bg-[#fff] shadow-lg rounded-md overflow-hidden hover:scale-105 transition-transform duration-300"
+          >
+            {/* Product Image */}
+            <div className="w-full flex justify-center items-center p-4 bg-[#fff]">
+              <Image
+                src={product.image}
+                width={223}
+                height={200}
+                alt={product.name}
+                className="w-[223px] h-[200px] sm:h-[260px] object-cover"
+              />
+            </div>
+
+            {/* Product Details */}
+
+            <div className="p-4">
+              <Link href={`/latestproduct/${product.id}`}>
                 {/* Product Name */}
                 <h3 className="text-base font-semibold text-[#151875] mb-2">
                   {product.name}
                 </h3>
-                </Link>
-                {/* Price Section */}
-                <div className="flex items-center justify-between">
-                  <p className="text-sm font-bold text-[#151875]">
-                    {product.price}
-                  </p>
-                  <p className="text-sm font-normal text-[#fb2448] line-through">
-                    {product.originalPrice}
-                  </p>
-                </div>
+              </Link>
+              {/* Price Section */}
+              <div className="flex items-center justify-between">
+                <p className="text-sm font-bold text-[#151875]">
+                  {product.price}
+                </p>
+                <p className="text-sm font-normal text-[#fb2448] line-through">
+                  {product.originalPrice}
+                </p>
               </div>
-              
-              {/* Divider Line */}
-              <div className="h-[2px] bg-[#eeeffb] w-full mt-2"></div>
             </div>
-          ))}
-        </div>
-     
+
+            {/* Divider Line */}
+            <div className="h-[2px] bg-[#eeeffb] w-full mt-2"></div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

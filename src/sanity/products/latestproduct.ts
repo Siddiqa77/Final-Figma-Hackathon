@@ -45,5 +45,32 @@ export const latestproduct = {
         },
        
       },
+      {
+        name: 'image1',
+        title: 'Image1',
+        type: 'image',
+        options: {
+          hotspot: true, // Enable hotspot cropping
+        },
+       
+      },
+      {
+        name: 'image2',
+        title: 'Image2',
+        type: 'image',
+        options: {
+          hotspot: true, // Enable hotspot cropping
+        },
+       
+      },
+      {
+        name: 'image3',
+        title: 'Image3',
+        type: 'image',
+        options: {
+          hotspot: true, // Enable hotspot cropping
+        },
+       
+      },
     ],
   };

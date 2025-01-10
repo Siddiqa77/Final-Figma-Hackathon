@@ -13,16 +13,16 @@ export default async function Page({
 
   // Fetch the product
 
-  const query = `*[_type == "featuredProduct" && id == "${id}"][0]{
+  const query = `*[_type == "latestproducts" && id == "${id}"][0]{
     id,
     name,
     price,
     description,
     originalPrice,
     "image": image.asset->url,
-    "image1": image1.asset->url,
-     "image2": image2.asset->url,
-      "image3": image3.asset->url
+     "image1": image1.asset->url,
+      "image2": image2.asset->url,
+       "image3": image3.asset->url
   }`;
 
   const product = await sanityClient.fetch(query);
@@ -35,7 +35,7 @@ export default async function Page({
     <div>
       <Detailpage />
       <div className="flex flex-col justify-between lg:flex-row gap-6 p-4 md:mt-10">
-        {/* Left Section small  Images */}
+        {/* Left Section small Images */}
         <div className="md:flex md:flex-col gap-12 flex justify-evenly object-cover">
           <div className="w-20 h-20 flex lg:flex-col gap-6 ml-3 lg:ml-[150px] shadow-lg  transform transition-transform duration-300 hover:scale-105">
             <Image
@@ -83,7 +83,7 @@ export default async function Page({
             {product.name}
           </h1>
           <div className="flex items-center gap-2">
-            <span className="text-yellow-500">⭐⭐⭐⭐⭐✔ </span>
+            <span className="">⭐⭐⭐⭐⭐✔ </span>
             <span className=" text-[#151875] text-sm ">(22) Reviews</span>
           </div>
           <div className="flex items-center space-x-4">
@@ -102,12 +102,8 @@ export default async function Page({
               Add to Cart 🤍
             </button>
           </Link>
-          
         </div>
-        
-        
       </div>
-     
 
       <section>
         <Relatedproducts />

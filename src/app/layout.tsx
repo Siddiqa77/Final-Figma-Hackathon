@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Topbar from "@/components/Topbar";
-
-
 
 export const metadata: Metadata = {
   title: "Final Figma Hackathon",
@@ -19,13 +16,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-       
-      >
-        <Topbar/>
-        <Navbar/>
+      <body>
+        <Topbar />
+        <Navbar />
         {children}
-       <Footer/> 
+        <Footer />
       </body>
     </html>
   );
