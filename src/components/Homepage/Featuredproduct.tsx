@@ -32,7 +32,7 @@ const FeaturedProduct: React.FC = () => {
   return (
     <div className="container mx-auto px-4 py-10 max-w-[1177px]">
       {/* Heading */}
-      <h2 className="text-3xl family font-bold text-center text-[#1A0B5B] mb-10">
+      <h2 className="text-4xl family font-bold text-center text-[#1A0B5B] mb-10">
         Featured Products
       </h2>
 
@@ -96,7 +96,7 @@ const FeaturedProduct: React.FC = () => {
             <Link href={`/product/${product.id}`}>
               <div className="p-4">
                 {/* Product Name */}
-                <h3 className="text-lg font-bold text-[#fb2e86] mb-2">
+                <h3 className="text-lg font-bold text-[#fb2e86] mb-2 lato">
                   {product.name}
                 </h3>
                 {/* Static Color Options */}
@@ -112,7 +112,7 @@ const FeaturedProduct: React.FC = () => {
                 {/* Static Product Code */}
                 <p className="text-sm text-[#151875] mb-1">Code - Y523201</p>
                 {/* Product Price */}
-                <p className="text-sm font-semibold text-[#151875]">
+                <p className="text-sm font-semibold text-[#151875] lato">
                   ${product.price}
                 </p>
               </div>

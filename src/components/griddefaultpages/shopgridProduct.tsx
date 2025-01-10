@@ -1,9 +1,9 @@
 
-
-"use client"
-import React, { useEffect, useState } from 'react';
-import { sanityClient } from "@/sanity/sanity"
-import Link from 'next/link';
+"use client";
+import Image from "next/image";
+import React, { useEffect, useState } from "react";
+import { sanityClient } from "@/sanity/sanity";
+import Link from "next/link";
 
 const ShopgridProduct: React.FC = () => {
   const [products, setProducts] = useState<any>([]);
@@ -12,24 +12,27 @@ const ShopgridProduct: React.FC = () => {
     // Fetch data from Sanity
     const fetchProducts = async () => {
       const query = `*[_type == "shopgridproduct"]{
-        name,
+       id, 
+       name,
         price,
-        originalprice,
-        "image": image.asset->url
+        description,
+        originalPrice,
+         "image": image.asset->url,
+
+
       }`;
-      const result = await sanityClient.fetch(query);
-      setProducts(result);
+      const product = await sanityClient.fetch(query);
+      setProducts(product);
     };
     fetchProducts();
   }, []);
 
   if (!products.length) return <p>Loading...</p>;
-
  
   return (
     <div className="container mx-auto px-4 py-10 max-w-[1177px]">
       {/* Product Grid */}
-    <Link href={"product"}>
+   
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center ">
         {/* Product Card */}
         {products.map((product: any, index: any) => (
@@ -37,26 +40,54 @@ const ShopgridProduct: React.FC = () => {
             key={index}
             className="relative bg-[#ffffff] shadow-md rounded-md overflow-hidden hover:scale-105 transition-transform duration-300"
           >
+
+            
             {/* Upper Section: Image and Background */}
             <div className="bg-[#F6F7FB] w-[270] h-[236px] flex justify-center items-center relative ">
+           {/* 2nd card icons */}
+                        {index === 1 && (
+                          <div className="w-[19px] h-[19px] bottom-[90px] right-7 relative ">
+                            <div className="flex gap-4">
+                              <Image
+                                src="/featuredcart.png"
+                                alt="cart"
+                                width={19}
+                                height={19}
+                              />
+                              <Image
+                                src="/featuredheart.png"
+                                alt="heart"
+                                width={19}
+                                height={19}
+                              />
+                              <Image
+                                src="/featuredsearch.png"
+                                alt="search"
+                                width={19}
+                                height={19}
+                              />
+                            </div>
+                            <div className="w-[13.85px] h-[13.85px] left-[1.98px] top-[2.77px] absolute"></div>
+                          </div>
+                        )}
               {/* Product Image */}
-              <img
+              <Image
                 src={product.image}
                 alt={product.name}
+                width={200}
+                height={300}
                 className="w-[130px] h-[150px] object-contain"
               />
-              {/* Conditionally Render "View Details" Button for 2nd Card */}
-              {index === 1 && (
-                <div className="absolute top-[200px] pt-2 text-center  w-[94px] h-[29px] left-1/2 transform -translate-x-1/2  family text-xs font-medium py-1 px-3"></div>
-              )}
+             
             </div>
 
           
             <div className="p-4">
-             
-              <h3 className="text-lg font-bold text-[#151875] mb-2 family  text-[18px]">
+            <Link href={`/shopgridproduct/${product.id}`}>
+              <h3 className="text-lg font-bold text-[#151875] mb-2 family text-[18px]">
                 {product.name}
               </h3>
+              </Link>
               {/* Color Options */}
               <div className="flex items-center  justify-center mb-3 space-x-2">
               {["#DE9034", "#EC42A2", "#8568FF"].map((color, idx) => (
@@ -70,18 +101,18 @@ const ShopgridProduct: React.FC = () => {
              
               {/* Product Price */}
               <div className="flex justify-evenly items-center">
-                <p className="text-sm font-semibold text-[#151875]">
+                <p className="text-sm font-semibold text-[#151875] family">
                   {product.price}
                 </p>
-                <p className="text-sm font-normal text-[#fb2448] line-through">
-                  {product.originalprice}
+                <p className="text-sm font-normal text-[#fb2448] line-through family">
+                  {product.originalPrice}
                 </p>
               </div>
             </div>
           </div>
         ))}
       </div>
-    </Link>
+   
     </div>
   );
 };

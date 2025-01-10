@@ -31,13 +31,13 @@ const LatestProduct: React.FC = () => {
   return (
     <div className="container mx-auto px-4 py-10 max-w-[1177px]">
       {/* Heading */}
-      <h2 className="text-3xl family font-bold text-center text-[#1A0B5B] mb-4">
+      <h2 className="text-4xl family font-bold text-center text-[#1A0B5B] mb-4">
         Latest Products
       </h2>
 
       {/* Navigation Tabs */}
       <div className="flex flex-wrap justify-center gap-6 mb-10">
-        <div className="text-[#fb2e86] text-lg font-normal font-['Lato'] cursor-pointer hover:text-[#fb2448] transition">
+        <div className="text-[#fb2e86] text-lg font-normal lato cursor-pointer hover:text-[#fb2448] transition">
           New Arrival
         </div>
         <div className="text-[#151875] text-lg font-normal lato cursor-pointer hover:text-[#fb2448] transition">
@@ -75,16 +75,16 @@ const LatestProduct: React.FC = () => {
             <div className="p-4">
               <Link href={`/latestproduct/${product.id}`}>
                 {/* Product Name */}
-                <h3 className="text-base font-semibold text-[#151875] mb-2">
+                <h3 className="text-base font-semibold text-[#151875] mb-2 lato">
                   {product.name}
                 </h3>
               </Link>
               {/* Price Section */}
               <div className="flex items-center justify-between">
-                <p className="text-sm font-bold text-[#151875]">
+                <p className="text-sm font-bold text-[#151875] family">
                   {product.price}
                 </p>
-                <p className="text-sm font-normal text-[#fb2448] line-through">
+                <p className="text-sm font-normal text-[#fb2448] line-through family">
                   {product.originalPrice}
                 </p>
               </div>

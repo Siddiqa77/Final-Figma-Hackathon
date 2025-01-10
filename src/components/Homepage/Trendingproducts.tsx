@@ -11,30 +11,34 @@ const Trendingproducts: React.FC = () => {
     // Fetch data from Sanity
     const fetchProducts = async () => {
       const query = `*[_type == "trendingproducts"]{
-         name,
-         price,
-         originalPrice,
-         "image": image.asset->url
-       }`;
-      const result = await sanityClient.fetch(query);
-      setProducts(result);
+       id, 
+       name,
+        price,
+        description,
+        originalPrice,
+          "image": image.asset->url,
+     
+
+
+      }`;
+      const product = await sanityClient.fetch(query);
+      setProducts(product);
     };
     fetchProducts();
   }, []);
 
   if (!products.length) return <p>Loading...</p>;
 
-
   return (
-    <div className="container mx-auto px-4 py-10 max-w-[1177px]">
+    <div className="container mx-auto mt-10 px-4 py-10 max-w-[1177px]">
       {/* Heading */}
-      <h2 className="text-3xl sm:text-2xl md:text-4xl font-bold text-center text-[#1A0B5B] mb-10">
+      <h2 className="text-4xl family font-bold text-center text-[#1A0B5B] mb-10 ">
         Trending Products
       </h2>
 
       {/* Product Grid */}
-    <Link href="/products">
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {products.map((product: any, index: any) => (
           <div
             key={index}
@@ -50,24 +54,25 @@ const Trendingproducts: React.FC = () => {
             </div>
 
             {/* Details */}
-            <div className="p-4">
-              <h3 className="text-base sm:text-sm md:text-lg font-semibold text-[#151875] mb-2">
-                {product.name}
-              </h3>
-              <div className="flex items-center justify-evenly">
-                <p className="text-sm md:text-base font-bold text-[#151875]">
-                  {product.price}
-                </p>
-                <p className="text-sm md:text-base font-normal text-[#151875]/30 line-through">
-                  {product.originalPrice}
-                </p>
+            <Link href={`/trendingproduct/${product.id}`}>
+              <div className="p-4">
+                <h3 className="text-base sm:text-sm lato md:text-lg font-bold text-[#151875] mb-2">
+                  {product.name}
+                </h3>
+                <div className="flex items-center justify-evenly">
+                  <p className="text-sm md:text-base font-bold text-[#151875]">
+                    {product.price}
+                  </p>
+                  <p className="text-sm md:text-base font-normal text-[#151875]/30 line-through">
+                    {product.originalPrice}
+                  </p>
+                </div>
               </div>
-            </div>
+            </Link>
           </div>
         ))}
       </div>
 
-    </Link>
       {/* Below Section */}
       <div className="flex flex-col lg:flex-row gap-5 mt-10">
         {/* Clock Div */}

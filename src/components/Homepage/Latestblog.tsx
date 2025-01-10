@@ -1,113 +1,75 @@
-import React from 'react';
+"use client";
+import Image from "next/image";
+import React, { useEffect, useState } from "react";
+import { sanityClient } from "@/sanity/sanity";
+import Link from "next/link";
 
-const Latestblog = () => {
+const Latestblog: React.FC = () => {
+  const [products, setProducts] = useState<any>([]);
+
+  useEffect(() => {
+    // Fetch data from Sanity
+    const fetchProducts = async () => {
+      const query = `*[_type == "latestblog"]{
+       id, 
+       name,
+        author,
+        date,
+        description,
+        
+         "image": image.asset->url,
+
+
+      }`;
+      const product = await sanityClient.fetch(query);
+      setProducts(product);
+    };
+    fetchProducts();
+  }, []);
+
+  if (!products.length) return <p>Loading...</p>;
   return (
-     <div>
+    <div>
       {/* Heading */}
-      <h2 className="text-3xl family font-bold text-center text-[#1A0B5B] mb-10">
+      <h2 className="text-4xl family font-bold text-center text-[#1A0B5B] mb-10">
         Latest Blog
       </h2>
-    <div className="wrapper flex flex-wrap gap-12 justify-center">
-      {/* First Card */}
-      <div className="w-full sm:w-[370px] h-auto relative">
-        <div className="relative bg-[#fff] rounded-[5px] ">
-          <div className="w-full h-[255px] bg-[#fff] rounded-t-[5px] overflow-hidden">
-            <img
-              className="w-full h-full object-cover"
-              src="/latestblog1.png"
-              alt="Product Image"
-            />
-          </div>
-          <div className="p-4">
-            <div className="text-[#151875] text-lg font-bold">
-              Top essential Trends in 2021
-            </div>
-            <div className="flex items-center gap-2 mt-2 text-sm text-[#151875]">
-              <span>SaberAli</span>
-              <span>|</span>
-              <span>21 August, 2020</span>
-            </div>
-            <p className="mt-4 text-[#72718f] text-base leading-[1.8]">
-              More off this less hello samlande lied much over tightly circa
-              horse taped mightly
-            </p>
-            <a
-              href="#"
-              className="mt-4 block text-[#151875] underline text-base"
-            >
-              Read More
-            </a>
-          </div>
-        </div>
-      </div>
+      <div className="wrapper flex flex-wrap gap-12 justify-center">
+        {products.map((product: any, index: any) => (
+          <div key={index} className="w-full sm:w-[370px] h-auto relative">
+            <div className="relative bg-[#fff] rounded-[5px] transform transition-transform duration-300 hover:scale-105">
+              <div className="w-full h-[255px] bg-[#fff] rounded-t-[5px] overflow-hidden">
+                <Image
+                  className="w-full h-full object-cover"
+                  src={product.image}
+                  alt={product.name}
+                  width={300}
+                  height={400}
+                />
+              </div>
+              <div>
+                <div className="flex items-center gap-2 mt-2 text-sm text-[#151875]">
+                  <span>🔸{product.author}</span>
+                  <span className="ml-18">|</span>
+                  <span className="ml-20">✡{product.date}</span>
+                </div>
+              </div>
+              <div className="p-4">
+                <div className="text-lg font-bold">{product.name}</div>
 
-      {/* Second Card */}
-      <div className="w-full sm:w-[370px] h-auto relative">
-        <div className="relative bg-[#fff] rounded-[5px] ">
-          <div className="w-full h-[255px] bg-[#fff] rounded-t-[5px] overflow-hidden">
-            <img
-              className="w-full h-full object-cover"
-              src="/latestblog2.png"
-              alt="Product Image"
-            />
-          </div>
-          <div className="p-4">
-            
-            <div className="text-[#FB2E86] text-lg font-bold">
-                
-              Top essential Trends in 2021
+                <p className="mt-4 text-[#72718f] text-base leading-[1.8]">
+                  {product.description}
+                </p>
+                <Link
+                  href={`/product/${product.id}`}
+                  className="mt-4 block underline text-base"
+                >
+                  Read More
+                </Link>
+              </div>
             </div>
-            <div className="flex items-center gap-2 mt-2 text-sm text-[#151875]">
-              <span>Surfauxion</span>
-              <span>|</span>
-              <span>21 August, 2020</span>
-            </div>
-            <p className="mt-4 text-[#72718f] text-base leading-[1.8]">
-              More off this less hello samlande lied much over tightly circa
-              horse taped mightly
-            </p>
-            <a
-              href="#"
-              className="mt-4 block text-[#FB2E86] underline text-base"
-            >
-              Read More
-            </a>
           </div>
-        </div>
-      </div>
-
-      {/* Third Card */}
-      <div className="w-full sm:w-[370px] h-auto relative">
-        <div className="relative bg-[#fff] rounded-[5px] ">
-          <div className="w-full h-[255px] bg-[#fff] rounded-t-[5px] overflow-hidden">
-            <img
-              className="w-full h-full object-cover"
-              src="/latestblog3.png"
-              alt="Product Image"
-            />
-          </div>
-          <div className="p-4">
-            <div className="text-[#151875] text-lg font-bold">
-              Top essential Trends in 2021
-            </div>
-            <div className="flex items-center gap-2 mt-2 text-sm text-[#151875]">
-              <span>SaberAli</span>
-              <span>|</span>
-              <span>21 August, 2020</span>
-            </div>
-            <p className="mt-4 text-[#72718f] text-base leading-[1.8]">
-              More off this less hello samlande lied much over tightly circa
-              horse taped mightly
-            </p>
-            <a
-              href="#"
-              className="mt-4 block text-[#151875] underline text-base"
-            >
-              Read More
-            </a>
-          </div>
-        </div>
-      </div>
+        ))}
       </div>
     </div>
   );
