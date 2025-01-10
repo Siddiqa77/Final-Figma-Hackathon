@@ -6,7 +6,7 @@ import Link from "next/link";
 import Tags from "../Homepage/Tags";
 
 const Relatedproducts: React.FC = () => {
-  const [products, setProducts] = useState<any>([]);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
