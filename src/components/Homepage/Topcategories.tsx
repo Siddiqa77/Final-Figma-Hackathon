@@ -1,9 +1,8 @@
 "use client";
-
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { sanityClient } from "@/sanity/sanity";
 import Link from "next/link";
-import Image from "next/image";
 
 const Topcategories: React.FC = () => {
   const [products, setProducts] = useState<any>([]);
@@ -12,18 +11,23 @@ const Topcategories: React.FC = () => {
     // Fetch data from Sanity
     const fetchProducts = async () => {
       const query = `*[_type == "topcategories"]{
-         name,
-         price,
-         "image": image.asset->url
-       }`;
-      const result = await sanityClient.fetch(query);
-      setProducts(result);
+       id, 
+       name,
+        price,
+        description,
+        originalPrice,
+          "image": image.asset->url,
+     
+
+
+      }`;
+      const product = await sanityClient.fetch(query);
+      setProducts(product);
     };
     fetchProducts();
   }, []);
 
   if (!products.length) return <p>Loading...</p>;
-
 
   return (
     <div className="container mx-auto px-4 py-10 mb-20">
@@ -33,34 +37,41 @@ const Topcategories: React.FC = () => {
       </h2>
 
       {/* Wrapper for Cards */}
-     <Link href="/products">
-     <div className="flex flex-wrap justify-center gap-6">
-      {products.map((product: any, index: any) => (
-          <div
-            key={index}
-            className="w-full sm:w-[45%] md:w-[30%] lg:w-[22%] h-auto flex flex-col items-center transform transition-transform duration-300 hover:scale-105"
-          >
-            <div className="w-[269px] h-[269px] bg-[#f6f7fb] rounded-full shadow-md flex items-center justify-center transition-shadow duration-300 hover:shadow-lg">
-              <Image
-                src={product.image}
-                alt={product.name}
-                width={100}
-                height={100}
-                className="object-contain transition-transform duration-300 hover:scale-110"
-              />
+      <Link href="/products">
+        <div className="flex flex-wrap justify-center gap-6">
+          {products.map((product: any, index: any) => (
+            <div className="w-full sm:w-[45%] md:w-[30%] lg:w-[22%] h-auto flex flex-col items-center transform transition-transform duration-300 hover:scale-105">
+              <div className="w-[269px] h-[269px] bg-[#F6F7FB] rounded-full shadow-md flex items-center justify-center transition-shadow duration-300 hover:shadow-lg">
+                <Image
+                  src={product.image}
+                  alt={product.name}
+                  width={100}
+                  height={100}
+                  className="object-contain transition-transform duration-300 hover:scale-110"
+                />
+              </div>
+               {/* Conditionally Render "View Details" Button for 2nd Card */}
+              {index === 1 && (
+                <div className="absolute top-[200px] pt-2 text-center w-[94px] h-[29px] left-1/2  transform -translate-x-1/2 bg-[#08d15f] text-[#fff] family text-xs font-medium py-1 px-3 rounded shadow-md">
+                  <Link href={`/topcategories/${product.id}`}>
+                    View Details
+                  </Link>
+                </div>
+              )}
+              <Link href={`/topcategories/${product.id}`}>
+                <div className="mt-4 text-center">
+                  <h3 className="text-[#151875] text-xl font-normal family leading-normal">
+                    {product.name}
+                  </h3>
+                  <p className="text-[#151875] text-base font-normal">
+                    {product.price}
+                  </p>
+                </div>
+              </Link>
             </div>
-            <div className="mt-4 text-center">
-              <h3 className="text-[#151875] text-xl font-semibold">
-                {product.name}
-              </h3>
-              <p className="text-[#151875] text-base font-normal">
-                {product.price}
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
-     </Link>
+          ))}
+        </div>
+      </Link>
 
       {/* SVG Section */}
       <div className="flex justify-center mt-8">
@@ -101,6 +112,5 @@ const Topcategories: React.FC = () => {
     </div>
   );
 };
-
 
 export default Topcategories;

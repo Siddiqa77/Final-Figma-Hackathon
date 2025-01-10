@@ -84,8 +84,10 @@ const FeaturedProduct: React.FC = () => {
               />
               {/* Conditionally Render "View Details" Button for 2nd Card */}
               {index === 1 && (
-                <div className="absolute top-[200px] pt-2 text-center w-[94px] h-[29px] left-1/2 transform -translate-x-1/2 bg-[#08d15f] text-[#fff] family text-xs font-medium py-1 px-3 rounded shadow-md">
-                  View Details
+                <div className="absolute top-[200px] pt-2 text-center w-[94px] h-[29px] left-1/2  transform -translate-x-1/2 bg-[#08d15f] text-[#fff] family text-xs font-medium py-1 px-3 rounded shadow-md">
+                  <Link href={`/product/${product.id}`}>
+                View Details
+                </Link>
                 </div>
               )}
             </div>
