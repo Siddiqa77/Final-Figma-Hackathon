@@ -9,11 +9,9 @@ export const sendToSanity = async (product: any) => {
       name: product.name,
       price: product.price,
       originalprice: product.originalprice,
-      reviews: product.reviews,
+     
       description: product.description,
-      rating: product.rating,
-      stock: product.stock,
-      availability: product.availability,
+     
       image: {
         _type: "image",
         asset: {

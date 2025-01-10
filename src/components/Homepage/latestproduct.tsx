@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import { sanityClient } from "@/sanity/sanity";
 import Link from "next/link";
 
-
 const LatestProduct: React.FC = () => {
   const [products, setProducts] = useState<any>([]);
 
@@ -12,13 +11,17 @@ const LatestProduct: React.FC = () => {
     // Fetch data from Sanity
     const fetchProducts = async () => {
       const query = `*[_type == "latestproducts"]{
-         name,
-         price,
-         originalPrice,
-         "image": image.asset->url
-       }`;
-      const result = await sanityClient.fetch(query);
-      setProducts(result);
+       id, 
+       name,
+        price,
+        description,
+        originalPrice,
+         "image": image.asset->url,
+
+
+      }`;
+      const product = await sanityClient.fetch(query);
+      setProducts(product);
     };
     fetchProducts();
   }, []);
@@ -49,7 +52,7 @@ const LatestProduct: React.FC = () => {
       </div>
 
       {/* Product Grid */}
-      <Link href={`product/${products.slug}`}>
+      
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {products.map((product: any, index: any) => (
             <div
@@ -68,12 +71,14 @@ const LatestProduct: React.FC = () => {
               </div>
 
               {/* Product Details */}
+             
               <div className="p-4">
+              <Link href={`/product/${product.id}`}>
                 {/* Product Name */}
                 <h3 className="text-base font-semibold text-[#151875] mb-2">
                   {product.name}
                 </h3>
-
+                </Link>
                 {/* Price Section */}
                 <div className="flex items-center justify-between">
                   <p className="text-sm font-bold text-[#151875]">
@@ -84,13 +89,13 @@ const LatestProduct: React.FC = () => {
                   </p>
                 </div>
               </div>
-
+              
               {/* Divider Line */}
               <div className="h-[2px] bg-[#eeeffb] w-full mt-2"></div>
             </div>
           ))}
         </div>
-      </Link>
+     
     </div>
   );
 };

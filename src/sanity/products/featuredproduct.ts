@@ -1,18 +1,49 @@
-export const product = {
-    name: 'featuredProduct',
-    title: 'Featured Product',
-    type: 'document',
-    fields: [
-      { name: 'name', 
-        title: 'Name', 
-        type: 'string' },
+export const featuredproduct = {
+  name: 'featuredProduct',
+  title: 'Featured Product',
+  type: 'document',
+  fields: [
+    {
+      name: 'id',
+      title: 'Product ID',
+      type: 'string',
+      
+    },
+    {
+      name: 'name',
+      title: 'Name',
+      type: 'string',
      
-      { name: 'price',
-         title: 'Price', 
-         type: 'string' },
-    
-      { name: 'image', 
-        title: 'Image', 
-        type: 'image'},
-    ],
-  };
+    },
+    {
+      name: 'description',
+      title: 'Description',
+      type: 'string',
+     
+    },
+    {
+      name: 'price',
+      title: 'Price',
+      type: 'string',
+      
+      
+    },
+    {
+      name: 'originalPrice',
+      title: 'Original Price',
+      type: 'string',
+      
+     
+    },
+    {
+      name: 'image',
+      title: 'Image',
+      type: 'image',
+      options: {
+        hotspot: true, // Enable hotspot cropping
+      },
+     
+    },
+   
+  ],
+};

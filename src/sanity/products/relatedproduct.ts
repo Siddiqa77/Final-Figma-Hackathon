@@ -1,7 +1,6 @@
-
-export const latestproduct = {
-    name: 'latestproducts',
-    title: 'Latest Product',
+export const relatedProduct = {
+    name: 'relatedProduct',
+    title: 'Related Product',
     type: 'document',
     fields: [
       {
@@ -45,5 +44,7 @@ export const latestproduct = {
         },
        
       },
+     
     ],
   };
+  
