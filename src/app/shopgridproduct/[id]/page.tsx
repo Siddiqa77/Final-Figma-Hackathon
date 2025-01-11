@@ -13,7 +13,7 @@ export default async function Page({
 
   // Fetch the product
 
-  const query = `*[_type == "shopgridProduct" && id == "${id}"][0]{
+  const query = `*[_type == "shopgridproduct" && id == "${id}"][0]{
     id,
     name,
     price,
