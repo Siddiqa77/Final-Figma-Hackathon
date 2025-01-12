@@ -1,5 +1,5 @@
 import { sanityClient } from "@/sanity/sanity";
-import Link from "next/link";
+
 import Detailpage from "@/components/detailfolder/detailpage";
 import Relatedproducts from "@/components/detailfolder/relatedproducts";
 import Image from "next/image";
@@ -97,11 +97,19 @@ export default async function Page({
           <p className="text-[16px] font-semibold md:text-[18px] text-[#A9ACC6] leading-[29px] family">
             {product.description}
           </p>
-          <Link href="/shoppingcart">
-            <button className=" px-1 py-4  md:px-3 rounded-md md:py-4 inline-block  text-[18px] family font-bold  ml-20 mt-8 bg-[#e12570] text-[#fff] transition-all duration-300 ease-in-out w-1/2 sm:w-1/2 text-center">
-              Add to Cart 🤍
-            </button>
-          </Link>
+          
+          <button
+  className="snipcart-add-item px-1 py-4 md:px-3 rounded-md md:py-4 inline-block text-[18px] family font-bold ml-20 mt-8 bg-[#e12570] text-[#fff] transition-all duration-300 ease-in-out w-1/2 sm:w-1/2 text-center"
+  data-item-id={product.id}
+  data-item-name={product.name}
+  data-item-price={product.price}
+  data-item-description={product.description}
+  data-item-url={`/latestproduct/${product.id}`}
+  data-item-image={product.image}
+>
+  Add to Cart 🤍
+</button>
+          
           
         </div>
         
