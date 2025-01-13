@@ -12,21 +12,15 @@ import Topcategories from "@/components/Homepage/Topcategories";
 import Tags from "@/components/Homepage/Tags";
 import Trendingproducts from "@/components/Homepage/Trendingproducts";
 
-import { fetchMockApi } from "@/api/fetchapi";
-import { sendToSanity } from "@/components/fetchapi";
 
-const Page = async () => {
-  // Fetch data from Mock API
-  const data = await fetchMockApi();
-  
 
-  // Send each item to Sanity
-  for (const item of data) {
-    await sendToSanity(item);
-  }
 
+
+
+const page = () => {
   return (
     <div>
+<div>
       {/* Render homepage components */}
       <Hero />
       <Featuredproduct />
@@ -40,7 +34,11 @@ const Page = async () => {
       <Tags />
       <Latestblog />
     </div>
-  );
-};
 
-export default Page;
+
+
+    </div>
+  )
+}
+
+export default page
