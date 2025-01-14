@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { sanityClient } from "@/sanity/sanity";
 import Link from "next/link";
 
-const LatestProduct: React.FC = () => {
+const LatestProduct = () => {
   const [products, setProducts] = useState<any>([]);
 
   useEffect(() => {

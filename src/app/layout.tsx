@@ -22,7 +22,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
-         <Script>
+          <Script>
   {`
     window.SnipcartSettings = {
       publicApiKey: 'MDEyMTdkYTAtOTIzOS00NTliLTgyODQtZTEzZTIzYjgyZWM1NjM4NzE3MDExNzk5MzQwODQ2',
@@ -69,7 +69,9 @@ export default function RootLayout({
       setTimeout(loadSnipcart, 2750);
     })();
   `}
-</Script> 
+</Script>  
+
+
 
 
 
