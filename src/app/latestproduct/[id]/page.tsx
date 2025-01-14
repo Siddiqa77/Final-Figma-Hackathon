@@ -1,3 +1,4 @@
+
 import { sanityClient } from "@/sanity/sanity";
 
 import Detailpage from "@/components/detailfolder/detailpage";
@@ -102,9 +103,10 @@ export default async function Page({
         className="snipcart-add-item px-1 py-4 md:px-3 rounded-md md:py-4 inline-block text-[18px] font-bold ml-20 mt-8 bg-[#e12570] text-[#fff] transition-all duration-300 ease-in-out w-1/2 sm:w-1/2 text-center"
         data-item-id={product.id}
         data-item-name={product.name}
+        data-item-originalPrice={product.originalPrice}
         data-item-price={product.price}
         data-item-description={product.description}
-        data-item-url={`/latestproduct/${product.id}`}
+        data-item-url={`/product/${product.id}`}
         data-item-image={product.image}
       >
         Add to Cart 🤍

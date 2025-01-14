@@ -107,7 +107,7 @@ export default async function Page({
   data-item-name={product.name}
   data-item-price={product.price}
   data-item-description={product.description}
-  data-item-url={`/shopgridproduct/${product.id}`}
+  data-item-url={`/product/${product.id}`}
   data-item-image={product.image}
 >
   Add to Cart 🤍
