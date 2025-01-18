@@ -30,8 +30,8 @@ export const topCategories = {
       
     },
     {
-      name: 'originalPrice',
-      title: 'Original Price',
+      name: 'discountPrice',
+      title: 'Discount Price',
       type: 'string',
       
      

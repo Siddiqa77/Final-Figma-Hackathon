@@ -61,7 +61,7 @@ const Latestblog: React.FC = () => {
                   {product.description}
                 </p>
                 <Link
-                  href={`/product/${product.id}`}
+                  href={`/blog/${product.slug}`}
                   className="mt-4 block underline text-base"
                 >
                   Read More

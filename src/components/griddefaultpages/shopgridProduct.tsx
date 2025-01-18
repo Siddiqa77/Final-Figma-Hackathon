@@ -11,15 +11,13 @@ const ShopgridProduct: React.FC = () => {
   useEffect(() => {
     // Fetch data from Sanity
     const fetchProducts = async () => {
-      const query = `*[_type == "shopgridproduct"]{
-       id, 
-       name,
+      const query = `*[_type == "product"]{
+        id, 
+        name,
         price,
         description,
-        originalPrice,
-         "image": image.asset->url,
-
-
+       discountPercentage,
+        "image": image.asset->url
       }`;
       const product = await sanityClient.fetch(query);
       setProducts(product);
@@ -104,8 +102,8 @@ const ShopgridProduct: React.FC = () => {
                 <p className="text-sm font-semibold text-[#151875] family">
                   {product.price}
                 </p>
-                <p className="text-sm font-normal text-[#fb2448] line-through family">
-                  {product.originalPrice}
+                <p className="text-sm font-normal  family">
+                  {product.discountPercentage}
                 </p>
               </div>
             </div>

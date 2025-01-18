@@ -4,9 +4,6 @@ import Detailpage from "@/components/detailfolder/detailpage";
 import Relatedproducts from "@/components/detailfolder/relatedproducts";
 import Image from "next/image";
 
-
-// export const revalidate = 5;
-
 export default async function Page({
   params,
 }: {
@@ -16,17 +13,22 @@ export default async function Page({
 
   // Fetch the product
 
-  const query = `*[_type == "shopgridproduct" && id == "${id}"][0]{
+  const query = `*[_type == "product" && id == "${id}"][0]{
     id,
     name,
     price,
     description,
-    originalPrice,
-    "image": image.asset->url,
-    "image1": image1.asset->url,
-     "image2": image2.asset->url,
-      "image3": image3.asset->url
+    discountPercentage,
+    isFeaturedProduct,
+    stockLevel,
+    category->{
+      title,
+      value, 
+    },
+     "imageUrl": image.asset->url,
+    
   }`;
+  
 
   const product = await sanityClient.fetch(query);
 
@@ -42,7 +44,7 @@ export default async function Page({
         <div className="md:flex md:flex-col gap-12 flex justify-evenly object-cover">
           <div className="w-20 h-20 flex lg:flex-col gap-6 ml-3 lg:ml-[150px] shadow-lg  transform transition-transform duration-300 hover:scale-105">
             <Image
-              src={product.image1}
+              src="/armchair1.png"
               alt={product.name}
               width={200}
               height={300}
@@ -51,7 +53,7 @@ export default async function Page({
           </div>
           <div className="w-20 h-20 flex lg:flex-col gap-6 ml-5 lg:ml-[150px] shadow-lg  transform transition-transform duration-300 hover:scale-105">
             <Image
-              src={product.image2}
+              src="/armchair2.png"
               alt={product.name}
               width={200}
               height={300}
@@ -60,7 +62,7 @@ export default async function Page({
           </div>
           <div className="w-20 h-20 flex lg:flex-col gap-6 ml-5 lg:ml-[150px] shadow-lg  transform transition-transform duration-300 hover:scale-105">
             <Image
-              src={product.image3}
+              src="/armchair3.png"
               alt={product.name}
               width={200}
               height={300}
@@ -86,7 +88,7 @@ export default async function Page({
             {product.name}
           </h1>
           <div className="flex items-center gap-2">
-            <span>⭐⭐⭐⭐⭐✔ </span>
+            <span className="text-yellow-500">⭐⭐⭐⭐⭐✔ </span>
             <span className=" text-[#151875] text-sm ">(22) Reviews</span>
           </div>
           <div className="flex items-center space-x-4">
@@ -94,24 +96,33 @@ export default async function Page({
               {product.price}
             </span>
             <span className="line-through text-[#FB2E86]">
-              {product.originalPrice}
+              {product.stockLevel}
             </span>
           </div>
           <p className="text-[16px] font-semibold md:text-[18px] text-[#A9ACC6] leading-[29px] family">
             {product.description}
           </p>
-         
+          
           <button
   className="snipcart-add-item px-1 py-4 md:px-3 rounded-md md:py-4 inline-block text-[18px] family font-bold ml-20 mt-8 bg-[#e12570] text-[#fff] transition-all duration-300 ease-in-out w-1/2 sm:w-1/2 text-center"
   data-item-id={product.id}
   data-item-name={product.name}
   data-item-price={product.price}
   data-item-description={product.description}
-  data-item-url={`/shopgridproduct/${product.id}`}
+  data-item-dicountPercentage={product.dicountPercentage}
+  data-item-isFeaturedProduct={product.isFeaturedProduct}
+  data-item-stockLevel={product.stockLevel}
+  data-item-category={
+    Array.isArray(product.category)
+      ? product.category.map((category: any) => category.value).join(", ")
+      : product.category?.value || product.category || ""
+  }
+  data-item-url={`/product/${product.id}`}
   data-item-image={product.image}
 >
   Add to Cart 🤍
 </button>
+          
           
         </div>
         

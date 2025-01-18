@@ -33,6 +33,7 @@ const page = () => {
       <Newsletter />
       <Tags />
       <Latestblog />
+      
     </div>
 
 

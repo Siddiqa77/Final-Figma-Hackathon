@@ -10,17 +10,15 @@ const FeaturedProduct: React.FC = () => {
   useEffect(() => {
     // Fetch data from Sanity
     const fetchProducts = async () => {
-      const query = `*[_type == "featuredProduct"]{
-       id, 
-       name,
-        price,
-        description,
-        originalPrice,
-          "image": image.asset->url,
-     
-
-
+      const query = `*[_type == "product"][0...4]{
+       id,
+    name,
+    price,
+    description,
+    discountPercentage,
+   
       }`;
+      
       const product = await sanityClient.fetch(query);
       setProducts(product);
     };

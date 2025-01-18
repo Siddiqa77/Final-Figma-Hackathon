@@ -10,12 +10,12 @@ const Topcategories: React.FC = () => {
   useEffect(() => {
     // Fetch data from Sanity
     const fetchProducts = async () => {
-      const query = `*[_type == "topcategories"]{
+      const query = `*[_type == "product"]{
        id, 
        name,
         price,
         description,
-        originalPrice,
+        discountPercentage,
           "image": image.asset->url,
      
 

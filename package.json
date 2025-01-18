@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "import-data": "node Scripts/importSanityData.mjs"
+    "import-data": "node scripts/importSanityData.mjs"
   },
   "dependencies": {
     "@sanity/client": "^6.24.3",
@@ -20,6 +20,8 @@
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.4.0",
+    "react-native": "^0.76.6",
+    "react-native-web": "^0.19.13",
     "sanity": "^3.68.3",
     "styled-components": "^6.1.14",
     "swiper": "^11.1.15"

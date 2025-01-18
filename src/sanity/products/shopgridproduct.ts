@@ -30,7 +30,7 @@ export const shopgridproducts = {
       
     },
     {
-      name: 'originalPrice',
+      name: 'discountPercentage',
       title: 'Original Price',
       type: 'string',
       
@@ -45,32 +45,6 @@ export const shopgridproducts = {
       },
      
     },
-    {
-      name: 'image1',
-      title: 'Image1',
-      type: 'image',
-      options: {
-        hotspot: true, // Enable hotspot cropping
-      },
-     
-    },
-    {
-      name: 'image2',
-      title: 'Image2',
-      type: 'image',
-      options: {
-        hotspot: true, // Enable hotspot cropping
-      },
-     
-    },
-    {
-      name: 'image3',
-      title: 'Image3',
-      type: 'image',
-      options: {
-        hotspot: true, // Enable hotspot cropping
-      },
-     
-    },
+   
   ],
 };

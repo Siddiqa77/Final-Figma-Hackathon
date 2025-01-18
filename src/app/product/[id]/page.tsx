@@ -13,17 +13,22 @@ export default async function Page({
 
   // Fetch the product
 
-  const query = `*[_type == "featuredProduct" && id == "${id}"][0]{
+  const query = `*[_type == "product" && id == "${id}"][0]{
     id,
     name,
     price,
     description,
-    originalPrice,
-    "image": image.asset->url,
-    "image1": image1.asset->url,
-     "image2": image2.asset->url,
-      "image3": image3.asset->url
+    discountPercentage,
+    isFeaturedProduct,
+    stockLevel,
+    category->{
+      title,
+      value, 
+    },
+     "imageUrl": image.asset->url,
+    
   }`;
+  
 
   const product = await sanityClient.fetch(query);
 
@@ -39,7 +44,7 @@ export default async function Page({
         <div className="md:flex md:flex-col gap-12 flex justify-evenly object-cover">
           <div className="w-20 h-20 flex lg:flex-col gap-6 ml-3 lg:ml-[150px] shadow-lg  transform transition-transform duration-300 hover:scale-105">
             <Image
-              src={product.image1}
+              src="/armchair1.png"
               alt={product.name}
               width={200}
               height={300}
@@ -48,7 +53,7 @@ export default async function Page({
           </div>
           <div className="w-20 h-20 flex lg:flex-col gap-6 ml-5 lg:ml-[150px] shadow-lg  transform transition-transform duration-300 hover:scale-105">
             <Image
-              src={product.image2}
+              src="/armchair2.png"
               alt={product.name}
               width={200}
               height={300}
@@ -57,7 +62,7 @@ export default async function Page({
           </div>
           <div className="w-20 h-20 flex lg:flex-col gap-6 ml-5 lg:ml-[150px] shadow-lg  transform transition-transform duration-300 hover:scale-105">
             <Image
-              src={product.image3}
+              src="/armchair3.png"
               alt={product.name}
               width={200}
               height={300}
@@ -91,7 +96,7 @@ export default async function Page({
               {product.price}
             </span>
             <span className="line-through text-[#FB2E86]">
-              {product.originalPrice}
+              {product.stockLevel}
             </span>
           </div>
           <p className="text-[16px] font-semibold md:text-[18px] text-[#A9ACC6] leading-[29px] family">
@@ -104,6 +109,14 @@ export default async function Page({
   data-item-name={product.name}
   data-item-price={product.price}
   data-item-description={product.description}
+  data-item-dicountPercentage={product.dicountPercentage}
+  data-item-isFeaturedProduct={product.isFeaturedProduct}
+  data-item-stockLevel={product.stockLevel}
+  data-item-category={
+    Array.isArray(product.category)
+      ? product.category.map((category: any) => category.value).join(", ")
+      : product.category?.value || product.category || ""
+  }
   data-item-url={`/product/${product.id}`}
   data-item-image={product.image}
 >

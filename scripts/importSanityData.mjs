@@ -3,7 +3,7 @@ import axios from 'axios'
 import dotenv from 'dotenv'
 import { fileURLToPath } from 'url'
 import path from 'path'
-// https://fakestoreapi.com/products
+
 // Load environment variables from .env.local
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -31,30 +31,41 @@ async function uploadImageToSanity(imageUrl) {
     return null
   }
 }
+
 async function importData() {
   try {
-    console.log('Fetching products from API...')
-    const response = await axios.get('https://677e928694bde1c1252c8aac.mockapi.io/hackathon')
-    const products = response.data
-    console.log(`Fetched ${products.length} products`)
+    console.log('Fetching products from API...');
+    const response = await axios.get('https://next-ecommerce-template-4.vercel.app/api/product');
+    const productsData = response.data;
+
+    // Check if the response contains the "products" array
+    if (!productsData.products || !Array.isArray(productsData.products)) {
+      throw new Error('Invalid data format: "products" array is missing.');
+    }
+
+    const products = productsData.products;
+    console.log(`Fetched ${products.length} products`);
+
     for (const product of products) {
-      console.log(`Processing product: ${product.title}`)
-      let imageRef = null
-      if (product.image) {
-        imageRef = await uploadImageToSanity(product.image)
+      console.log(`Processing product: ${product.name}`);
+      
+      // Upload the image to Sanity and get the reference ID
+      let imageRef = null;
+      if (product.imagePath) {
+        imageRef = await uploadImageToSanity(product.imagePath);
       }
+
+      // Create a product object for Sanity
       const sanityProduct = {
-        _type: 'newproduct',
+        _type: 'product',
         id: product.id,
         name: product.name,
         description: product.description,
-        price: product.price,
-        // discountPercentage: 0,
-        // priceWithoutDiscount: product.price,
-        // rating: product.rating?.rate || 0,
-        // ratingCount: product.rating?.count || 0,
-        // tags: product.category ? [product.category] : [],
-        // sizes: [],
+        price: parseFloat(product.price), // Convert price to a number
+        discountPercentage: product.discountPercentage || 0, // Default to 0 if missing
+        isFeaturedProduct: product.isFeaturedProduct || false, // Default to false if missing
+        stockLevel: product.stockLevel || 0, // Default to 0 if missing
+        category: product.category || 'Uncategorized', // Default category
         image: imageRef ? {
           _type: 'image',
           asset: {
@@ -62,14 +73,17 @@ async function importData() {
             _ref: imageRef,
           },
         } : undefined,
-      }
-      console.log('Uploading product to Sanity:', sanityProduct.name)
-      const result = await client.create(sanityProduct)
-      console.log(`Product uploaded successfully: ${result._id}`)
+      };
+
+      console.log('Uploading product to Sanity:', sanityProduct.name);
+      const result = await client.create(sanityProduct);
+      console.log(`Product uploaded successfully: ${result._id}`);
     }
-    console.log('Data import completed successfully!')
+
+    console.log('Data import completed successfully!');
   } catch (error) {
-    console.error('Error importing data:', error)
+    console.error('Error importing data:', error.message);
   }
 }
+
 importData()
