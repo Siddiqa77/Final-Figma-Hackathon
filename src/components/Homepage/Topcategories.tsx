@@ -1,33 +1,34 @@
-"use client";
+"use client"
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
 import { sanityClient } from "@/sanity/sanity";
 import Link from "next/link";
+import React, { useEffect, useState } from "react";
+import { client } from "@/sanity/lib/client";
 
-const Topcategories: React.FC = () => {
-  const [products, setProducts] = useState<any>([]);
+const Topcategories = () => {
+  const [products, setProducts] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch data from Sanity
     const fetchProducts = async () => {
-      const query = `*[_type == "product"]{
-       id, 
-       name,
+      const query = `*[_type == "item"][17...21]{
+        id, 
+        name,
         price,
         description,
         discountPercentage,
-          "image": image.asset->url,
-     
-
-
+        "image": image.asset->url,
       }`;
-      const product = await sanityClient.fetch(query);
-      setProducts(product);
+      const products = await client.fetch(query);
+      setProducts(products);
+      setLoading(false);
     };
+
     fetchProducts();
   }, []);
+  console.log(products);
 
-  if (!products.length) return <p>Loading...</p>;
+  if (loading) return <p>Loading...</p>;
 
   return (
     <div className="container mx-auto px-4 py-10 mb-20">
@@ -40,7 +41,10 @@ const Topcategories: React.FC = () => {
       <Link href="/products">
         <div className="flex flex-wrap justify-center gap-6">
           {products.map((product: any, index: any) => (
-            <div className="w-full sm:w-[45%] md:w-[30%] lg:w-[22%] h-auto flex flex-col items-center transform transition-transform duration-300 hover:scale-105">
+            <div
+              key={index}
+              className="w-full sm:w-[45%] md:w-[30%] lg:w-[22%] h-auto flex flex-col items-center transform transition-transform duration-300 hover:scale-105"
+            >
               <div className="w-[269px] h-[269px] bg-[#F6F7FB] rounded-full shadow-md flex items-center justify-center transition-shadow duration-300 hover:shadow-lg">
                 <Image
                   src={product.image}
@@ -50,7 +54,7 @@ const Topcategories: React.FC = () => {
                   className="object-contain transition-transform duration-300 hover:scale-110"
                 />
               </div>
-               {/* Conditionally Render "View Details" Button for 2nd Card */}
+              {/* Conditionally Render "View Details" Button for 2nd Card */}
               {index === 1 && (
                 <div className="absolute top-[200px] pt-2 text-center w-[94px] h-[29px] left-1/2  transform -translate-x-1/2 bg-[#08d15f] text-[#fff] family text-xs font-medium py-1 px-3 rounded shadow-md">
                   <Link href={`/topcategories/${product.id}`}>

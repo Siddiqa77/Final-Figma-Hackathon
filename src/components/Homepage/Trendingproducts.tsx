@@ -1,150 +1,119 @@
-"use client";
+"use client"
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
-import { sanityClient } from "@/sanity/sanity";
 import Link from "next/link";
+import React, { useEffect, useState } from "react";
+import { client } from "@/sanity/lib/client";
 
-const Trendingproducts: React.FC = () => {
-  const [products, setProducts] = useState<any>([]);
+const TrendingProducts = () => {
+  const [products, setProducts] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch data from Sanity
     const fetchProducts = async () => {
-      const query = `*[_type == "trendingproducts"]{
-       id, 
-       name,
+      const query = `*[_type == "item"][12...16]{
+        id, 
+        name,
         price,
         description,
-        originalPrice,
-          "image": image.asset->url,
-     
-
-
+        discountPercentage,
+        "image": image.asset->url,
       }`;
-      const product = await sanityClient.fetch(query);
-      setProducts(product);
+      const products = await client.fetch(query);
+      setProducts(products);
+      setLoading(false);
     };
+
     fetchProducts();
   }, []);
+  console.log(products)
 
-  if (!products.length) return <p>Loading...</p>;
+  if (loading) return <p>Loading...</p>;
 
   return (
-    <div className="container mx-auto mt-10 px-4 py-10 max-w-[1177px]">
+    <div className="container mx-auto px-4 py-10 mb-20">
       {/* Heading */}
-      <h2 className="text-4xl family font-bold text-center text-[#1A0B5B] mb-10 ">
+      <h2 className="text-3xl font-bold text-center text-[#151875] mb-20">
         Trending Products
       </h2>
 
-      {/* Product Grid */}
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {products.map((product: any, index: any) => (
-          <div
-            key={index}
-            className="relative bg-[#ffffff] shadow-md rounded-md overflow-hidden transform transition-transform duration-300 hover:scale-105"
-          >
-            {/* Image */}
-            <div className="bg-[#F6F7FB] w-full h-[236px] flex justify-center items-center">
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-[130px] h-[150px] object-contain"
-              />
-            </div>
-
-            {/* Details */}
-            <Link href={`/trendingproduct/${product.id}`}>
-              <div className="p-4">
-                <h3 className="text-base sm:text-sm lato md:text-lg font-bold text-[#151875] mb-2">
-                  {product.name}
-                </h3>
-                <div className="flex items-center justify-evenly">
-                  <p className="text-sm md:text-base font-bold text-[#151875]">
+      {/* Wrapper for Cards */}
+      <Link href="/products">
+        <div className="flex flex-wrap justify-center gap-6">
+          {products.map((product: any, index: any) => (
+            <div
+              key={index}
+              className="w-full sm:w-[45%] md:w-[30%] lg:w-[22%] h-auto flex flex-col items-center transform transition-transform duration-300 hover:scale-105"
+            >
+              <div className="w-[269px] h-[269px] bg-[#F6F7FB] rounded-full shadow-md flex items-center justify-center transition-shadow duration-300 hover:shadow-lg">
+                <Image
+                  src={product.image}
+                  alt={product.name}
+                  width={100}
+                  height={100}
+                  className="object-contain transition-transform duration-300 hover:scale-110"
+                />
+              </div>
+              {/* Conditionally Render "View Details" Button for 2nd Card */}
+              {index === 1 && (
+                <div className="absolute top-[200px] pt-2 text-center w-[94px] h-[29px] left-1/2  transform -translate-x-1/2 bg-[#08d15f] text-[#fff] family text-xs font-medium py-1 px-3 rounded shadow-md">
+                  <Link href={`/topcategories/${product.id}`}>
+                    View Details
+                  </Link>
+                </div>
+              )}
+              <Link href={`/topcategories/${product.id}`}>
+                <div className="mt-4 text-center">
+                  <h3 className="text-[#151875] text-xl font-normal family leading-normal">
+                    {product.name}
+                  </h3>
+                  <p className="text-[#151875] text-base font-normal">
                     {product.price}
                   </p>
-                  <p className="text-sm md:text-base font-normal text-[#151875]/30 line-through">
-                    {product.originalPrice}
-                  </p>
                 </div>
-              </div>
-            </Link>
-          </div>
-        ))}
-      </div>
-
-      {/* Below Section */}
-      <div className="flex flex-col lg:flex-row gap-5 mt-10">
-        {/* Clock Div */}
-        <div className="w-full lg:w-[420px] h-auto bg-[#FFF6FB] p-4 flex flex-col lg:flex-row justify-between items-center">
-          <div>
-            <div className="text-[#151875] family text-lg md:text-xl font-semibold whitespace-nowrap">
-              23% off in all products
-            </div>
-            <button className="text-[#FB2E86]  text-base lg:mb-40 font-semibold underline font-['Lato']">
-              Shop Now
-            </button>
-          </div>
-          <Image
-            src="/trendingpropic5.png"
-            alt="Clock"
-            width={220}
-            height={207}
-            className="mt-4 lg:mt-10 object-contain"
-          />
-        </div>
-
-        {/* Cabinet Div */}
-        <div className="w-full lg:w-[420px] h-auto bg-[#EEEFFB] p-4 flex flex-col lg:flex-row justify-between items-center">
-          <div>
-            <div className="text-[#151875] family text-lg md:text-xl font-semibold whitespace-nowrap">
-              23% off in all products
-            </div>
-            <button className="text-[#FB2E86] text-base lg:mb-40 font-semibold underline font-['Lato']">
-              Shop Now
-            </button>
-          </div>
-          <div className="w-[312px] h-[173px]">
-            <Image
-              src="/trendingpropic6.png"
-              alt="Cabinet"
-              width={312}
-              height={173}
-              className="mt-4 lg:mt-10 object-contain"
-            />
-          </div>
-        </div>
-
-        {/* Three Chairs */}
-        <div className="flex flex-col gap-4 w-full lg:w-auto">
-          {[
-            { name: "Executive Seat Chair", image: "/trendingpropic7.png" },
-            { name: "Executive Seat Chair", image: "/trendingpropic8.png" },
-            { name: "Executive Seat Chair", image: "/trendingpropic9.png" },
-          ].map((item, idx) => (
-            <div
-              key={idx}
-              className="flex items-center gap-4 bg-[#F5F6F8] p-2 rounded-lg"
-            >
-              <img
-                src={item.image}
-                alt={item.name}
-                className="w-[64px] h-[74px] object-contain"
-              />
-              <div>
-                <h4 className="text-sm md:text-base font-semibold text-[#151875]">
-                  {item.name}
-                </h4>
-                <p className="text-xs md:text-sm font-normal text-[#151875]/30 line-through">
-                  $32.00
-                </p>
-              </div>
+              </Link>
             </div>
           ))}
         </div>
+      </Link>
+
+      {/* SVG Section */}
+      <div className="flex justify-center mt-8">
+        <svg
+          className="w-[67px] h-[15px] transition-transform duration-300 hover:scale-110"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 67 15"
+          fill="none"
+        >
+          <rect
+            y="7.07129"
+            width="10"
+            height="9.8913"
+            rx="4.94565"
+            transform="rotate(-45 0 7.07129)"
+            fill="#FB2E86"
+          />
+          <rect
+            x="26.7071"
+            y="7.60645"
+            width="9"
+            height="8.8913"
+            rx="4.44565"
+            transform="rotate(-45 26.7071 7.60645)"
+            stroke="#FB2E86"
+          />
+          <rect
+            x="52.7071"
+            y="7.60645"
+            width="9"
+            height="8.8913"
+            rx="4.44565"
+            transform="rotate(-45 52.7071 7.60645)"
+            stroke="#FB2E86"
+          />
+        </svg>
       </div>
     </div>
   );
 };
 
-export default Trendingproducts;
+export default TrendingProducts;

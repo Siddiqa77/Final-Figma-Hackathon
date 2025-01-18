@@ -1,16 +1,15 @@
-"use client"
-import Image from "next/image";
-import Link from "next/link";
-import { client } from "@/sanity/lib/client";
-import React, { useEffect, useState } from "react";
+import { client } from '@/sanity/lib/client';
+import Image from 'next/image';
+import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
 
-const LatestProduct = () => {
+const FeatureProduct = () => {
   const [products, setProducts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const query = `*[_type == "item"][5...11]{
+      const query = `*[_type == "featuredproduct"]{
         id, 
         name,
         price,
@@ -25,7 +24,6 @@ const LatestProduct = () => {
 
     fetchProducts();
   }, []);
-  console.log(products);
 
   if (loading) return <p>Loading...</p>;
 
@@ -98,4 +96,4 @@ const LatestProduct = () => {
   );
 };
 
-export default LatestProduct;
+export default FeatureProduct;

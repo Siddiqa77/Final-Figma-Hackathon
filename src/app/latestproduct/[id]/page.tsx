@@ -17,16 +17,14 @@ export default async function Page({
 
   // Fetch the product
 
-  const query = `*[_type == "latestproducts" && id == "${id}"][0]{
+  const query = `*[_type == "item" && id == "${id}"][0]{
     id,
     name,
     price,
     description,
-    originalPrice,
+    discountPercentage,
     "image": image.asset->url,
-     "image1": image1.asset->url,
-      "image2": image2.asset->url,
-       "image3": image3.asset->url
+    
   }`;
 
   const product = await sanityClient.fetch(query);
@@ -43,7 +41,7 @@ export default async function Page({
         <div className="md:flex md:flex-col gap-12 flex justify-evenly object-cover">
           <div className="w-20 h-20 flex lg:flex-col gap-6 ml-3 lg:ml-[150px] shadow-lg  transform transition-transform duration-300 hover:scale-105">
             <Image
-              src={product.image1}
+              src="/armchair1.png"
               alt={product.name}
               width={200}
               height={300}
@@ -52,7 +50,7 @@ export default async function Page({
           </div>
           <div className="w-20 h-20 flex lg:flex-col gap-6 ml-5 lg:ml-[150px] shadow-lg  transform transition-transform duration-300 hover:scale-105">
             <Image
-              src={product.image2}
+              src="/armchair2.png"
               alt={product.name}
               width={200}
               height={300}
@@ -61,7 +59,7 @@ export default async function Page({
           </div>
           <div className="w-20 h-20 flex lg:flex-col gap-6 ml-5 lg:ml-[150px] shadow-lg  transform transition-transform duration-300 hover:scale-105">
             <Image
-              src={product.image3}
+              src="/armchair3.png"
               alt={product.name}
               width={200}
               height={300}

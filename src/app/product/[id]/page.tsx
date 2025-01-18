@@ -1,8 +1,8 @@
-import { sanityClient } from "@/sanity/sanity";
 
 import Detailpage from "@/components/detailfolder/detailpage";
 import Relatedproducts from "@/components/detailfolder/relatedproducts";
 import Image from "next/image";
+import { client } from "@/sanity/lib/client";
 
 export default async function Page({
   params,
@@ -13,7 +13,7 @@ export default async function Page({
 
   // Fetch the product
 
-  const query = `*[_type == "product" && id == "${id}"][0]{
+  const query = `*[_type == "item" && id == "${id}"][0]{
     id,
     name,
     price,
@@ -25,12 +25,12 @@ export default async function Page({
       title,
       value, 
     },
-     "imageUrl": image.asset->url,
+     "image": image.asset->url,
     
   }`;
   
 
-  const product = await sanityClient.fetch(query);
+  const product = await client.fetch(query);
 
   console.log(product);
 
@@ -93,16 +93,16 @@ export default async function Page({
           </div>
           <div className="flex items-center space-x-4">
             <span className="text-lg md:text-xl font-bold">
-              {product.price}
+              {product.discountedPercentage}
             </span>
             <span className="line-through text-[#FB2E86]">
-              {product.stockLevel}
+              {product.price}
             </span>
           </div>
           <p className="text-[16px] font-semibold md:text-[18px] text-[#A9ACC6] leading-[29px] family">
             {product.description}
           </p>
-          
+{/*           
           <button
   className="snipcart-add-item px-1 py-4 md:px-3 rounded-md md:py-4 inline-block text-[18px] family font-bold ml-20 mt-8 bg-[#e12570] text-[#fff] transition-all duration-300 ease-in-out w-1/2 sm:w-1/2 text-center"
   data-item-id={product.id}
@@ -121,7 +121,7 @@ export default async function Page({
   data-item-image={product.image}
 >
   Add to Cart 🤍
-</button>
+</button> */}
           
           
         </div>

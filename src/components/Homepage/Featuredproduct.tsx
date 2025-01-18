@@ -1,31 +1,33 @@
-"use client";
-import Image from "next/image";
-import React, { useEffect, useState } from "react";
-import { sanityClient } from "@/sanity/sanity";
-import Link from "next/link";
+"use client"
+import { client } from '@/sanity/lib/client';
+import Image from 'next/image';
+import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
 
-const FeaturedProduct: React.FC = () => {
-  const [products, setProducts] = useState<any>([]);
+const FeaturedProduct = () => {
+  const [products, setProducts] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch data from Sanity
     const fetchProducts = async () => {
-      const query = `*[_type == "product"][0...4]{
-       id,
-    name,
-    price,
-    description,
-    discountPercentage,
-   
+      const query = `*[_type == "item"][0...4]{
+        id, 
+        name,
+        price,
+        description,
+        discountPercentage,
+        "image": image.asset->url,
       }`;
-      
-      const product = await sanityClient.fetch(query);
-      setProducts(product);
+      const products = await client.fetch(query);
+      setProducts(products);
+      setLoading(false);
     };
+
     fetchProducts();
   }, []);
+  console.log(products);
 
-  if (!products.length) return <p>Loading...</p>;
+  if (loading) return <p>Loading...</p>;
 
   return (
     <div className="container mx-auto px-4 py-10 max-w-[1177px]">

@@ -57,7 +57,7 @@ async function importData() {
 
       // Create a product object for Sanity
       const sanityProduct = {
-        _type: 'product',
+        _type: 'item',
         id: product.id,
         name: product.name,
         description: product.description,

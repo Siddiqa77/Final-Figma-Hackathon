@@ -1,12 +1,14 @@
-
-export const fetchproducts = {
-
-    name: 'product',
+export const newitem = {
+    name: 'item',
     type: 'document',
-    title: 'Product',
+    title: 'Item',
     fields: [
-
-       
+      {
+        name: 'id',
+        title: 'Product ID',
+        type: 'string',
+        validation: (Rule: any) => Rule.required().error('Product ID is required'),
+      },
       {
         name: 'name',
         type: 'string',
@@ -21,12 +23,16 @@ export const fetchproducts = {
           hotspot: true,
         },
         description: 'Upload an image of the product.',
+        validation: (Rule: any) => Rule.required().error('Image is required'),
       },
       {
         name: 'price',
-        type: 'string',
+        type: 'number',
         title: 'Price',
-        validation: (Rule: any) => Rule.required().error('Price is required'),
+        validation: (Rule: any) =>
+          Rule.required()
+            .min(0)
+            .error('Price is required and must be a positive number'),
       },
       {
         name: 'description',
@@ -40,7 +46,9 @@ export const fetchproducts = {
         type: 'number',
         title: 'Discount Percentage',
         validation: (Rule: any) =>
-          Rule.min(0).max(100).warning('Discount must be between 0 and 100.'),
+          Rule.min(0)
+            .max(100)
+            .warning('Discount must be between 0 and 100.'),
       },
       {
         name: 'isFeaturedProduct',
@@ -51,7 +59,8 @@ export const fetchproducts = {
         name: 'stockLevel',
         type: 'number',
         title: 'Stock Level',
-        validation: (Rule: any) => Rule.min(0).error('Stock level must be a positive number.'),
+        validation: (Rule: any) =>
+          Rule.min(0).error('Stock level must be a positive number.'),
       },
       {
         name: 'category',
@@ -65,6 +74,6 @@ export const fetchproducts = {
         },
         validation: (Rule: any) => Rule.required().error('Category is required'),
       },
-      
     ],
   };
+  

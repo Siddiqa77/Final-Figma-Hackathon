@@ -2,8 +2,9 @@
 "use client";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { sanityClient } from "@/sanity/sanity";
+
 import Link from "next/link";
+import { client } from "@/sanity/lib/client";
 
 const ShopgridProduct: React.FC = () => {
   const [products, setProducts] = useState<any>([]);
@@ -11,7 +12,7 @@ const ShopgridProduct: React.FC = () => {
   useEffect(() => {
     // Fetch data from Sanity
     const fetchProducts = async () => {
-      const query = `*[_type == "product"]{
+      const query = `*[_type == "item"]{
         id, 
         name,
         price,
@@ -19,11 +20,12 @@ const ShopgridProduct: React.FC = () => {
        discountPercentage,
         "image": image.asset->url
       }`;
-      const product = await sanityClient.fetch(query);
-      setProducts(product);
+      const products = await client.fetch(query);
+      setProducts(products);
     };
     fetchProducts();
   }, []);
+  console.log(products);
 
   if (!products.length) return <p>Loading...</p>;
  
