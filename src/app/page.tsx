@@ -5,11 +5,14 @@ import Latestblog from "@/components/Homepage/Latestblog";
 import Newsletter from "@/components/Homepage/Newsletter";
 import DiscountItem from "@/components/Homepage/DiscountItem";
 import Tags from "@/components/Homepage/Tags";
- import FeaturedProduct from "@/components/Homepage/FeaturedProduct";
- import LatestProduct from "@/components/Homepage/LatestProduct";
-
-import Topcategories from "@/components/Homepage/Topcategories";
+import FeaturedProduct from "@/components/Homepage/FeaturedProduct";
+import LatestProduct from "@/components/Homepage/LatestProduct";
 import TrendingProducts from "@/components/Homepage/TrendingProducts";
+import Topcategories from "@/components/Homepage/Topcategories";
+ 
+
+
+
 
 
 const page = () => {
