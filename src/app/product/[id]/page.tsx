@@ -1,4 +1,3 @@
-
 import Detailpage from "@/components/detailfolder/detailpage";
 import Relatedproducts from "@/components/detailfolder/relatedproducts";
 import Image from "next/image";
@@ -28,7 +27,6 @@ export default async function Page({
      "image": image.asset->url,
     
   }`;
-  
 
   const product = await client.fetch(query);
 
@@ -93,42 +91,37 @@ export default async function Page({
           </div>
           <div className="flex items-center space-x-4">
             <span className="text-lg md:text-xl font-bold">
-              {product.discountedPercentage}
+             ${product.price}
             </span>
-            <span className="line-through text-[#FB2E86]">
-              {product.price}
-            </span>
+            <span className=" text-[#FB2E86]">{product.stockLevel}</span>
           </div>
           <p className="text-[16px] font-semibold md:text-[18px] text-[#A9ACC6] leading-[29px] family">
             {product.description}
           </p>
-{/*           
+
           <button
-  className="snipcart-add-item px-1 py-4 md:px-3 rounded-md md:py-4 inline-block text-[18px] family font-bold ml-20 mt-8 bg-[#e12570] text-[#fff] transition-all duration-300 ease-in-out w-1/2 sm:w-1/2 text-center"
-  data-item-id={product.id}
-  data-item-name={product.name}
-  data-item-price={product.price}
-  data-item-description={product.description}
-  data-item-dicountPercentage={product.dicountPercentage}
-  data-item-isFeaturedProduct={product.isFeaturedProduct}
-  data-item-stockLevel={product.stockLevel}
-  data-item-category={
-    Array.isArray(product.category)
-      ? product.category.map((category: any) => category.value).join(", ")
-      : product.category?.value || product.category || ""
-  }
-  data-item-url={`/product/${product.id}`}
-  data-item-image={product.image}
->
-  Add to Cart 🤍
-</button> */}
-          
-          
+            className="snipcart-add-item px-1 py-4 md:px-3 rounded-md md:py-4 inline-block text-[18px] family font-bold ml-20 mt-8 bg-[#e12570] text-[#fff] transition-all duration-300 ease-in-out w-1/2 sm:w-1/2 text-center"
+            data-item-id={product.id}
+            data-item-name={product.name}
+            data-item-price={product.price}
+            data-item-description={product.description}
+            data-item-dicountPercentage={product.dicountPercentage}
+            data-item-isFeaturedProduct={product.isFeaturedProduct}
+            data-item-stockLevel={product.stockLevel}
+            data-item-category={
+              Array.isArray(product.category)
+                ? product.category
+                    .map((category: any) => category.value)
+                    .join(", ")
+                : product.category?.value || product.category || ""
+            }
+            data-item-url={`/product/${product.id}`}
+            data-item-image={product.image}
+          >
+            Add to Cart 🤍
+          </button>
         </div>
-        
-        
       </div>
-     
 
       <section>
         <Relatedproducts />

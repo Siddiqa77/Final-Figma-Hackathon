@@ -104,7 +104,7 @@ export default async function Page({
             {product.description}
           </p>
           
-          {/* <button
+           <button
   className="snipcart-add-item px-1 py-4 md:px-3 rounded-md md:py-4 inline-block text-[18px] family font-bold ml-20 mt-8 bg-[#e12570] text-[#fff] transition-all duration-300 ease-in-out w-1/2 sm:w-1/2 text-center"
   data-item-id={product.id}
   data-item-name={product.name}
@@ -122,7 +122,8 @@ export default async function Page({
   data-item-image={product.image}
 >
   Add to Cart 🤍
-</button> */}
+</button>
+ 
           
           
         </div>
