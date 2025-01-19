@@ -1,6 +1,5 @@
 "use client";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faSearch } from "@fortawesome/free-solid-svg-icons";
+
 import { IoClose, IoSearch } from "react-icons/io5";
 import Link from "next/link";
 import { useState } from "react";
@@ -53,7 +52,7 @@ function Header() {
                         </li>
                       </Link>
                       <Link
-                        href="/account"
+                        href="/myaccount"
                         className="hover:text-[#FB2E86] flex items-center  focus:text-[#FB2E86] active:text-[#FB2E86] hover:stroke-[#FB2E86]"
                       >
                         <li className="p-2 hover:bg-gray-100 cursor-pointer flex justify-between items-center">
@@ -61,7 +60,7 @@ function Header() {
                         </li>
                       </Link>
                       <Link
-                        href="/cart"
+                        href="/shoppingcart"
                         className="hover:text-[#FB2E86] flex items-center  focus:text-[#FB2E86] active:text-[#FB2E86] hover:stroke-[#FB2E86]"
                       >
                         <li className="p-2 hover:bg-gray-100 cursor-pointer flex justify-between items-center">
@@ -80,16 +79,16 @@ function Header() {
                   </li>
                   <div className="hidden md:flex space-x-6  text-base font-normal lato">
                     <li className="hover:text-[rgb(251,46,134)] flex items-center focus:text-[#FB2E86] active:text-[#FB2E86]">
-                      <Link href="/product-page">Pages</Link>
+                      <Link href="/shopleftsidebar">Pages</Link>
                     </li>
                     <li className="hover:text-[rgb(251,46,134)] flex items-center focus:text-[#FB2E86] active:text-[#FB2E86]">
-                      <Link href="/our-products">Product</Link>
+                      <Link href="/griddefault">Product</Link>
                     </li>
                     <li className="hover:text-[rgb(251,46,134)] flex items-center focus:text-[#FB2E86] active:text-[#FB2E86]">
                       <Link href="/blog">Blog</Link>
                     </li>
                     <li className="hover:text-[rgb(251,46,134)] flex items-center focus:text-[#FB2E86] active:text-[#FB2E86]">
-                      <Link href="/shop">Shop</Link>
+                      <Link href="/shoplist">Shop</Link>
                     </li>
                     <li className="hover:text-[rgb(251,46,134)] flex items-center focus:text-[#FB2E86] active:text-[#FB2E86]">
                       <Link href="/contact">Contact</Link>
@@ -98,6 +97,7 @@ function Header() {
                 </ul>
               </div>
             </div>
+            
             {/* Search and Toggle */}
             <div className="flex gap-x-4 items-center">
               <div className="lg:flex hidden md:block w-[243px] h-[40px] bg-[#fff] rounded-[4px] items-center">
@@ -106,7 +106,7 @@ function Header() {
                   type="search"
                   placeholder="What are you looking for?"
                 />
-                {/* Search & Cart */}
+               
                 <div className="hidden md:flex items-center space-x-4 h-10">
                   <div className="relative">
                     <input
@@ -121,6 +121,8 @@ function Header() {
                   </div>
                 </div>
               </div>
+
+          
               <button
                 className="text-black block md:hidden text-3xl z-50"
                 onClick={toggleMenu}
