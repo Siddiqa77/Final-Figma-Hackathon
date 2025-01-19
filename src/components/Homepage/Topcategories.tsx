@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Image from "next/image";
 import { sanityClient } from "@/sanity/sanity";
 import Link from "next/link";
@@ -33,7 +33,7 @@ const Topcategories = () => {
   return (
     <div className="container mx-auto px-4 py-10 mb-20">
       {/* Heading */}
-      <h2 className="text-3xl font-bold text-center text-[#151875] mb-20">
+      <h2 className="text-4xl family font-bold text-center text-[#151875] mb-20">
         Top Categories
       </h2>
 
@@ -49,8 +49,8 @@ const Topcategories = () => {
                 <Image
                   src={product.image}
                   alt={product.name}
-                  width={100}
-                  height={100}
+                  width={150}
+                  height={150}
                   className="object-contain transition-transform duration-300 hover:scale-110"
                 />
               </div>
@@ -68,7 +68,7 @@ const Topcategories = () => {
                     {product.name}
                   </h3>
                   <p className="text-[#151875] text-base font-normal">
-                    {product.price}
+                    ${product.price}
                   </p>
                 </div>
               </Link>

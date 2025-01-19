@@ -48,7 +48,7 @@ const TopBar = () => {
             <span>English</span>
             <span className="text-xs">▼</span>
             {languageDropdown && (
-              <div className="absolute top-8 bg-[#F1F1F1] text-black rounded shadow-md p-2 z-10">
+              <div className="absolute top-8 bg-[#fff] text-black rounded shadow-md p-2 z-10">
                 {["English", "Spanish", "French", "German"].map((lang) => (
                   <div
                     key={lang}
@@ -70,7 +70,7 @@ const TopBar = () => {
             <span>USD</span>
             <span className="text-xs">▼</span>
             {currencyDropdown && (
-              <div className="absolute top-8 text-xs bg-[#F1F1F1] text-black rounded shadow-md p-2 z-10">
+              <div className="absolute top-8 text-xs bg-[#fff] text-black rounded shadow-md p-2 z-10">
                 {["USD", "EUR", "GBP"].map((currency) => (
                   <div
                     key={currency}

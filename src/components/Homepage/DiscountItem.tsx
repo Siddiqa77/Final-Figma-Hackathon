@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -52,9 +53,11 @@ const DiscountItem: React.FC = () => {
           {/* Background Circle */}
           <div className="w-72 h-72 md:w-96 md:h-96 bg-pink-100 rounded-full absolute top-1/2 -translate-y-1/2 -z-10  animate-pulse"></div>
           {/* Image */}
-          <img
+          <Image
             src="/discountitempic.png"
             alt="Discount Sofa"
+            width={400}
+            height={400}
             className="object-contain max-w-full h-auto transition duration-300 ease-in-out transform hover:scale-105"
           />
         </div>

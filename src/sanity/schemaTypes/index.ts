@@ -9,10 +9,11 @@ import { latestBlog } from '../products/latestblog'
 import { shopgridproducts } from '../products/shopgridproduct'
 import { featuredproduct } from '../products/featuredProduct'
 import { newitem } from './newitem'
+import { heroitem } from '../products/hero'
 
 
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [latestproduct,trendingproduct,featuredproduct,relatedProduct,topCategories,latestBlog,
-    shopgridproducts,newitem]
+    shopgridproducts,newitem,heroitem]
 }

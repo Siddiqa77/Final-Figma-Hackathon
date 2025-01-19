@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { client } from "@/sanity/lib/client";
@@ -15,7 +15,7 @@ const LatestProduct = () => {
         name,
         price,
         description,
-        originalPrice,
+        discountedPercentage,
         "image": image.asset->url,
       }`;
       const products = await client.fetch(query);
@@ -32,7 +32,7 @@ const LatestProduct = () => {
   return (
     <div className="container mx-auto px-4 py-10 max-w-[1177px]">
       {/* Heading */}
-      <h2 className="text-4xl family font-bold text-center text-[#1A0B5B] mb-4">
+      <h2 className="text-4xl family font-bold text-center md:mt-16 text-[#151875] mb-10">
         Latest Products
       </h2>
 
@@ -53,7 +53,7 @@ const LatestProduct = () => {
       </div>
 
       {/* Product Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 md:gap-8 gap-8">
         {products.map((product: any, index: any) => (
           <div
             key={index}
@@ -73,20 +73,18 @@ const LatestProduct = () => {
             {/* Product Details */}
             <div className="p-4">
               <Link href={`/latestproduct/${product.id}`}>
-                {/* Product Name */}
-                <h3 className="text-base font-semibold text-[#151875] mb-2 lato">
-                  {product.name}
-                </h3>
+                {/* Name, Price, and Discount in One Row */}
+                <div className="flex items-center justify-between">
+                  <h3 className="text-base font-semibold text-[#151875] family leading-normal">
+                    {product.name}
+                  </h3>
+                  <div className="text-right">
+                    <p className="text-sm font-bold text-[#151875] family">
+                      ${product.price}
+                    </p>
+                  </div>
+                </div>
               </Link>
-              {/* Price Section */}
-              <div className="flex items-center justify-between">
-                <p className="text-sm font-bold text-[#151875] family">
-                  {product.price}
-                </p>
-                <p className="text-sm font-normal text-[#fb2448] line-through family">
-                  {product.originalPrice}
-                </p>
-              </div>
             </div>
 
             {/* Divider Line */}
