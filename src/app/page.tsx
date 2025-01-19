@@ -5,9 +5,9 @@ import Latestblog from "@/components/Homepage/Latestblog";
 import Newsletter from "@/components/Homepage/Newsletter";
 import DiscountItem from "@/components/Homepage/DiscountItem";
 import Tags from "@/components/Homepage/Tags";
-import FeaturedProduct from "@/components/Homepage/FeaturedProduct";
-import LatestProduct from "@/components/Homepage/LatestProduct";
-import TrendingProducts from "@/components/Homepage/TrendingProducts";
+import FeaturedProduct from "@/components/Homepage/new-featuredproducts";
+import LatestProduct from "@/components/Homepage/new-latestproducts";
+import TrendingProducts from "@/components/Homepage/new-trendingproducts";
 import Topcategories from "@/components/Homepage/Topcategories";
  
 
