@@ -100,7 +100,7 @@ export default async function Page({
           </p>
 
           <button
-            className="snipcart-add-item px-1 py-4 md:px-3 rounded-md md:py-4 inline-block text-[18px] family font-bold ml-20 mt-8 bg-[#e12570] text-[#fff] transition-all duration-300 ease-in-out w-1/2 sm:w-1/2 text-center"
+            className="snipcart-add-item px-1 py-4 md:px-3 rounded-md  md:py-4 inline-block text-[18px] family font-bold ml-20 bg-[#e12570] text-[#fff] transition-all duration-300 ease-in-out w-1/2 sm:w-1/2 text-center"
             data-item-id={product.id}
             data-item-name={product.name}
             data-item-price={product.price}

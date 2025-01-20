@@ -1,9 +1,11 @@
 "use client";
 
-import { IoClose, IoSearch } from "react-icons/io5";
+import { IoClose } from "react-icons/io5";
 import Link from "next/link";
 import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
+
+import SearchBar from "./searchbar";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -85,7 +87,7 @@ function Header() {
                       <Link href="/griddefault">Product</Link>
                     </li>
                     <li className="hover:text-[rgb(251,46,134)] flex items-center focus:text-[#FB2E86] active:text-[#FB2E86]">
-                      <Link href="/blog">Blog</Link>
+                      <Link href="/mainblogpage">Blog</Link>
                     </li>
                     <li className="hover:text-[rgb(251,46,134)] flex items-center focus:text-[#FB2E86] active:text-[#FB2E86]">
                       <Link href="/shoplist">Shop</Link>
@@ -97,32 +99,13 @@ function Header() {
                 </ul>
               </div>
             </div>
-            
+
             {/* Search and Toggle */}
             <div className="flex gap-x-4 items-center">
-              <div className="lg:flex hidden md:block w-[243px] h-[40px] bg-[#fff] rounded-[4px] items-center">
-                <input
-                  className="w-full p-1 px-3 text-[13px] rounded-md bg-[#fff] outline-none"
-                  type="search"
-                  placeholder="What are you looking for?"
-                />
-               
-                <div className="hidden md:flex items-center space-x-4 h-10">
-                  <div className="relative">
-                    <input
-                      type="text"
-                      className="pr-20 h-10 text-sm text-gray-700 border-2 border-[#e7e6ef]"
-                    />
-                    <div className="w-[51px] h-10 left-[200px] top-0 absolute bg-[#fb2e86] flex items-center justify-center">
-                      <i className="text-white text-lg">
-                        <IoSearch />
-                      </i>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <section>
+                <SearchBar />
+              </section>
 
-          
               <button
                 className="text-black block md:hidden text-3xl z-50"
                 onClick={toggleMenu}
@@ -224,7 +207,7 @@ function Header() {
             </li>
             <li>
               <a
-                href="/blog"
+                href="/mainblogpage"
                 className="hover:text-[rgb(251,46,134)] flex items-center focus:text-[#FB2E86] active:text-[#FB2E86]"
               >
                 Blog

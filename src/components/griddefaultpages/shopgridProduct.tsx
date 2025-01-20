@@ -12,7 +12,7 @@ const ShopgridProduct: React.FC = () => {
   useEffect(() => {
     // Fetch data from Sanity
     const fetchProducts = async () => {
-      const query = `*[_type == "item"]{
+      const query = `*[_type == "item"][8...20]{
         id, 
         name,
         price,
@@ -102,10 +102,10 @@ const ShopgridProduct: React.FC = () => {
               {/* Product Price */}
               <div className="flex justify-evenly items-center">
                 <p className="text-sm font-semibold text-[#151875] family">
-                  {product.price}
+                  ${product.price}
                 </p>
-                <p className="text-sm font-normal  family">
-                  {product.discountPercentage}
+                <p className="text-sm font-normal   family">
+                  {product.discountPercentage}% off
                 </p>
               </div>
             </div>

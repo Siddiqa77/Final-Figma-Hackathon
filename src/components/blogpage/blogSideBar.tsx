@@ -1,6 +1,8 @@
 // import { Card } from "@/components/ui/card"
 // import { Input } from "@/components/ui/input"
 
+import Image from "next/image";
+
 export function BlogSidebar() {
   return (
     <div className="space-y-8 md:w-[250px]">
@@ -36,11 +38,34 @@ export function BlogSidebar() {
       <div>
         <h3 className="text-lg text-[#151875] font-semibold mb-4">Recent Post</h3>
         <div className="space-y-4">
-          {[1, 2, 3, 4].map((post) => (
-            <div key={post} className="flex gap-4">
-              <img
-                src="/images/blog-1.png"
+        
+            <div className="flex flex-col gap-4">
+              <Image
+                src="/smblog4.png"
                 alt=""
+                width={100}
+                height={100}
+                className="w-20 h-20 object-cover rounded"
+              />
+                <Image
+                src="/smblog5.png"
+                alt=""
+                width={100}
+                height={100}
+                className="w-20 h-20 object-cover rounded"
+              />
+                <Image
+                src="/smblog6.png"
+                alt=""
+                width={100}
+                height={100}
+                className="w-20 h-20 object-cover rounded"
+              />
+                <Image
+                src="/smblog7.png"
+                alt=""
+                width={100}
+                height={100}
                 className="w-20 h-20 object-cover rounded"
               />
               <div>
@@ -48,7 +73,7 @@ export function BlogSidebar() {
                 <p className="text-sm text-gray-500">Aug 09 2020</p>
               </div>
             </div>
-          ))}
+         
         </div>
       </div>
 
@@ -56,11 +81,13 @@ export function BlogSidebar() {
       <div>
         <h3 className="text-lg font-semibold text-[#151875] mb-4">Sale Product</h3>
         <div className="space-y-4">
-          {[1, 2, 3].map((product) => (
-            <div key={product} className="flex gap-4">
+         
+            <div className="flex gap-4">
               <img
-                src="/images/blog-4.png"
+                src="/smblog8.png"
                 alt=""
+                width={100}
+                height={100}
                 className="w-20 h-20 object-cover rounded"
               />
               <div>
@@ -68,7 +95,7 @@ export function BlogSidebar() {
               <p className="text-sm text-gray-500">Aug 09 2020</p>
               </div>
             </div>
-          ))}
+          
         </div>
       </div>
 
@@ -76,19 +103,34 @@ export function BlogSidebar() {
       <div>
         <h3 className="text-lg text-[#151875] font-semibold mb-4">Offer product</h3>
         <div className="grid grid-cols-2 gap-4">
-          {/* {[1, 2, 3, 4].map((product) => (
-            <Card key={product} className="">
-              <img
-                src="/images/blog-5.png"
-                alt=""
+          
+              <Image
+                src="/smblog9.png"
+                alt="smblog4"
+                width={100}
+                height={100}
+                className="w-full aspect-square object-cover rounded mb-2"
+              />
+               <Image
+                src="/smblog10.png"
+                alt="smblog4"
+                width={100}
+                height={100}
+                className="w-full aspect-square object-cover rounded mb-2"
+              />
+               <Image
+                src="/smblog4.png"
+                alt="smblog4"
+                width={100}
+                height={100}
                 className="w-full aspect-square object-cover rounded mb-2"
               />
               <div className="text-center ">
                 <h4 className="text-sm font-medium text-[#151875]">Cantilever chair</h4>
                 <p className="text-xs text-[#151875] ">$26.00</p>
               </div>
-            </Card>
-          ))} */}
+           
+          
         </div>
       </div>
 
