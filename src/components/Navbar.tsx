@@ -57,7 +57,7 @@ function Header() {
                         className="hover:text-[#FB2E86] flex items-center  focus:text-[#FB2E86] active:text-[#FB2E86] hover:stroke-[#FB2E86]"
                       >
                         <li className="p-2 hover:bg-gray-100 cursor-pointer flex justify-between items-center">
-                          My Account
+                          Login
                         </li>
                       </Link>
                       <Link
@@ -65,7 +65,7 @@ function Header() {
                         className="hover:text-[#FB2E86] flex items-center  focus:text-[#FB2E86] active:text-[#FB2E86] hover:stroke-[#FB2E86]"
                       >
                         <li className="p-2 hover:bg-gray-100 cursor-pointer flex justify-between items-center">
-                          Shopping Cart
+                          Signup
                         </li>
                       </Link>
                       <Link
@@ -73,7 +73,7 @@ function Header() {
                         className="hover:text-[#FB2E86] flex items-center  focus:text-[#FB2E86] active:text-[#FB2E86] hover:stroke-[#FB2E86]"
                       >
                         <li className="p-2 hover:bg-gray-100 cursor-pointer flex justify-between items-center">
-                          Check Out 
+                          Product 
                         </li>
                       </Link>
                     </ul>

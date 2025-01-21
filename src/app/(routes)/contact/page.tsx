@@ -1,12 +1,14 @@
 "use client";
-import * as React from "react";
 
+import Link from "next/link";
+import * as React from "react";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Import styles for react-toastify
 
 // Sample data
 const grids = [
   {
     title: "Contact Us",
-    
   },
 ];
 
@@ -34,8 +36,23 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Form submitted");
+
+    // Get form data
+    const formData = new FormData(e.target as HTMLFormElement);
+    const name = formData.get("name") as string;
+    const email = formData.get("email") as string;
+    const subject = formData.get("subject") as string;
+    const message = formData.get("message") as string;
+
+    // Simple Validation
+    if (!name || !email || !subject || !message) {
+      toast.error("All fields are required. Please fill them in.");
+      return;
+    }
+
+    // Simulate successful submission
+    console.log({ name, email, subject, message });
+    toast.success("Your message has been sent successfully!");
   };
 
   return (
@@ -43,17 +60,17 @@ const Contact = () => {
       {/* Hero Section */}
       <section className="relative bg-[#F6F5FF] py-10 md:py-20 px-5 md:px-20 flex flex-col md:flex-row items-center justify-between overflow-hidden">
         <div className="md:w-1/3 max-w-lg text-center md:text-left flex flex-col justify-center">
-          <h1 className="text-3xl md:text-4xl font-bold text-[#101750] leading-tight mt-2 lg:ml-20">
+          <h1 className="text-3xl family md:text-4xl font-bold text-[#101750] leading-tight mt-2 lg:ml-20">
             {current.title}
           </h1>
           <div className="flex flex-wrap justify-center gap-6 mb-10 mr-4 lg:mr-20">
-            <div className="text-[#000000] text-[16px] font-normal cursor-pointer hover:text-[#fb2448] transition">
+            <div className="text-[#000000] text-[16px] font-normal cursor-pointer hover:text-[#fb2448] lato transition">
               Home
             </div>
-            <div className="text-[#000] text-[16px] font-normal cursor-pointer hover:text-[#fb2448] transition">
+            <div className="text-[#000] text-[16px] font-normal cursor-pointer hover:text-[#fb2448] lato transition">
               Pages
             </div>
-            <div className="text-[#FB2E86] text-[16px] font-normal cursor-pointer hover:text-[#fb2448] transition">
+            <div className="text-[#FB2E86] text-[16px] font-normal cursor-pointer hover:text-[#fb2448] lato transition">
               Contact Us
             </div>
           </div>
@@ -71,22 +88,21 @@ const Contact = () => {
               </h2>
               <p className="text-gray-600 mb-6">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis
-                neque ultrices mattis aliquam, malesuada diam est. Malesuada sem
-                tristique amet erat vitae eget dolor lobortis.
+                neque ultrices mattis aliquam, malesuada diam est.
               </p>
               <div className="flex gap-4">
-                <a
+                <Link
                   href="#"
                   className="h-8 w-8 rounded-full bg-[#7E33E0] flex items-center justify-center text-white"
                 >
                   f
-                </a>
-                <a
+                </Link>
+                <Link
                   href="#"
                   className="h-8 w-8 rounded-full bg-[#FB2E86] flex items-center justify-center text-white"
                 >
                   t
-                </a>
+                </Link>
                 <a
                   href="#"
                   className="h-8 w-8 rounded-full bg-[#5625DF] flex items-center justify-center text-white"
@@ -101,7 +117,6 @@ const Contact = () => {
                 Contact Way
               </h2>
               <div className="grid gap-6 sm:grid-cols-2">
-                {/* Contact Info Cards */}
                 <ContactInfoCard
                   icon={<span className="h-5 w-5">📞</span>}
                   title="Tel: 877-67-88-99"
@@ -129,11 +144,11 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="">
+            <div>
               <h2 className="text-4xl family font-bold text-[#151875] mb-6">
                 Get In Touch
               </h2>
-              <p className="text-gray-600">
+              <p className="text-gray-500 lato">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis
                 neque ultrices tristique amet erat vitae eget dolor lobortis
                 quis bibendum quam.
@@ -144,11 +159,13 @@ const Contact = () => {
               >
                 <div className="grid gap-4 sm:grid-cols-2">
                   <input
+                    name="name"
                     placeholder="Your Name*"
                     required
                     className="border rounded-[4px] border-gray-500 p-3"
                   />
                   <input
+                    name="email"
                     type="email"
                     placeholder="Your E-mail*"
                     required
@@ -156,18 +173,20 @@ const Contact = () => {
                   />
                 </div>
                 <input
+                  name="subject"
                   placeholder="Subject"
                   required
                   className="border rounded-[4px] border-gray-500 p-3 w-full"
                 />
                 <textarea
+                  name="message"
                   placeholder="Type Your Message"
                   required
                   className="min-h-[150px] border rounded-[4px] border-gray-500 p-3 w-full"
                 />
                 <button
                   type="submit"
-                  className="bg-[#FB2E86] rounded-[4px] px-10 py-3 text-white hover:bg-[#FB2E86]/90"
+                  className="bg-[#FB2E86] lato rounded-[4px] px-10 py-3 text-[#fff] hover:bg-[#FB2E86]/90 hover:font-bold transition duration-300 ease-in-out transform hover:bg-pink-700 hover:scale-105"
                 >
                   Send Mail
                 </button>
@@ -185,6 +204,9 @@ const Contact = () => {
           </div>
         </div>
       </div>
+
+      {/* Toast Notification */}
+      <ToastContainer />
     </div>
   );
 };
