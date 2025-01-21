@@ -166,7 +166,7 @@ function Header() {
                       href="/myaccount"
                       className="hover:text-[rgb(251,46,134)] block focus:text-[#FB2E86] active:text-[#FB2E86]"
                     >
-                      My Account
+                    Login
                     </Link>
                   </li>
                   <Link
@@ -174,7 +174,7 @@ function Header() {
                     className="hover:text-[#FB2E86] flex items-center  focus:text-[#FB2E86] active:text-[#FB2E86] hover:stroke-[#FB2E86]"
                   >
                     <li className="p-2 hover:bg-gray-100 cursor-pointer flex justify-between items-center">
-                      Shoppig Cart
+                      Signup
                     </li>
                   </Link>
                   <Link
@@ -182,7 +182,7 @@ function Header() {
                     className="hover:text-[#FB2E86] flex items-center  focus:text-[#FB2E86] active:text-[#FB2E86] hover:stroke-[#FB2E86]"
                   >
                     <li className="p-2 hover:bg-gray-100 cursor-pointer flex justify-between items-center">
-                      Check Out 
+                      Product
                     </li>
                   </Link>
                 </ul>
