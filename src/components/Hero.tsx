@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
-const HeroSection = () => {
+const Hero = () => {
   const [products, setProducts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -41,6 +41,7 @@ const HeroSection = () => {
   if (loading) return <p>Loading...</p>;
 
   const currentProduct = products[currentSlide];
+  
 
   return (
     <section className="relative bg-[#F2F0FF] py-10 md:py-20 px-5 md:px-20 flex flex-col md:flex-row items-center justify-between overflow-hidden transition-all duration-300 ease-in-out">
@@ -70,7 +71,7 @@ const HeroSection = () => {
         </p>
         <Link
           href="/griddefault"
-          className="inline-block bg-[#FB2E86] text-[#fff] text-[17px] family font-semibold py-3 px-3 ml-20 mt-6 hover:bg-[#e12570] transition-all duration-300 ease-in-out w-1/2 sm:w-1/2 text-center"
+          className="inline-block bg-[#FB2E86] text-[#fff] text-[17px] family font-semibold py-3 px-3 ml-20 mt-6  hover:font-bold hover:bg-pink-700 hover:scale-105 transition-all duration-300 ease-in-out w-1/2 sm:w-1/2 text-center"
         >
           Shop Now
         </Link>
@@ -128,4 +129,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+export default Hero;

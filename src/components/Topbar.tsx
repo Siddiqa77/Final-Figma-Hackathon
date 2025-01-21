@@ -14,7 +14,7 @@ const TopBar = () => {
   const [currencyDropdown, setCurrencyDropdown] = useState(false);
 
   return (
-    <div className="bg-[#7E33E0] text-[#F1F1F1] py-2 text-sm flex justify-center">
+    <div className="bg-[#7E33E0] text-[#F1F1F1] py-2 text-sm flex justify-center fixed top-0 left-0 w-full z-50">
       {/* TopBar Container */}
       <div className="w-full max-w-[1200px] flex flex-wrap items-center justify-between px-4 gap-y-4">
         {/* Left Section */}
@@ -48,7 +48,7 @@ const TopBar = () => {
             <span>English</span>
             <span className="text-xs">▼</span>
             {languageDropdown && (
-              <div className="absolute top-8 bg-[#fff] text-black rounded shadow-md p-2 z-10">
+              <div className="absolute top-8 bg-white text-black rounded shadow-md p-2 z-10 w-28">
                 {["English", "Spanish", "French", "German"].map((lang) => (
                   <div
                     key={lang}
@@ -70,7 +70,7 @@ const TopBar = () => {
             <span>USD</span>
             <span className="text-xs">▼</span>
             {currencyDropdown && (
-              <div className="absolute top-8 text-xs bg-[#fff] text-black rounded shadow-md p-2 z-10">
+              <div className="absolute top-8 bg-white text-black rounded shadow-md p-2 z-10 w-20">
                 {["USD", "EUR", "GBP"].map((currency) => (
                   <div
                     key={currency}

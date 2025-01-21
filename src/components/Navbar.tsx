@@ -4,7 +4,6 @@ import { IoClose } from "react-icons/io5";
 import Link from "next/link";
 import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
-
 import SearchBar from "./searchbar";
 
 function Header() {
@@ -16,8 +15,8 @@ function Header() {
   };
 
   return (
-    <main className=" bg-[#fff] w-[100vw]pt-3">
-      <div className="w-full flex items-center justify-center mx-auto bg-[#fff] h-[70px]">
+    <main className=" bg-[#fff] w-[100vw]pt-3 md:mt-12 mt-20">
+      <div className="w-full flex items-center justify-center mx-auto bg-[#fff] h-[50px]">
         <div className="w-full flex justify-center px-[15px] md:px-[135px]">
           {/* Content */}
           <div className="w-full md:w-full lg:w-[1170px] flex items-center justify-between h-[50px]">
@@ -66,7 +65,7 @@ function Header() {
                         className="hover:text-[#FB2E86] flex items-center  focus:text-[#FB2E86] active:text-[#FB2E86] hover:stroke-[#FB2E86]"
                       >
                         <li className="p-2 hover:bg-gray-100 cursor-pointer flex justify-between items-center">
-                          CartPage
+                          Shopping Cart
                         </li>
                       </Link>
                       <Link
@@ -74,7 +73,7 @@ function Header() {
                         className="hover:text-[#FB2E86] flex items-center  focus:text-[#FB2E86] active:text-[#FB2E86] hover:stroke-[#FB2E86]"
                       >
                         <li className="p-2 hover:bg-gray-100 cursor-pointer flex justify-between items-center">
-                          Check Out Page
+                          Check Out 
                         </li>
                       </Link>
                     </ul>
@@ -175,7 +174,7 @@ function Header() {
                     className="hover:text-[#FB2E86] flex items-center  focus:text-[#FB2E86] active:text-[#FB2E86] hover:stroke-[#FB2E86]"
                   >
                     <li className="p-2 hover:bg-gray-100 cursor-pointer flex justify-between items-center">
-                      CartPage
+                      Shoppig Cart
                     </li>
                   </Link>
                   <Link
@@ -183,7 +182,7 @@ function Header() {
                     className="hover:text-[#FB2E86] flex items-center  focus:text-[#FB2E86] active:text-[#FB2E86] hover:stroke-[#FB2E86]"
                   >
                     <li className="p-2 hover:bg-gray-100 cursor-pointer flex justify-between items-center">
-                      Check Out Page
+                      Check Out 
                     </li>
                   </Link>
                 </ul>

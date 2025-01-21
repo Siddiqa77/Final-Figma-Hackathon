@@ -1,5 +1,7 @@
-import Hero from "@/components/Hero";
-import Midbanner from "@/components/Homepage/Midbanner";
+
+
+import Hero from "@/components/Hero";  
+import Midbanner from "@/components/Homepage/Midbanner";  
 import Support from "@/components/Homepage/Support";
 import Latestblog from "@/components/Homepage/Latestblog";
 import Newsletter from "@/components/Homepage/Newsletter";
@@ -9,31 +11,30 @@ import FeaturedProduct from "@/components/Homepage/new-featuredproducts";
 import LatestProduct from "@/components/Homepage/new-latestproducts";
 import TrendingProducts from "@/components/Homepage/new-trendingproducts";
 import Topcategories from "@/components/Homepage/Topcategories";
- 
 
 
-
-
-
-const page = () => {
+const Page = () => {
   return (
-    <div>
+    
       <div>
-        {/* Render homepage components */}
-        <Hero/>
-         <FeaturedProduct /> 
-         <LatestProduct /> 
+       
+        <Hero />
+        <FeaturedProduct />
+        <LatestProduct />
         <Support />
         <Midbanner />
-          <TrendingProducts />  
+        <TrendingProducts />
         <DiscountItem />
-         <Topcategories /> 
+        <Topcategories />
         <Newsletter />
         <Tags />
         <Latestblog />
+       
+        
+      
       </div>
-    </div>
+    
   );
-};
+}
 
-export default page;
+export default Page;

@@ -1,24 +1,70 @@
 import { BlogSidebar } from "@/components/blogpage/blogSideBar"
-import Link from "next/link"
- 
-// // import { Star } from "lucide-react"
-// import { BrandLogos } from "@/components/ui/brand-logos"
-export default function SingleBlogPage() {
+import { sanityClient } from "@/sanity/sanity";
+
+
+
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+
+  // Fetch the product
+
+  const query = `*[_type == "blogs" && id == "${id}"]{
+    id,
+    name,
+    subname,
+    price,
+    description,
+    discountPercentage,
+    date,
+    image {
+      asset -> {
+        url
+      }
+    }
+  }`;
+
+  const product = await sanityClient.fetch(query);
+
+  console.log(product);
+
+  if (!product) return <p>Product not found</p>;
+  
+const grids = [
+  {
+    title: "Shop Grid Default",
+  },
+];
+
+
+  const current = grids[0];
+
+
   return (
     <div>
-      {/* Page Header */}
-      <div className=" h-[286px] bg-[#F6F5FF] flex items-center py-16">
-        <div className="container md:w-[1170px] mx-auto px-4">
-          <h1 className="text-3xl text-center text-[#151875] md:text-left font-bold mb-4">Single Blog</h1>
-          <div className="flex justify-center text-[#151875] md:justify-start items-center gap-2 text-sm">
-            <Link href="/">Home</Link>
-            <span>•</span>
-            <Link href="/product-page">Pages</Link>
-            <span>•</span>
-            <span className="text-[#FB2E86]">Single Blog</span>
+       {/* Hero Section */}
+       <section className="relative bg-[#F6F5FF] py-10 md:py-20 px-5 md:px-20 flex flex-col md:flex-row items-center justify-between overflow-hidden">
+        {/* Center Column: Content (Title, Description, Button) */}
+        <div className="md:w-1/3 max-w-lg text-center md:text-left flex flex-col justify-center">
+          <h1 className="text-3xl md:text-4xl family font-bold text-[#101750] leading-tight mt-2 lg:ml-20 ">
+            {current.title}
+          </h1>
+          <div className="flex flex-wrap justify-center gap-6 mb-10 mr-4 lg:mr-20">
+            <div className="text-[#000000] text-[16px] font-normal lato cursor-pointer hover:text-[#fb2448] transition">
+              Home
+            </div>
+            <div className="text-[#000] text-[16px] font-normal lato cursor-pointer hover:text-[#fb2448] transition">
+              Pages
+            </div>
+            <div className="text-[#FB2E86] text-[16px] font-normal lato cursor-pointer hover:text-[#fb2448] transition">
+              Single Page
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Blog Content */}
       <div className="container md:w-[1177px] mx-auto px-4 py-16">
@@ -27,13 +73,13 @@ export default function SingleBlogPage() {
           <div className="md:col-span-2 space-y-8">
             <article className="space-y-6">
               <img
-                src="/images/blog-page-1.png"
-                alt=""
+                src={product.image}
+                alt="post1"
                 className="w-full rounded-lg"
               />
               <div className="flex items-center gap-4 text-sm text-gray-500">
-                <span className="bg-pink-100 text-pink-500 px-4 py-1 ">Surf Auxion</span>
-                <span className="bg-pink-100 text-pink-500 px-4 py-1 ">Aug 09 2020</span>
+                <span className="bg-pink-100 text-pink-500 px-4 py-1 ">{product.subname}</span>
+                <span className="bg-pink-100 text-pink-500 px-4 py-1 ">{product.date}</span>
               </div>
               <h1 className="text-3xl font-bold text-[#151875]">
                 Mauris at orci non vulputate diam tincidunt nec.
@@ -46,12 +92,12 @@ export default function SingleBlogPage() {
               <p className="text-gray-600 leading-8 px-2 border-l-2 mb-6 border-pink-500 py-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit dapibus est, nunc, montes, lacus consequat integer viverra. Sit morbi etiam quam rhoncus. Velit in arcu platea donec vitae ante posuere malesuada.Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
               <div className="grid grid-cols-2 py-6 gap-4">
                 <img
-                  src="/images/b-slug-1.png"
-                  alt=""
+                  src={product.image}
+                  alt="post2"
                   className="w-full rounded-lg"
                 />
                 <img
-                  src="/images/b-slug-2.png"
+                  src={product.image}
                   alt=""
                   className="w-full rounded-lg"
                 />
@@ -65,51 +111,35 @@ export default function SingleBlogPage() {
               <div className="grid grid-cols-2 gap-y-[100px] md:gap-y-0 md:grid-cols-4 gap-4">
                 <div >
                 <img
-                  src="/images/slug-1.png"
-                  alt=""
+                  src={product.image}
+                  alt="post3"
                   className="w-full h-full aspect-square rounded-lg"
                 />
                 <div className="mt-4">
-                  <h1 className="ml-4 font-semibold">Quem Sed</h1>
+                  <h1 className="ml-4 font-semibold">{product.subname}</h1>
                 </div>
                 <div className="flex text-sm gap-2 mt-2">
-                  <h3 className="text-[#151875]">$32.00</h3>
-                  <h4 className="text-pink-500 hidden md:block line-through">$56.00</h4>
+                  <h3 className="text-[#151875]">${product.price}</h3>
+                  <h4 className="text-pink-500 hidden md:block ">${product.discountPercentage}</h4>
                   <div className="flex items-center gap-1 ">
-                      {/* {[...Array(5)].map((_, i) => (
-                        <Star
-                          key={i}
-                          className={`w-3 h-3  ${i < 4
-                              ? "fill-yellow-400 text-yellow-400"
-                              : "text-gray-300"
-                            }`}
-                        />
-                      ))} */}
+                     
                     </div>
                 </div>
                 </div>
                 <div >
                 <img
-                  src="/images/slug-2.png"
+                  src={product.image}
                   alt=""
                   className="w-full h-full aspect-square rounded-lg"
                 />
                 <div className="mt-4">
-                  <h1 className="ml-4 font-semibold">Quem Sed</h1>
+                  <h1 className="ml-4 font-semibold">{product.name}</h1>
                 </div>
                 <div className="flex text-sm gap-2 mt-2">
-                  <h3 className="text-[#151875]">$32.00</h3>
-                  <h4 className="text-pink-500 hidden md:block  line-through">$56.00</h4>
+                  <h3 className="text-[#151875]">${product.price}</h3>
+                  <h4 className="text-pink-500 hidden md:block  ">{product.discountPercentage}</h4>
                   <div className="flex items-center gap-1 ">
-                      {/* {[...Array(5)].map((_, i) => (
-                        <Star
-                          key={i}
-                          className={`w-3 h-3  ${i < 4
-                              ? "fill-yellow-400 text-yellow-400"
-                              : "text-gray-300"
-                            }`}
-                        />
-                      ))} */}
+                     
                     </div>
                 </div>
                 </div>
@@ -117,26 +147,18 @@ export default function SingleBlogPage() {
 
                 <div >
                 <img
-                  src="/images/slug-3.png"
+                  src={product.image}
                   alt=""
                   className="w-full h-full aspect-square rounded-lg"
                 />
                 <div className="mt-4">
-                  <h1 className="ml-4 font-semibold">Quem Sed</h1>
+                  <h1 className="ml-4 font-semibold">{product.name}</h1>
                 </div>
                 <div className="flex text-sm gap-2 mt-2">
-                  <h3 className="text-[#151875]">$32.00</h3>
-                  <h4 className="text-pink-500 hidden md:block  line-through">$56.00</h4>
+                  <h3 className="text-[#151875]">${product.price}</h3>
+                  <h4 className="text-pink-500 hidden md:block  ">{product.discountPercentage}</h4>
                   <div className="flex items-center gap-1 ">
-                      {/* {[...Array(5)].map((_, i) => (
-                        <Star
-                          key={i}
-                          className={`w-3 h-3  ${i < 4
-                              ? "fill-yellow-400 text-yellow-400"
-                              : "text-gray-300"
-                            }`}
-                        />
-                      ))} */}
+                     
                     </div>
                 </div>
                 </div>
@@ -144,26 +166,18 @@ export default function SingleBlogPage() {
 
                 <div >
                 <img
-                  src="/images/slug-4.png"
+                  src={product.image}
                   alt=""
                   className="w-full h-full aspect-square rounded-lg"
                 />
                 <div className="mt-4">
-                  <h1 className="ml-4 font-semibold">Quem Sed</h1>
+                  <h1 className="ml-4 font-semibold">{product.name}</h1>
                 </div>
                 <div className="flex text-sm gap-2 mt-2">
-                  <h3 className="text-[#151875]">$32.00</h3>
-                  <h4 className="text-pink-500 hidden md:block  line-through">$56.00</h4>
+                  <h3 className="text-[#151875]">${product.price}</h3>
+                  <h4 className="text-pink-500 hidden md:block ">{product.discountPercentage}</h4>
                   <div className="flex items-center gap-1 ">
-                      {/* {[...Array(5)].map((_, i) => (
-                        <Star
-                          key={i}
-                          className={`w-3 h-3  ${i < 4
-                              ? "fill-yellow-400 text-yellow-400"
-                              : "text-gray-300"
-                            }`}
-                        />
-                      ))} */}
+                   
                     </div>
                 </div>
                 </div>
@@ -171,11 +185,11 @@ export default function SingleBlogPage() {
               </div>
               <div className="pt-24">
               <p className="text-gray-600 ">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit facilisis quis auctor pretium ipsum, eu rutrum. Condimentum eu malesuada vitae ultrices in in neque, porta dignissim. Adipiscing purus, cursus vulputate id id dictum at.Condimentum eu malesuada vitae ultrices in in neque, porta dignissim. Adipiscing purus, cursus vulputate id id dictum at. Adipiscing purus, cursus vulputate id id dictum at.cursus vulputate id id dictum at.
+              {product.description}
               </p>
 
               <p className="text-gray-600 my-12 ">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit facilisis quis auctor pretium ipsum, eu rutrum. Condimentum eu malesuada vitae ultrices in in neque, porta dignissim. Adipiscing purus, cursus vulputate id id dictum at.Condimentum eu malesuada vitae ultrices in in neque, porta dignissim. Adipiscing purus, cursus vulputate id id dictum at. Adipiscing purus, cursus vulputate id id dictum at.cursus vulputate id id dictum at.
+             {product.description}
               </p>
               </div>
 
@@ -209,11 +223,11 @@ export default function SingleBlogPage() {
                     />
                     <div>
                       <div className="flex my-0 py-0 gap-x-20">
-                      <h3 className="font-bold text-[#151875]">Sapien ac</h3>
-                      <p className="text-sm text-gray-500">Aug 09 2020</p>
+                      <h3 className="font-bold text-[#151875]">{product.subname}</h3>
+                      <p className="text-sm text-gray-500">{product.date}</p>
                       </div>
                       <p className=" py-0 my-0 text-gray-400 md:leading-8">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit facilisis quis auctor pretium ipsum.
+                      {product.name}
                       </p>
                     </div>
                   </div>

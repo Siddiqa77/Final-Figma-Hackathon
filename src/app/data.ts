@@ -2,7 +2,7 @@
 export const data = [
     {
       id: 1,
-      imageUrl: "/demo1.png",
+      imageUrl: "/cart1.png",
       title: "Ut diam consequat",
       color: "Brown",
       size: "XL",
@@ -10,7 +10,7 @@ export const data = [
     },
     {
       id: 2,
-      imageUrl: "/demo2.png",
+      imageUrl: "/clock.png",
       title: "Sed tincidunt massa",
       color: "Black",
       size: "L",
@@ -18,7 +18,7 @@ export const data = [
     },
     {
       id: 3,
-      image: "https://via.placeholder.com/83x87",
+      imageUrl: "/cart2.png",
       title: "Lorem ipsum dolor",
       color: "Gray",
       size: "M",
@@ -26,7 +26,7 @@ export const data = [
     },
     {
       id: 4,
-      image: "https://via.placeholder.com/83x87",
+      imageUrl: "/cart3.png",
       title: "Vestibulum ante",
       color: "Blue",
       size: "S",
@@ -34,7 +34,7 @@ export const data = [
     },
     {
       id: 5,
-      image: "https://via.placeholder.com/83x87",
+      imageUrl: "/cart4.png",
       title: "Praesent nec erat",
       color: "Green",
       size: "XXL",
