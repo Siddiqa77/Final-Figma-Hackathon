@@ -3,23 +3,19 @@ import { IoSearch } from "react-icons/io5";
 
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState("");
-
   const handleSearch = () => {
     if (searchQuery.trim() === "") {
-      // Show alert for empty search
       alert("Please enter a search term!");
       return;
     }
 
-    // Show a prompt or modal with the search query
-    const userResponse = window.confirm(`Do you want to search for: "${searchQuery}"?`);
+    const userResponse = window.confirm(
+      `Do you want to search for: "${searchQuery}"?`
+    );
 
     if (userResponse) {
-      // Execute search logic
       console.log("Searching for:", searchQuery);
-      alert(`Searching for: "${searchQuery}"`); // Example alert
-      // You can replace this with navigation or API logic
-      // Example: router.push(`/search?query=${searchQuery}`);
+      alert(`Searching for: "${searchQuery}"`);
     }
   };
 

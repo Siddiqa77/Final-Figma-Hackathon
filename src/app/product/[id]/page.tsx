@@ -1,5 +1,4 @@
 "use client";
-
 import { sanityClient } from "@/sanity/sanity";
 import Detailpage from "@/components/detailfolder/detailpage";
 import Relatedproducts from "@/components/detailfolder/relatedproducts";
