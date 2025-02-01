@@ -130,7 +130,8 @@ function Header() {
           </div>
           <ul className="space-y-6 mt-8">
             <li className="relative">
-              <div
+             <Link href="/">
+             <div
                 className="hover:text-[rgb(251,46,134)] flex items-center focus:text-[#FB2E86] active:text-[#FB2E86] cursor-pointer"
                 onClick={() => setShowSublinks(!showSublinks)}
               >
@@ -141,6 +142,7 @@ function Header() {
                   ▼
                 </span>
               </div>
+             </Link>
 
               {/* Sublinks */}
               {showSublinks && (

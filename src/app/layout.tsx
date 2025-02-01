@@ -1,31 +1,40 @@
 
-
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import Topbar from "@/components/Topbar";
-import { CartProvider } from "@/components/context/cartcontext";
-import { NotificationsProvider } from "@/components/context/NotificationContext";
-
+import { CartProvider } from "./context/cartContext";
+import {WishlistProvider} from "./context/WishlistContext";
+import TopBar from "@/components/Topbar";
+import { ToastContainer } from "react-toastify";
+import { Toaster } from "react-hot-toast";
 
 
 export const metadata: Metadata = {
-  title: "Final Figma Hackathon",
+  title: "New Figma Hackathon",
   description: "GIAIC Hackathon of Figma",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  
+
+  
   return (
     <html lang="en">
       <body>
         <CartProvider>
-          <NotificationsProvider>
-            <Topbar />
-            <Navbar />
+          <WishlistProvider>
+            <TopBar/> 
+            <Navbar/>
+            <Toaster position="top-right" reverseOrder={false} />
             {children}
             <Footer />
-          </NotificationsProvider>
+            <ToastContainer />
+          </WishlistProvider>
         </CartProvider>
       </body>
     </html>

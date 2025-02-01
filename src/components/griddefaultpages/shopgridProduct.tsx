@@ -1,23 +1,27 @@
-
 "use client";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-
 import Link from "next/link";
 import { client } from "@/sanity/lib/client";
+import { FaCartArrowDown, FaHeart } from "react-icons/fa";
+import { useCart } from "@/app/context/cartContext";
+import { useWishlist } from "@/app/context/WishlistContext";
+import { toast } from "react-hot-toast";
 
 const ShopgridProduct: React.FC = () => {
-  const [products, setProducts] = useState<any>([]);
-
+  const [products, setProducts] = useState<any[]>([]);
+  const { addToCart } = useCart();
+  const { addToWishlist } = useWishlist();
+  
   useEffect(() => {
     // Fetch data from Sanity
     const fetchProducts = async () => {
-      const query = `*[_type == "item"][8...20]{
+      const query = `*[_type == "item"]{
         id, 
         name,
         price,
         description,
-       discountPercentage,
+        discountPercentage,
         "image": image.asset->url
       }`;
       const products = await client.fetch(query);
@@ -25,52 +29,36 @@ const ShopgridProduct: React.FC = () => {
     };
     fetchProducts();
   }, []);
-  console.log(products);
+
+  const handleAddToCart = (product: any) => {
+    addToCart(product);
+    toast.success(`${product.name} added to cart!`);
+  };
+
+  const handleAddToWishlist = (product: any) => {
+    addToWishlist(product);
+    toast.success(`${product.name} added to wishlist!`);
+  };
 
   if (!products.length) return <p>Loading...</p>;
  
   return (
     <div className="container mx-auto px-4 py-10 max-w-[1177px]">
-      {/* Product Grid */}
-   
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center ">
-        {/* Product Card */}
-        {products.map((product: any, index: any) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 text-center">
+        {products.map((product, index) => (
           <div
             key={index}
-            className="relative bg-[#ffffff] shadow-md rounded-md overflow-hidden hover:scale-105 transition-transform duration-300"
+            className="relative bg-[#ffffff] w-full items-center shadow-md rounded-md overflow-hidden hover:scale-105 transition-transform duration-300"
           >
-
-            
-            {/* Upper Section: Image and Background */}
-            <div className="bg-[#F6F7FB] w-[270] h-[236px] flex justify-center items-center relative ">
-           {/* 2nd card icons */}
-                        {index === 1 && (
-                          <div className="w-[19px] h-[19px] bottom-[90px] right-7 relative ">
-                            <div className="flex gap-4">
-                              <Image
-                                src="/featuredcart.png"
-                                alt="cart"
-                                width={19}
-                                height={19}
-                              />
-                              <Image
-                                src="/featuredheart.png"
-                                alt="heart"
-                                width={19}
-                                height={19}
-                              />
-                              <Image
-                                src="/featuredsearch.png"
-                                alt="search"
-                                width={19}
-                                height={19}
-                              />
-                            </div>
-                            <div className="w-[13.85px] h-[13.85px] left-[1.98px] top-[2.77px] absolute"></div>
-                          </div>
-                        )}
-              {/* Product Image */}
+            <div className="bg-[#F6F7FB] w-full h-[236px] flex justify-center items-center relative">
+              <div className="absolute bottom-4 right-4 flex gap-4">
+                <button onClick={() => handleAddToCart(product)} title="Add to Cart">
+                  <FaCartArrowDown className="text-[#151875] font-semibold text-[20px]" />
+                </button>
+                <button onClick={() => handleAddToWishlist(product)} title="Add to Wishlist">
+                  <FaHeart className="text-red-700 font-semibold text-[20px]" />
+                </button>
+              </div>
               <Image
                 src={product.image}
                 alt={product.name}
@@ -78,19 +66,15 @@ const ShopgridProduct: React.FC = () => {
                 height={300}
                 className="w-[130px] h-[150px] object-contain"
               />
-             
             </div>
-
-          
             <div className="p-4">
-            <Link href={`/shopgridproduct/${product.id}`}>
-              <h3 className="text-lg font-bold text-[#151875] mb-2 family text-[18px]">
-                {product.name}
-              </h3>
+              <Link href={`/product/${product.id}`}>
+                <h3 className="text-xl font-semibold text-[#151875] mb-2 family text-[18px]">
+                  {product.name}
+                </h3>
               </Link>
-              {/* Color Options */}
-              <div className="flex items-center  justify-center mb-3 space-x-2">
-              {["#DE9034", "#EC42A2", "#8568FF"].map((color, idx) => (
+              <div className="flex items-center justify-center mb-3 space-x-2">
+                {["#DE9034", "#EC42A2", "#8568FF"].map((color, idx) => (
                   <div
                     key={idx}
                     className="w-2 h-2 rounded-full"
@@ -98,13 +82,11 @@ const ShopgridProduct: React.FC = () => {
                   ></div>
                 ))}
               </div>
-             
-              {/* Product Price */}
               <div className="flex justify-evenly items-center">
                 <p className="text-sm font-semibold text-[#151875] family">
                   ${product.price}
                 </p>
-                <p className="text-sm font-normal   family">
+                <p className="text-sm font-normal family">
                   {product.discountPercentage}% off
                 </p>
               </div>
@@ -112,7 +94,6 @@ const ShopgridProduct: React.FC = () => {
           </div>
         ))}
       </div>
-   
     </div>
   );
 };

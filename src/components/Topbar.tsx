@@ -8,18 +8,34 @@ import {
   FaShoppingCart,
 } from "react-icons/fa";
 import { useState } from "react";
+import Link from "next/link";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useCart } from "../app/context/cartContext";
+import { useWishlist } from "@/app/context/WishlistContext";
 
 const TopBar = () => {
   const [languageDropdown, setLanguageDropdown] = useState(false);
   const [currencyDropdown, setCurrencyDropdown] = useState(false);
+  const { cartItems } = useCart();
+  const { wishlist } = useWishlist();
+  const [wishlistClicked, setWishlistClicked] = useState(false);
+  const [cartClicked, setCartClicked] = useState(false);
+
+  const handleWishlistClick = () => {
+    setWishlistClicked(true);
+  };
+
+  const handleCartClick = () => {
+    setCartClicked(true);
+  };
 
   return (
     <div className="bg-[#7E33E0] text-[#F1F1F1] py-2 text-sm flex justify-center fixed top-0 left-0 w-full z-50">
       {/* TopBar Container */}
-      <div className="w-full max-w-[1200px] flex flex-wrap items-center justify-between px-4 gap-y-4">
+      <div className="w-full max-w-[1200px] flex flex-wrap items-center justify-between px-4 gap-4 sm:gap-6 flex-row">
         {/* Left Section */}
-        <div className="flex flex-wrap items-center justify-start gap-4 sm:gap-6 w-full sm:w-auto">
-          {/* Email */}
+        <div className="flex items-center gap-4 sm:gap-6">
           <a
             href="mailto:mhhasanul@gmail.com"
             className="flex items-center gap-1 hover:text-gray-200 font-semibold"
@@ -27,7 +43,6 @@ const TopBar = () => {
             <FaEnvelope />
             <span className="hidden sm:inline">mhhasanul@gmail.com</span>
           </a>
-          {/* Phone */}
           <a
             href="tel:1234567890"
             className="flex items-center gap-1 hover:text-gray-200"
@@ -38,7 +53,7 @@ const TopBar = () => {
         </div>
 
         {/* Right Section */}
-        <div className="flex flex-wrap items-center justify-end gap-4 sm:gap-6 w-full sm:w-auto">
+        <div className="flex items-center gap-4 sm:gap-6">
           {/* Language Dropdown */}
           <div
             className="relative cursor-pointer flex items-center gap-1"
@@ -84,32 +99,45 @@ const TopBar = () => {
           </div>
 
           {/* Login */}
-          <a
+          <Link
             href="/myaccount"
             className="flex items-center gap-1 hover:text-gray-200"
           >
             <FaUser />
             <span className="hidden sm:inline">Login</span>
-          </a>
+          </Link>
 
           {/* Wishlist */}
-          <a
+          <Link
             href="/wishlist"
-            className="flex items-center gap-1 hover:text-gray-200"
+            className="relative flex items-center gap-1 hover:text-gray-200"
+            onClick={handleWishlistClick}
           >
             <FaHeart />
+            {wishlist.length > 0 && !wishlistClicked && (
+              <span className="absolute -top-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                {wishlist.length}
+              </span>
+            )}
             <span className="hidden sm:inline">Wishlist</span>
-          </a>
+          </Link>
 
           {/* Cart */}
-          <a
+          <Link
             href="/shoppingcart"
-            className="flex items-center hover:text-gray-200"
+            className="relative flex items-center gap-1 hover:text-gray-200"
+            onClick={handleCartClick}
           >
             <FaShoppingCart />
-          </a>
+            {cartItems.length > 0 && !cartClicked && (
+              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                {cartItems.length}
+              </span>
+            )}
+          </Link>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
