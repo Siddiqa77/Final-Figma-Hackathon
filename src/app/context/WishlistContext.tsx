@@ -40,7 +40,7 @@ export const WishlistProvider = ({
 
   // Save wishlist to localStorage whenever it changes
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== "undefined" && wishlist.length > 0) {
       localStorage.setItem("wishlist", JSON.stringify(wishlist));
     }
   }, [wishlist]);

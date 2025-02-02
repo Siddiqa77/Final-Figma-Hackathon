@@ -10,6 +10,7 @@ import { ToastContainer } from "react-toastify";
 import { Toaster } from "react-hot-toast";
 
 
+
 export const metadata: Metadata = {
   title: "New Figma Hackathon",
   description: "GIAIC Hackathon of Figma",
@@ -21,6 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   
+
 
   
   return (

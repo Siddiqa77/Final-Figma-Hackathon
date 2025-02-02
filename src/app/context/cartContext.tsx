@@ -1,7 +1,6 @@
 "use client";
 import { createContext, useContext, useState, useEffect } from "react";
 
-
 interface CartItem {
   id: string;
   image: string;
@@ -25,28 +24,32 @@ interface CartContextType {
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider = ({ children }: { children: React.ReactNode }) => {
-  const [cartItems, setCartItems] = useState<CartItem[]>(() => {
-    const savedCartItems = localStorage.getItem("cartItems");
-    return savedCartItems ? JSON.parse(savedCartItems) : [];
-  });
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
-  // Load cart from localStorage 
+  // Load cart from localStorage on client-side only
   useEffect(() => {
-    const storedCart = localStorage.getItem("cartItems");
-    if (storedCart) {
-      setCartItems(JSON.parse(storedCart));
+    if (typeof window !== "undefined") {
+      const savedCartItems = localStorage.getItem("cartItems");
+      if (savedCartItems) {
+        setCartItems(JSON.parse(savedCartItems));
+      }
     }
   }, []);
 
   // Save cart to localStorage when cartItems change
   useEffect(() => {
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    if (typeof window !== "undefined") {
+      // If cartItems changes, store the new data in localStorage
+      if (cartItems.length > 0) {
+        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+      }
+    }
   }, [cartItems]);
 
   const addToCart = (item: CartItem) => {
     setCartItems((prev: CartItem[]) => {
       const existingItem = prev.find((i) => i.id === item.id);
-    
+
       let updatedCart;
 
       if (existingItem) {
@@ -60,7 +63,9 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
       }
 
       // Update localStorage immediately with the updated cart
-      localStorage.setItem("cartItems", JSON.stringify(updatedCart));
+      if (typeof window !== "undefined") {
+        localStorage.setItem("cartItems", JSON.stringify(updatedCart));
+      }
 
       return updatedCart;
     });
@@ -69,19 +74,20 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const removeFromCart = (id: string) => {
     setCartItems((prev: CartItem[]) => {
       const updatedCart = prev.filter((item) => item.id !== id);
-      localStorage.setItem("cartItems", JSON.stringify(updatedCart)); 
-     
+
+      if (typeof window !== "undefined") {
+        localStorage.setItem("cartItems", JSON.stringify(updatedCart));
+      }
+
       return updatedCart;
-      
-      
-      
     });
   };
 
   const clearCart = () => {
     setCartItems([]); // Clear cart state
-    localStorage.removeItem("cartItems");
-     
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("cartItems");
+    }
   };
 
   const incrementItem = (id: string) => {
