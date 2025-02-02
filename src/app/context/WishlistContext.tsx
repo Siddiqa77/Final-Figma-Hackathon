@@ -10,10 +10,10 @@ interface Wishlist {
   price: number;
   quantity: number;
 }
-// Context type define karna
+
 interface WishlistContextType {
   wishlist: Wishlist[];
-  addToWishlist: (item: any) => void;
+  addToWishlist: (item: Wishlist) => void;
   removeFromWishlist: (id: string) => void;
 }
 
@@ -26,39 +26,37 @@ export const WishlistProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [wishlist, setWishlist] = useState<Wishlist[]>(() => {
-    const savedWishlistItems = localStorage.getItem("wishlist");
-    return savedWishlistItems ? JSON.parse(savedWishlistItems) : [];
-  });
+  const [wishlist, setWishlist] = useState<Wishlist[]>([]);
 
-  // LocalStorage se data load karna
+  // Ensure localStorage is accessed only on the client side
   useEffect(() => {
-    const storedWishlist = localStorage.getItem("wishlist");
-    if (storedWishlist) {
-      setWishlist(JSON.parse(storedWishlist));
+    if (typeof window !== "undefined") {
+      const savedWishlistItems = localStorage.getItem("wishlist");
+      if (savedWishlistItems) {
+        setWishlist(JSON.parse(savedWishlistItems));
+      }
     }
   }, []);
 
-  // Wishlist update hone par localStorage save karna
+  // Save wishlist to localStorage whenever it changes
   useEffect(() => {
-    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    if (typeof window !== "undefined") {
+      localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    }
   }, [wishlist]);
 
-  // ✅ Product Add karne ka function
-  const addToWishlist = (item: any) => {
+  const addToWishlist = (item: Wishlist) => {
     setWishlist((prev) => {
       const exists = prev.some((prod) => prod.id === item.id);
       if (!exists) {
-        return [...prev, item]; // Agar product exist nahi karta to add karna
+        return [...prev, item];
       }
-      return prev; // Agar already exist hai to return prev
+      return prev;
     });
   };
 
-  // ✅ Product Remove karne ka function
   const removeFromWishlist = (id: string) => {
     setWishlist((prev) => prev.filter((prod) => prod.id !== id));
-    
   };
 
   return (
@@ -70,7 +68,6 @@ export const WishlistProvider = ({
   );
 };
 
-// ✅ Hook banane ka tareeqa
 export const useWishlist = () => {
   const context = useContext(WishlistContext);
   if (!context) {

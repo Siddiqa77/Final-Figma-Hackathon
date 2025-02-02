@@ -30,7 +30,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     return savedCartItems ? JSON.parse(savedCartItems) : [];
   });
 
-  // Load cart from localStorage on mount
+  // Load cart from localStorage 
   useEffect(() => {
     const storedCart = localStorage.getItem("cartItems");
     if (storedCart) {
