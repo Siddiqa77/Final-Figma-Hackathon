@@ -2,7 +2,7 @@
 import { client } from "@/sanity/lib/client";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 
 const FeaturedProduct = () => {
   const [products, setProducts] = useState<any[]>([]);

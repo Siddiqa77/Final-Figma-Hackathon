@@ -8,8 +8,6 @@ import { WishlistProvider } from "./context/WishlistContext";
 import TopBar from "@/components/Topbar";
 import { ToastContainer } from "react-toastify";
 import { Toaster } from "react-hot-toast";
-
-import { ClerkProvider} from '@clerk/nextjs';
 export const metadata: Metadata = {
   title: "New Figma Hackathon",
   description: "GIAIC Hackathon of Figma",
@@ -23,15 +21,15 @@ export default function RootLayout({
  
 
   return (
-     <ClerkProvider publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY as string}>
-    //   <html lang="en">
-    //     <body>
-    //       <SignedOut >
-    //         <SignInButton />
-    //       </SignedOut>
-    //       <SignedIn>
-    //         <UserButton />
-    //       </SignedIn>
+      // <ClerkProvider >
+       <html lang="en">
+         <body>
+           {/* <SignedOut >
+             <SignInButton />
+           </SignedOut>
+           <SignedIn>
+             <UserButton />
+           </SignedIn> */}
           <CartProvider>
             <WishlistProvider>
               <TopBar />
@@ -44,6 +42,6 @@ export default function RootLayout({
           </CartProvider>
         </body>
       </html>
-    </ClerkProvider>
+    //  </ClerkProvider>
   );
 }

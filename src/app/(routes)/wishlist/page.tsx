@@ -1,8 +1,9 @@
 "use client";
 import { useWishlist } from "@/app/context/WishlistContext";
+import Tags from "@/components/Homepage/Tags";
 import Image from "next/image";
 import Link from "next/link";
-import { toast } from "react-hot-toast";
+import Swal from "sweetalert2";
 
 export const dynamic = "force-dynamic";
 
@@ -12,8 +13,8 @@ const WishListPage = () => {
   const handleRemove = (id: string) => {
     removeFromWishlist(id);
   
-    toast.success("Item successfully removed from wishlist");
-    setTimeout(() => (null), 2000);
+    Swal.fire("Item successfully removed from wishlist");
+    setTimeout(() => (null), 1000);
   };
    
 const grids = [
@@ -76,7 +77,9 @@ const grids = [
           ))
         )}
       </section>
+     
     </main>
+    <Tags/>
     </div>
   );
 };

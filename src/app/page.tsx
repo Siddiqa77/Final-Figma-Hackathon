@@ -17,18 +17,20 @@ const Page = () => {
   return (
     
       <div>
+
+        
        
-        <Hero />
-        <FeaturedProduct />
-        <LatestProduct />
-        <Support />
-        <Midbanner />
-        <TrendingProducts />
-        <DiscountItem />
-        <Topcategories />
-        <Newsletter />
-        <Tags />
-        <Latestblog />
+        <Hero/>
+        <FeaturedProduct/>
+        <LatestProduct/>
+        <Support/>
+        <Midbanner/>
+        <TrendingProducts/>
+        <DiscountItem/>
+        <Topcategories/>
+        <Newsletter/>
+        <Tags/>
+        <Latestblog/>
        
         
       
