@@ -1,5 +1,4 @@
-"use client"; // This tells Next.js this is a Client Component
-
+"use client"; 
 import Tags from "@/components/Homepage/Tags";
 import Image from "next/image";
 import Link from "next/link";

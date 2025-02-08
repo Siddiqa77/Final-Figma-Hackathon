@@ -41,14 +41,14 @@ const TopBar = () => {
             className="flex items-center gap-1 hover:text-gray-200 font-semibold"
           >
             <FaEnvelope />
-            <span className="hidden sm:inline">mhhasanul@gmail.com</span>
+            <span className="hidden sm:inline">siddiqabadar@gmail.com</span>
           </a>
           <a
             href="tel:1234567890"
             className="flex items-center gap-1 hover:text-gray-200"
           >
             <FaPhoneAlt />
-            <span className="hidden sm:inline">(12345)67890</span>
+            <span className="hidden sm:inline">+923213661804</span>
           </a>
         </div>
 

@@ -8,6 +8,7 @@ import { WishlistProvider } from "./context/WishlistContext";
 import TopBar from "@/components/Topbar";
 import { ToastContainer } from "react-toastify";
 import { Toaster } from "react-hot-toast";
+
 export const metadata: Metadata = {
   title: "New Figma Hackathon",
   description: "GIAIC Hackathon of Figma",
@@ -21,15 +22,10 @@ export default function RootLayout({
  
 
   return (
-      // <ClerkProvider >
+      
        <html lang="en">
          <body>
-           {/* <SignedOut >
-             <SignInButton />
-           </SignedOut>
-           <SignedIn>
-             <UserButton />
-           </SignedIn> */}
+          
           <CartProvider>
             <WishlistProvider>
               <TopBar />
@@ -42,6 +38,6 @@ export default function RootLayout({
           </CartProvider>
         </body>
       </html>
-    //  </ClerkProvider>
+    
   );
 }
