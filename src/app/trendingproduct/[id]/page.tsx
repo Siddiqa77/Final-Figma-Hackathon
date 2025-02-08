@@ -1,5 +1,5 @@
 
-import ProductDetails from "@/components/detailfolder/ProductDeatail";
+import ProductDetails from "@/components/detailfolder/ProductDetail";
 import { client } from "@/sanity/lib/client";
 
 export default async function ProductPage({ params }: { params: { id: string } }) {

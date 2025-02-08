@@ -10,7 +10,7 @@ import Detailpage from "./detailpage";
 import Relatedproducts from "./relatedproducts";
 
 
-export default function ProductDetails({ product }: { product: any }) {
+export default function ProductDetail({ product }: { product: any }) {
   const [quantity, setQuantity] = useState(1);
   const { addToCart} = useCart();
   const {addToWishlist} = useWishlist();

@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import { sanityClient } from "@/sanity/sanity";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { client } from "@/sanity/lib/client";
