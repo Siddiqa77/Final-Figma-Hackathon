@@ -188,7 +188,7 @@ function Footer() {
                 </svg>
               </div>
               <div className="flex items-center justify-center w-5 h-5 bg-[#151875] rounded-full">
-                <svg
+                {/* <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="12"
                   height="12"
@@ -211,7 +211,7 @@ function Footer() {
                       />
                     </clipPath>
                   </defs>
-                </svg>
+                </svg> */}
               </div>
             </div>
           </div>

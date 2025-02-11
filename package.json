@@ -29,6 +29,7 @@
     "react-native-web": "^0.19.13",
     "react-toastify": "^11.0.3",
     "sanity": "^3.68.3",
+    "shipengine": "^1.0.7",
     "stripe": "^17.6.0",
     "styled-components": "^6.1.14",
     "sweetalert2": "^11.6.13",

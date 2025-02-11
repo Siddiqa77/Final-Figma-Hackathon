@@ -96,6 +96,7 @@ export default function Home() {
             mode: "payment",
             amount: total, // Make sure `total` is correctly defined
             currency: "usd",
+            
           }}
         >
           <StripePage checkoutItems={checkoutItems} amount={total} />

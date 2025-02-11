@@ -1,4 +1,3 @@
-
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -8,6 +7,10 @@ import { WishlistProvider } from "./context/WishlistContext";
 import TopBar from "@/components/Topbar";
 import { ToastContainer } from "react-toastify";
 import { Toaster } from "react-hot-toast";
+import { ClerkProvider } from "@clerk/nextjs";
+import OrderContextProvider from "./context/order/orderContextProvider";
+
+
 
 export const metadata: Metadata = {
   title: "New Figma Hackathon",
@@ -19,13 +22,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
- 
-
   return (
-      
-       <html lang="en">
-         <body>
-          
+    <ClerkProvider>
+      <html lang="en">
+        <body>
+        <OrderContextProvider>
           <CartProvider>
             <WishlistProvider>
               <TopBar />
@@ -36,8 +37,10 @@ export default function RootLayout({
               <ToastContainer />
             </WishlistProvider>
           </CartProvider>
+          </OrderContextProvider>
         </body>
       </html>
-    
+     
+    </ClerkProvider>
   );
 }

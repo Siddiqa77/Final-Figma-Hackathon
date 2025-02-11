@@ -3,7 +3,6 @@
 import {
   FaEnvelope,
   FaPhoneAlt,
-  FaUser,
   FaHeart,
   FaShoppingCart,
 } from "react-icons/fa";
@@ -13,6 +12,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useCart } from "../app/context/cartContext";
 import { useWishlist } from "@/app/context/WishlistContext";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 
 const TopBar = () => {
   const [languageDropdown, setLanguageDropdown] = useState(false);
@@ -98,15 +98,6 @@ const TopBar = () => {
             )}
           </div>
 
-          {/* Login */}
-          <Link
-            href="/myaccount"
-            className="flex items-center gap-1 hover:text-gray-200"
-          >
-            <FaUser />
-            <span className="hidden sm:inline">Login</span>
-          </Link>
-
           {/* Wishlist */}
           <Link
             href="/wishlist"
@@ -135,6 +126,17 @@ const TopBar = () => {
               </span>
             )}
           </Link>
+
+          {/* Login */}
+
+          <span className="hidden sm:inline">
+            <SignedOut>
+              <SignInButton />
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+          </span>
         </div>
       </div>
       <ToastContainer />

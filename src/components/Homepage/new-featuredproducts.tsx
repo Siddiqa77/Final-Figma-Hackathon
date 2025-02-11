@@ -2,7 +2,7 @@
 import { client } from "@/sanity/lib/client";
 import Image from "next/image";
 import Link from "next/link";
-import React, { Suspense, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const FeaturedProduct = () => {
   const [products, setProducts] = useState<any[]>([]);
@@ -25,7 +25,7 @@ const FeaturedProduct = () => {
 
     fetchProducts();
   }, []);
-  console.log(products);
+  
 
   if (loading) return <p>Loading...</p>;
 

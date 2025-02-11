@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Tags from "@/components/Homepage/Tags";
 import Link from "next/link";
+import { SignedOut, SignInButton } from "@clerk/nextjs";
 
 const grids = [
   {
@@ -100,9 +101,11 @@ export default function MyAccount() {
             </div>
             <button
               type="submit"
-              className="bg-[#FB2E86] text-[#fff] w-full py-3 rounded-lg font-semibold  transition duration-300 ease-in-out transform hover:bg-pink-700 hover:scale-105"
+              className="bg-[#FB2E86] text-[#fff] w-full py-3 rounded-lg font-semibold hover:font-bold  transition duration-300 ease-in-out transform hover:bg-pink-700 hover:scale-105"
             >
-              Sign In
+              <SignedOut>
+              <SignInButton />
+            </SignedOut>
             </button>
           </form>
 

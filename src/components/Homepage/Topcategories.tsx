@@ -25,7 +25,7 @@ const Topcategories = () => {
 
     fetchProducts();
   }, []);
-  console.log(products);
+  
 
   if (loading) return <p>Loading...</p>;
 

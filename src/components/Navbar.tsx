@@ -53,19 +53,19 @@ function Header() {
                         </li>
                       </Link>
                       <Link
-                        href="/myaccount"
+                        href="/shoplist"
                         className="hover:text-[#FB2E86] flex items-center  focus:text-[#FB2E86] active:text-[#FB2E86] hover:stroke-[#FB2E86]"
                       >
                         <li className="p-2 hover:bg-gray-100 cursor-pointer flex justify-between items-center">
-                          Login
+                          Shop
                         </li>
                       </Link>
                       <Link
-                        href="/shoppingcart"
+                        href="/griddefault"
                         className="hover:text-[#FB2E86] flex items-center  focus:text-[#FB2E86] active:text-[#FB2E86] hover:stroke-[#FB2E86]"
                       >
                         <li className="p-2 hover:bg-gray-100 cursor-pointer flex justify-between items-center">
-                          Signup
+                          Product
                         </li>
                       </Link>
                       <Link
@@ -73,7 +73,7 @@ function Header() {
                         className="hover:text-[#FB2E86] flex items-center  focus:text-[#FB2E86] active:text-[#FB2E86] hover:stroke-[#FB2E86]"
                       >
                         <li className="p-2 hover:bg-gray-100 cursor-pointer flex justify-between items-center">
-                          Product 
+                          Checkout 
                         </li>
                       </Link>
                     </ul>
@@ -165,18 +165,18 @@ function Header() {
                   </li>
                   <li>
                     <Link
-                      href="/myaccount"
+                      href="/shoplist"
                       className="hover:text-[rgb(251,46,134)] block focus:text-[#FB2E86] active:text-[#FB2E86]"
                     >
-                    Login
+                    Shop
                     </Link>
                   </li>
                   <Link
-                    href="/shoppingcart"
+                    href="/griddefault"
                     className="hover:text-[#FB2E86] flex items-center  focus:text-[#FB2E86] active:text-[#FB2E86] hover:stroke-[#FB2E86]"
                   >
                     <li className="p-2 hover:bg-gray-100 cursor-pointer flex justify-between items-center">
-                      Signup
+                      Product
                     </li>
                   </Link>
                   <Link
@@ -184,7 +184,7 @@ function Header() {
                     className="hover:text-[#FB2E86] flex items-center  focus:text-[#FB2E86] active:text-[#FB2E86] hover:stroke-[#FB2E86]"
                   >
                     <li className="p-2 hover:bg-gray-100 cursor-pointer flex justify-between items-center">
-                      Product
+                      Checkout
                     </li>
                   </Link>
                 </ul>
