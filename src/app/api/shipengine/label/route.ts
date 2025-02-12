@@ -1,6 +1,6 @@
 
 import { NextRequest, NextResponse } from "next/server";
-import { shipengine } from "../../../../../lib/helper/shipEngine";
+import { shipengine } from "../../../../lib/helper/shipEngine";
 
 
 export async function POST(req: NextRequest) {

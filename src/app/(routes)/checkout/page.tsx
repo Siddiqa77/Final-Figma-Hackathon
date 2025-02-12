@@ -133,7 +133,7 @@ const Checkout = () => {
               }`}
               disabled={isLoading}
             >
-              {isLoading ? "Processing..." : "Pay Now"}
+              {isLoading ? "Processing..." : "Book Order"}
             </button>
           </form>
         </div>
@@ -175,3 +175,4 @@ const Checkout = () => {
 };
 
 export default Checkout;
+

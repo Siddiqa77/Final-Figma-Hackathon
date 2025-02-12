@@ -11,13 +11,20 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^6.11.1",
+    "@hookform/resolvers": "^4.0.0",
+    "@radix-ui/react-dialog": "^1.1.6",
+    "@radix-ui/react-label": "^2.1.2",
+    "@radix-ui/react-select": "^2.1.6",
+    "@radix-ui/react-toast": "^1.2.6",
     "@sanity/client": "^6.24.3",
     "@sanity/image-url": "^1.1.0",
     "@sanity/vision": "^3.68.3",
     "@stripe/react-stripe-js": "^3.1.1",
     "@stripe/stripe-js": "^5.6.0",
     "axios": "^1.7.9",
+    "class-variance-authority": "^0.7.1",
     "dotenv": "^16.4.7",
+    "lucide-react": "^0.475.0",
     "next": "^14.2.23",
     "next-sanity": "^9.8.31",
     "react": "^18",
@@ -33,7 +40,10 @@
     "stripe": "^17.6.0",
     "styled-components": "^6.1.14",
     "sweetalert2": "^11.6.13",
-    "swiper": "^11.1.15"
+    "swiper": "^11.1.15",
+    "tailwind-merge": "^3.0.1",
+    "use-shopping-cart": "^3.2.0",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@types/node": "^20",

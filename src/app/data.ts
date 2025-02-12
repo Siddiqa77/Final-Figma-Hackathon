@@ -1,3 +1,5 @@
+
+
 // data.ts
 export const data = [
     {
@@ -41,4 +43,5 @@ export const data = [
       price: 40.0,
     },
   ];
+  
   

@@ -8,7 +8,6 @@ import TopBar from "@/components/Topbar";
 import { ToastContainer } from "react-toastify";
 import { Toaster } from "react-hot-toast";
 import { ClerkProvider } from "@clerk/nextjs";
-import OrderContextProvider from "./context/order/orderContextProvider";
 
 
 
@@ -26,7 +25,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body>
-        <OrderContextProvider>
+       
           <CartProvider>
             <WishlistProvider>
               <TopBar />
@@ -37,7 +36,7 @@ export default function RootLayout({
               <ToastContainer />
             </WishlistProvider>
           </CartProvider>
-          </OrderContextProvider>
+         
         </body>
       </html>
      
