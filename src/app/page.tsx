@@ -8,9 +8,11 @@ import Newsletter from "@/components/Homepage/Newsletter";
 import DiscountItem from "@/components/Homepage/DiscountItem";
 import Tags from "@/components/Homepage/Tags";
 import FeaturedProduct from "@/components/Homepage/new-featuredproducts";
+
+
+import Topcategories from "@/components/Homepage/Topcategories";
 import LatestProduct from "@/components/Homepage/new-latestproducts";
 import TrendingProducts from "@/components/Homepage/new-trendingproducts";
-import Topcategories from "@/components/Homepage/Topcategories";
 
 
 const Page = () => {

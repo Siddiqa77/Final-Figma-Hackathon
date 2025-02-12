@@ -1,8 +1,11 @@
 "use client";
-import { client } from "@/sanity/lib/client";
+
+
+import { sanityClient } from "@/sanity/lib/client";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+
 
 const Hero = () => {
   const [products, setProducts] = useState<any[]>([]);
@@ -20,7 +23,7 @@ const Hero = () => {
        
        
       }`;
-      const products = await client.fetch(query);
+      const products = await sanityClient.fetch(query);
       setProducts(products);
       setLoading(false);
     };

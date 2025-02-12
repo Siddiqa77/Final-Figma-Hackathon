@@ -22,9 +22,12 @@ function Header() {
           <div className="w-full md:w-full lg:w-[1170px] flex items-center justify-between h-[50px]">
             <div className="flex items-center">
               {/* Logo */}
+              <Link href={"/"}> 
+
               <h1 className="text-3xl font-bold family text-[#0D0E43]">
                 Hekto
               </h1>
+              </Link>
               <div className="hidden md:block">
                 <ul className="flex md:flex-row md:gap-x-2 lg:gap-x-3 text-base ml-20 font-medium text-black">
                   <li className="relative group p-4 hover:underline underline-offset-2">

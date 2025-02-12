@@ -1,7 +1,7 @@
 "use client";
+import { sanityClient } from "@/sanity/lib/client";
 import Image from "next/image";
 import Link from "next/link";
-import { client } from "@/sanity/lib/client";
 import React, { useEffect, useState } from "react";
 
 const LatestProduct = () => {
@@ -18,7 +18,7 @@ const LatestProduct = () => {
         discountedPercentage,
         "image": image.asset->url,
       }`;
-      const products = await client.fetch(query);
+      const products = await sanityClient.fetch(query);
       setProducts(products);
       setLoading(false);
     };

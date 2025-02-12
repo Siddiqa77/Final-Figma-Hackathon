@@ -1,8 +1,9 @@
 "use client";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { sanityClient } from "@/sanity/sanity";
+
 import Link from "next/link";
+import { sanityClient } from "@/sanity/lib/client";
 
 const Latestblog: React.FC = () => {
   const [products, setProducts] = useState<any>([]);

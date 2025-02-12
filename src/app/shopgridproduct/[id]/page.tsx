@@ -1,6 +1,6 @@
 
 import ProductDetails from "@/components/detailfolder/ProductDetail";
-import { client } from "@/sanity/lib/client";
+import { sanityClient } from "@/sanity/lib/client";
 import { Suspense } from "react";
 
 const fetchProduct = async (id: string) => {
@@ -18,7 +18,7 @@ const fetchProduct = async (id: string) => {
     },
     "image": image.asset->url
   }`;
-  return await client.fetch(query);
+  return await sanityClient.fetch(query);
 };
 
 async function ProductData({ id }: { id: string }) {
@@ -34,4 +34,3 @@ export default function ProductPage({ params }: { params: { id: string } }) {
     </Suspense>
   );
 }
-

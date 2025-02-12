@@ -1,9 +1,10 @@
 "use client";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { sanityClient } from "@/sanity/sanity";
+
 import Link from "next/link";
 import Tags from "../Homepage/Tags";
+import { sanityClient } from "@/sanity/lib/client";
 
 const Relatedproducts: React.FC = () => {
   const [products, setProducts] = useState([]);

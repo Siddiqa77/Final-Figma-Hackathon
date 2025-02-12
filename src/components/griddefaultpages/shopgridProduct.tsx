@@ -2,7 +2,7 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { client } from "@/sanity/lib/client";
+import { sanityClient } from "@/sanity/lib/client";
 import { FaCartArrowDown, FaHeart } from "react-icons/fa";
 import { useCart } from "@/app/context/cartContext";
 import { useWishlist } from "@/app/context/WishlistContext";
@@ -24,7 +24,7 @@ const ShopgridProduct: React.FC = () => {
         discountPercentage,
         "image": image.asset->url
       }`;
-      const products = await client.fetch(query);
+      const products = await sanityClient.fetch(query);
       setProducts(products);
     };
     fetchProducts();
