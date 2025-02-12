@@ -1,6 +1,8 @@
 "use client";
 
-import { ProductData } from "../../../type";
+import { ProductData } from "@/lib/helper/type";
+
+
 
 const AddToCart = ({ product }: { product: ProductData }) => {
   const handleClick = async () => {

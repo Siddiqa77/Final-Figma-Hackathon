@@ -56,3 +56,29 @@ export type Address = {
     estimatedDeliveryDate?: string;
     actualDeliveryDate?: string;
   }
+
+  export interface ProductData {
+    _id?: string;
+    _type: string;
+    name: string;
+    price: number;
+    prevPrice: number;
+    rating: number;
+    image: string;
+    badge: string | null;
+    code: string;
+    description: string;
+    category: string;
+    shipment: {
+      weight: {
+        value: number;
+        unit: string;
+      };
+      dimensions: {
+        height: number;
+        width: number;
+        length: number;
+        unit: string;
+      };
+    };
+  }
