@@ -1,5 +1,6 @@
 import { BlogSidebar } from "@/components/blogpage/blogSideBar"
-import { sanityClient } from "@/sanity/sanity";
+import { sanityClient } from "@/sanity/lib/client";
+
 
 
 

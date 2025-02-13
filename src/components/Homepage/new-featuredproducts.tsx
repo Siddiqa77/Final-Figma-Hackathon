@@ -18,7 +18,7 @@ const FeaturedProduct = () => {
         price,
         description,
         discountPercentage,
-        "image": image.asset->url,
+        "image": image.asset->url
       }`;
       const products = await sanityClient.fetch(query);
       setProducts(products);
