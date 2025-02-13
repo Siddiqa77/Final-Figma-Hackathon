@@ -15,12 +15,15 @@ import { useWishlist } from "@/app/context/WishlistContext";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 
 const TopBar = () => {
-  const [languageDropdown, setLanguageDropdown] = useState(false);
-  const [currencyDropdown, setCurrencyDropdown] = useState(false);
+  
   const { cartItems } = useCart();
   const { wishlist } = useWishlist();
   const [wishlistClicked, setWishlistClicked] = useState(false);
   const [cartClicked, setCartClicked] = useState(false);
+  const [languageDropdown, setLanguageDropdown] = useState(false);
+  const [currencyDropdown, setCurrencyDropdown] = useState(false);
+  const [selectedLanguage, setSelectedLanguage] = useState("English");
+  const [selectedCurrency, setSelectedCurrency] = useState("USD");
 
   const handleWishlistClick = () => {
     setWishlistClicked(true);
@@ -55,48 +58,60 @@ const TopBar = () => {
         {/* Right Section */}
         <div className="flex items-center gap-4 sm:gap-6">
           {/* Language Dropdown */}
-          <div
-            className="relative cursor-pointer flex items-center gap-1"
-            onMouseEnter={() => setLanguageDropdown(true)}
-            onMouseLeave={() => setLanguageDropdown(false)}
-          >
-            <span>English</span>
-            <span className="text-xs">▼</span>
-            {languageDropdown && (
-              <div className="absolute top-8 bg-white text-black rounded shadow-md p-2 z-10 w-28">
-                {["English", "Spanish", "French", "German"].map((lang) => (
-                  <div
-                    key={lang}
-                    className="hover:bg-gray-200 px-4 py-1 cursor-pointer"
-                  >
-                    {lang}
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
+          <div className="relative cursor-pointer">
+        <div
+          className="flex items-center gap-1"
+          onClick={() => setLanguageDropdown(!languageDropdown)}
+        >
+          <span>{selectedLanguage}</span>
+          <span className="text-xs">▼</span>
+        </div>
 
-          {/* Currency Dropdown */}
-          <div
-            className="relative cursor-pointer flex items-center gap-1"
-            onMouseEnter={() => setCurrencyDropdown(true)}
-            onMouseLeave={() => setCurrencyDropdown(false)}
-          >
-            <span>USD</span>
-            <span className="text-xs">▼</span>
-            {currencyDropdown && (
-              <div className="absolute top-8 bg-white text-black rounded shadow-md p-2 z-10 w-20">
-                {["USD", "EUR", "GBP"].map((currency) => (
-                  <div
-                    key={currency}
-                    className="hover:bg-gray-200 px-4 py-1 cursor-pointer"
-                  >
-                    {currency}
-                  </div>
-                ))}
+        {languageDropdown && (
+          <div className="absolute top-8 bg-white text-black rounded shadow-md p-2 z-10 w-28">
+            {["English", "Spanish", "French", "German"].map((lang) => (
+              <div
+                key={lang}
+                className="hover:bg-gray-200 px-4 py-1 cursor-pointer"
+                onClick={() => {
+                  setSelectedLanguage(lang);
+                  setLanguageDropdown(false); // Dropdown close after selection
+                }}
+              >
+                {lang}
               </div>
-            )}
+            ))}
           </div>
+        )}
+      </div>
+
+      {/* Currency Dropdown */}
+      <div className="relative cursor-pointer">
+        <div
+          className="flex items-center gap-1"
+          onClick={() => setCurrencyDropdown(!currencyDropdown)}
+        >
+          <span>{selectedCurrency}</span>
+          <span className="text-xs">▼</span>
+        </div>
+
+        {currencyDropdown && (
+          <div className="absolute top-8 bg-white text-black rounded shadow-md p-2 z-10 w-20">
+            {["USD", "EUR", "GBP"].map((currency) => (
+              <div
+                key={currency}
+                className="hover:bg-gray-200 px-4 py-1 cursor-pointer"
+                onClick={() => {
+                  setSelectedCurrency(currency);
+                  setCurrencyDropdown(false); // Dropdown close after selection
+                }}
+              >
+                {currency}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
 
           {/* Wishlist */}
           <Link

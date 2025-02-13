@@ -6,33 +6,33 @@ import React from "react";
 
 const PaymentSuccess = () => {
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-gray-50 min-h-screen flex flex-col items-center px-4">
       <div className="mt-10 md:mt-[100px] flex flex-col items-center">
-        <div className="w-[100px] h-[100px] mb-6">
+        {/* Success Icon */}
+        <div className="w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] mb-6">
           <Image src="/success.png" alt="Success" width={100} height={100} />
         </div>
 
-        <div className="w-full max-w-lg text-center text-[#101750] text-4xl font-bold mb-6">
+        {/* Payment Successful Message */}
+        <h1 className="text-[#101750] text-2xl sm:text-4xl font-bold text-center mb-4">
           Payment Successful!
-        </div>
+        </h1>
 
-        <div className="text-[#8d92a7] md:w-[850px] text-base font-semibold leading-[30px] mb-4 px-5 text-center">
-          Thank you for your purchase! Your payment has been successfully
-          processed.
-        </div>
+        {/* Description */}
+        <p className="text-[#8d92a7] max-w-xl text-sm sm:text-base font-medium leading-6 sm:leading-[30px] mb-6 text-center px-2">
+          Thank you for your purchase! Your payment has been successfully processed.
+        </p>
 
-        <div className="w-full flex justify-center">
-          <Link
-            href="/shipping"
-            className="w-full px-4 py-2 bg-[#FB2E86] text-[#fff] sm:w-auto hover:font-bold hover:bg-pink-700 transform transition-transform duration-300 hover:scale-105 rounded-[3px] flex justify-center items-center"
-          >
-            <button className="text-center text-white text-base font-semibold leading-[30px]">
-              Shipping Detail
-            </button>
-          </Link>
-        </div>
+        {/* Button */}
+        <Link
+          href="/shipping"
+          className="px-6 py-2 bg-[#FB2E86] text-white text-sm sm:text-base font-semibold hover:bg-pink-700 transition-transform duration-300 hover:scale-105 rounded-md flex items-center"
+        >
+          Shipping Detail
+        </Link>
 
-        <div className="w-[65px] h-[65px] bg-white rounded-full mt-4"></div>
+        {/* Decorative Element */}
+        <div className="w-[50px] sm:w-[65px] h-[50px] sm:h-[65px] bg-white rounded-full mt-6"></div>
       </div>
 
       <Tags />
