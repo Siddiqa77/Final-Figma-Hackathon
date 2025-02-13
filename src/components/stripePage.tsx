@@ -1,4 +1,3 @@
-
 "use client";
 
 // Import React and necessary hooks and components from the React and Stripe libraries.
@@ -16,19 +15,19 @@ interface StripePageProps {
 // Import a custom helper function to convert the amount to a sub currency (e.g., cents).
 
 // Define the CheckoutPage component, which receives an 'amount' prop.
-const StripePage: React.FC<StripePageProps> = ({amount}) => {
+const StripePage: React.FC<StripePageProps> = ({ amount }) => {
   // Initialize the Stripe instance using the useStripe hook.
   const stripe = useStripe();
-  
+
   // Initialize the Stripe Elements instance using the useElements hook.
   const elements = useElements();
-  
+
   // useState hook to manage error messages.
   const [errorMessage, setErrorMessage] = useState<string>();
-  
+
   // useState hook to store the client secret needed for the payment.
   const [clientSecret, setClientSecret] = useState("");
-  
+
   // useState hook to track whether a payment is processing.
   const [loading, setLoading] = useState(false);
 
@@ -53,7 +52,7 @@ const StripePage: React.FC<StripePageProps> = ({amount}) => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     // Prevent the default form submission behavior (page reload).
     event.preventDefault();
-    
+
     // Indicate that the payment process is loading.
     setLoading(true);
 
@@ -74,11 +73,10 @@ const StripePage: React.FC<StripePageProps> = ({amount}) => {
 
     // Confirm the payment on the server using Stripe.
     const { error } = await stripe.confirmPayment({
-      elements,              // The Stripe Elements instance with the payment details.
-      clientSecret,          // The client secret returned by the PaymentIntent creation.
+      elements,
+      clientSecret,
       confirmParams: {
-        // After payment completes successfully, the user will be redirected here.
-        return_url: `http://www.localhost:3000/payment-success?amount=${amount}`,
+        return_url: `${window.location.origin}/payment-success?amount=${amount}`,
       },
     });
 
@@ -87,7 +85,6 @@ const StripePage: React.FC<StripePageProps> = ({amount}) => {
       // e.g., card details incomplete or invalid.
       setErrorMessage(error.message);
     } else {
-     
     }
 
     // Reset the loading state after processing.
@@ -110,7 +107,6 @@ const StripePage: React.FC<StripePageProps> = ({amount}) => {
     );
   }
 
-  
   return (
     // Attach the handleSubmit event handler to the form.
     <form onSubmit={handleSubmit} className="bg-white p-2 rounded-md">
@@ -131,6 +127,5 @@ const StripePage: React.FC<StripePageProps> = ({amount}) => {
     </form>
   );
 };
-
 
 export default StripePage;
